@@ -1,0 +1,249 @@
+/* DOCTYPE - CSS
+*@author Thiago Mendes
+*@version 1.0
+*/
+
+
+/*========================= layout =========================*/
+
+/* --------------- Index --------------- */
+#main{
+	display: flex;
+	align-items: center;
+	justify-content:center;
+	height: 100vh;
+}
+
+.red{
+	display: flex;
+	align-items: center;
+	justify-content:center;
+}
+
+/* --- Tela de Login --- */
+#login{
+	width: 50vh;
+	height: 50vh;
+	background: #FFFAFA;
+	box-shadow: 2px 1px gray;
+	border: 1px solid black;
+	border-radius: 3%;
+	text-align: center;
+}
+#login input{
+	margin-bottom: 20px;
+}
+
+
+
+/* --------------- Home --------------- */
+
+
+#main_home{
+	text-align: center;
+	text-decoration: none;
+	background: rgb(29, 73, 118);
+}
+
+.conteudo_home{
+	
+
+}
+.row-up{
+	padding-top: 100px;
+	padding-bottom: 10px;
+
+}
+.row-down{
+	background: rgba(118, 124, 135, 1.0);
+	color: white;
+	font-weight: 600;
+}
+.nav_pag{
+	margin-top: 20px;
+}
+
+/* -- nav_selects -- */
+
+.nav_select{
+	border: 1px solid black;
+	border-radius: 15px;
+	height: 60vh;
+}
+
+
+.row-header{
+	background: #3CB371;
+	border-radius: 15px 15px 0 0;
+}
+
+
+.plus{
+  transition: all 0.5s;
+  position: relative;
+  text-decoration: none;
+  padding:10px;
+}
+.plus::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.3s;
+}
+
+.plus:hover::before {
+	opacity: 0 ;
+	transform: scale(0.5,0.5);
+}
+.plus::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border: 1px solid rgba(200,205,205,0.9);
+	transform: scale(1.2,1.2);
+}
+.plus:hover::after {
+	opacity: 1;
+	transform: scale(1,1);
+}
+
+/* -- Controles -- */
+
+.row-space-controle{
+	margin: 10% 0;
+}
+
+/* --------------- produto_cadastrar.php --------------- */
+#formCadastrar{
+	
+}
+
+/* --------------- vender.php --------------- */
+.modal-content{
+	color: black;
+}
+
+
+/* --------------- produto_estoque.php --------------- */
+
+.menu_lateral{
+	margin:15px auto;
+	width: 80%;
+	height: 50px;
+	color: white;
+	font-weight: 600;
+	
+}
+.menu_lateral a{
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+}
+
+.btn-controles-custom{
+	width: 100%;
+}
+
+/* -- Estoque -- */
+.foto_produto{
+	height: 150px;
+	border-radius: 10px;
+	background: gray;
+}
+
+.produto{
+	height: 100px;
+	background: rgb(86, 91, 99);
+	margin: auto 0;
+	border-right: solid 1px black;
+	border-radius: 5px;
+}
+.produto div{
+	margin: 40px 0;
+}
+
+.tamanho_produto{
+
+}
+.cor_produto{
+
+}
+.qtd_produto{
+
+}
+.preco_produto{
+
+}
+
+/* --------------- historico.php --------------- */
+.linha_pesquisa{
+	border-radius: 10px;
+	background: rgb(86, 91, 99);
+}
+
+
+
+/*===================== Tipografia =====================*/
+*{
+	text-decoration: none;
+	list-style: none;
+}
+input{
+	width: 100%;
+}
+
+h1,h2,h3{
+	text-shadow: .5px .5px white;
+}
+#sair{
+	margin-top: 10px;
+}
+#sair a{
+	
+	text-decoration: none;
+	color: white;
+}
+
+.border_custom a{
+	color: black;
+}
+
+
+
+/*========================= Media queries =========================*/
+
+
+/*===================== Key frames =====================*/
+
+/* -- Botão login -- */
+@keyframes btn_login{
+	0%{
+		opacity: .2;
+		margin-top: 50px;
+	}
+	70%{
+		opacity: .6;
+		margin-top: 10px;
+	}
+	100%{
+		opacity: 1;
+		margin-top: 0;
+	}
+}
+
+
+.d-block{
+	animation: btn_login .7s;
+	display: block;
+	margin: 0 auto;
+}

@@ -123,7 +123,7 @@
 						<input id="novo_fornecedor_nome" name="novo_fornecedor_nome" type="text" class="form-control" placeholder="Nome fornecedor">
 					</div>
 					<div class="input-group mb-3">
-						<input id="novo_fornecedor_cpf" name="novo_fornecedor_cpf" type="text" class="form-control" placeholder="CPF fornecedor">
+						<input id="novo_fornecedor_cpf_cnpj" name="novo_fornecedor_cpf_cnpj" type="text" class="form-control" placeholder="CPF ou CNPJ fornecedor">
 					</div>
 					<div class="input-group mb-3">
 						<input id="novo_fornecedor_telefone" name="novo_fornecedor_telefone" type="text" class="form-control" placeholder="Número telefone fornecedor">

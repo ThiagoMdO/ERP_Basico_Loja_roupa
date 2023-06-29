@@ -11,25 +11,25 @@
 	$con = $objDb->conecta_mysql();
 
 
-	$novo_cliente_nome = isset($_POST['novo_cliente_nome'])?$_POST['novo_cliente_nome']:false;
-	$novo_cliente_cpf = isset($_POST['novo_cliente_cpf'])?$_POST['novo_cliente_cpf']:false;
-	$novo_cliente_telefone = isset($_POST['novo_cliente_telefone'])?$_POST['novo_cliente_telefone']:false;
-	$novo_cliente_rua = isset($_POST['novo_cliente_rua'])?$_POST['novo_cliente_rua']:false;
-	$novo_cliente_numero_casa = isset($_POST['novo_cliente_numero_casa'])?$_POST['novo_cliente_numero_casa']:false;
-	$novo_cliente_bairro = isset($_POST['novo_cliente_bairro'])?$_POST['novo_cliente_bairro']:false;
-	$novo_cliente_cliente = isset($_POST['novo_cliente_cliente'])?$_POST['novo_cliente_cliente']:false;
-	$novo_cliente_uf = isset($_POST['novo_cliente_uf'])?$_POST['novo_cliente_uf']:false;
-	$novo_cliente_ceep = isset($_POST['novo_cliente_ceep'])?$_POST['novo_cliente_ceep']:false;
+	$novo_fornecedor_nome = isset($_POST['novo_fornecedor_nome'])?$_POST['novo_fornecedor_nome']:false;
+	$novo_fornecedor_cpf_cnpj = isset($_POST['novo_fornecedor_cpf_cnpj'])?$_POST['novo_fornecedor_cpf_cnpj']:false;
+	$novo_fornecedor_telefone = isset($_POST['novo_fornecedor_telefone'])?$_POST['novo_fornecedor_telefone']:false;
+	$novo_fornecedor_rua = isset($_POST['novo_fornecedor_rua'])?$_POST['novo_fornecedor_rua']:false;
+	$novo_fornecedor_numero_casa = isset($_POST['novo_fornecedor_numero_casa'])?$_POST['novo_fornecedor_numero_casa']:false;
+	$novo_fornecedor_bairro = isset($_POST['novo_fornecedor_bairro'])?$_POST['novo_fornecedor_bairro']:false;
+	$novo_fornecedor_cidade = isset($_POST['novo_fornecedor_cidade'])?$_POST['novo_fornecedor_cidade']:false;
+	$novo_fornecedor_uf = isset($_POST['novo_fornecedor_uf'])?$_POST['novo_fornecedor_uf']:false;
+	$novo_fornecedor_ceep = isset($_POST['novo_fornecedor_ceep'])?$_POST['novo_fornecedor_ceep']:false;
 	
 	
-	$sql_inserir_cliente = "INSERT INTO clientes (nome_cliente,cpf,contato_telefone,rua,numero,bairro,cidade,uf,ceep) VALUES ('$novo_cliente_nome','$novo_cliente_cpf','$novo_cliente_telefone','$novo_cliente_rua','$novo_cliente_numero_casa','$novo_cliente_bairro','$novo_cliente_cliente','$novo_cliente_uf','$novo_cliente_ceep')";
+	$sql_inserir_fornecedor = "INSERT INTO fornecedores (nome_fornecedor,cpf_cnpj,contato_telefone,rua,numero,bairro,cidade,uf,ceep) VALUES ('$novo_fornecedor_nome','$novo_fornecedor_cpf_cnpj','$novo_fornecedor_telefone','$novo_fornecedor_rua','$novo_fornecedor_numero_casa','$novo_fornecedor_bairro','$novo_fornecedor_cidade','$novo_fornecedor_uf','$novo_fornecedor_ceep')";
 
-	$resultado_id = mysqli_query($con,$sql_inserir_cliente);
+	$resultado_id = mysqli_query($con,$sql_inserir_fornecedor);
 	if($resultado_id){
-		echo $novo_cliente_nome.' foi cadastrado com sucesso';
+		echo $novo_fornecedor_nome.' foi cadastrado com sucesso';
 
 	}else{
-		echo 'Falha em cadastrar '.$novo_cliente_nome;
+		echo 'Falha em cadastrar '.$novo_fornecedor_nome;
 	}
 
 

@@ -65,24 +65,50 @@
 			
 			
 
+
 		});
 		
-
-		function atualizar_fornecedor(id_forncedor){
+		function pagar_conta(get_id){
 			$.ajax({
-				url: 'editar_fornecedores.php',
+				url: 'pagar_conta.php',
 				method: 'post',
-				data:$('#form_alterar_dados_fornecedores_'+id_forncedor).serialize(),
+				data:  $('#conta'+get_id).serialize(),
+				success: function(data){
+					alert(data);
+				}
+			})
+		}
+
+
+		function excluir_conta(get_id){
+			$.ajax({
+				url: 'excluir_conta.php',
+				method: 'post',
+				data: $('#conta'+get_id).serialize(),
+				success: function(data){
+					alert(data);
+				}
+
+			})
+		}
+
+
+		function incluir_conta(get_id){
+			$.ajax({
+				url: 'incluir_conta.php',
+				method: 'post',
+				data:$('#form_cadastrar_conta').serialize(),
 				success: function(){
-					$('#editar_nome_fornecedor'+id_forncedor).val('');
-					$('#editar_cpf_fornecedor'+id_forncedor).val('');
-					$('#editar_telefone_fornecedor'+id_forncedor).val('');
-					$('#editar_rua_fornecedor'+id_forncedor).val('');
-					$('#editar_numero_casa_fornecedor'+id_forncedor).val('');
-					$('#editar_bairro_fornecedor'+id_forncedor).val('');
-					$('#editar_cidade_fornecedor'+id_forncedor).val('');
-					$('#editar_uf_fornecedor'+id_forncedor).val('');
-					$('#editar_ceep_fornecedor'+id_forncedor).val('');
+					if($('#nome_conta').val()!='' && $('#natureza_conta').val()!='' && $('#valor_conta').val()!='' && $('#pago_conta').val()!='' && $('#forma_pagamento_conta').val()!='' && $('#parcelas').val()!='' && $('#vencimento').val()!=''){
+						$('#nome_conta').val('');
+						$('#natureza_conta').val('');
+						$('#valor_conta').val('');
+						$('#pago_conta').val('');
+						$('#forma_pagamento_conta').val('');
+						$('#parcelas').val('');
+						$('#vencimento').val('');
+					}
+
 					
 				}
 			}).done(function(data){
@@ -90,17 +116,7 @@
 			});
 		}
 		
-		function excluir_fornecedor(get_id){
-			$.ajax({
-				url: 'excluir_fornecedores.php',
-				method: 'post',
-				data: $('#form_passar_dados'+get_id).serialize(),
-				success: function(data){
-					alert(data);
-				}
-
-			})
-		}
+		
 
 	
 		
@@ -109,15 +125,7 @@
 
 
 	</script>
-	<style type="text/css">
-
-		input{
-			width: 100%;
-		}
-*{
-	text-decoration: none;
-	list-style: none;
-}	</style>
+	<style type="text/css"></style>
 </head>
 
 <body id="main_home">
@@ -139,7 +147,7 @@
                 	<a href="home.php"><button class="btn btn-large btn-outline-primary">VOLTAR</button></a>
                 </div>
                 <div class="col-12">
-                	<a href=""><button class="btn btn-large btn-outline-primary">+ Nova Conta</button></a>
+                	<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal_nova_conta" id="">+ Nova Conta</button>
                 </div>
 	           	<br>
 				
@@ -158,7 +166,6 @@
 								<div class="col-2">Nome</div>
 								<div class="col-2">Natureza</div>
 								<div class="col-2">Valor</div>
-								<div class="col-1">Pago?</div>
 								<div class="col-2">Forma de Pagamento</div>
 								<div class="col-1">Parcelas</div>
 								<div class="col-2">Vencimento</div>
@@ -173,8 +180,109 @@
 					<button class="btn btn-outline-danger"><a href="sair.php">SAIR</a></button>
 				</div>
 
-				
+			<!-- Modal Exibir itens -->
+				<div class="modal fade" id="modal_nova_conta" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="false">
+					<div class="modal-dialog">
+					    <div class="modal-content">
+					    	<div class="modal-header">
+						        <h5 class="modal-title" id="modalLabel">Cadastrar nova Conta</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+				     	</div>
 
+						<div class="modal-body"  style="text-align: center;">
+							<form id="form_cadastrar_conta" >
+								<div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Descrição da conta:
+										</div>
+										<div class="col-6">
+
+											<input class="form-control" type="text" name="nome_conta" id="nome_conta" placeholder="Nome da conta">
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Natureza:
+										</div>
+										<div class="col-6">
+											<select name="natureza_conta" id="natureza_conta" class="form-select">
+												<option value="Despesa">Despesa</option>
+												<option value="Investimento">Investimento</option>
+											</select>
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Valor da conta:
+										</div>
+										<div class="col-6">
+											<input class="form-control" type="number" name="valor_conta" id="valor_conta" placeholder="Valor">
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Já foi pago?
+										</div>
+										<div class="col-6">
+											<select name="pago_conta" id="pago_conta" class="form-select">
+												<option value="SIM">SIM</option>
+												<option value="NAO">NÃO</option>
+											</select>
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Forma de Pagamento:
+										</div>
+										<div class="col-6">
+											<select name="forma_pagamento_conta" id="forma_pagamento_conta" class="form-select">
+												<option value="Dinheiro">Dinheiro</option>
+												<option value="Debito">Débito</option>
+												<option value="Credito">Credito</option>
+											</select>
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Quantidade de parcelas:
+										</div>
+										<div class="col-6">
+											<select name="parcelas" id="parcelas" class="form-select">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+									</div>
+
+								    <div class="input-group mb-3">
+										<div class="col-6">
+											Data vencimento:
+										</div>
+										<div class="col-6">
+											<input class="form-control" type="date" name="vencimento" id="vencimento">
+										</div>
+									</div>
+								    
+
+									<button class="btn btn-outline-secondary" type="button" id="btn_editar" onclick="incluir_conta()">Cadastrar</button>
+
+									
+						   		</div>
+							</form>								
+						</div><!-- fim Modal body -->
+					</div>
+				</div><!-- Fim Modal -->
             </div>
 		</div>
 

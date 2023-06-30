@@ -176,7 +176,7 @@
 				
 				<br>
                 <div class="col-12">
-                	<a href="clientes_novo.php"><button class="btn btn-large btn-outline-primary">+ NOVO CLIENTE</button></a>
+                	<a href="clientes_novo.php"><button class="btn btn-large btn-primary">+ NOVO CLIENTE</button></a>
                 </div>
 	           	<br>
 				<div class="row">

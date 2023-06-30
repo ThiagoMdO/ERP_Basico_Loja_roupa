@@ -48,6 +48,11 @@
 				return false; //para não ativar a trigger de submit do formulário
 			});
 
+			$('#registros_por_pagina').change(function(){
+				atualizarQtd();
+				return false; //para não ativar a trigger de submit do formulário
+			});
+
 			function atualizarQtd(){
 				$.ajax({
 					url: 'get_historico.php',

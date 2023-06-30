@@ -36,7 +36,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			//Atualizar dinamica de container caixa
+			//Atualizar container caixa
 			$.ajax({
 				url: 'get_dados_caixa.php',
 
@@ -104,6 +104,13 @@
 			})
 			
 
+			//Atualizar container contas
+			$.ajax({
+				url: 'get_dados_contas.php',
+
+			}).done(function(data){
+				$('#contas_despesas_investimentos').html(data);
+			});
 
 		});
 
@@ -125,29 +132,8 @@
 
 			<div class="col-md-4" id="menu_principal"></div>
 
-			<div class="col-md-4">
-				<div class="container nav_select d-block">
-					<div class="row row-header">
-						<h2>CONTAS</h2>
-						<hr>
-					</div>
-					<div class="row row-space-controle d-flex justify-content-center align-items-center">						
-						<div class="col-md-12">
-							<p>R$200</p>
-							<a href="contas_despesas.php" class="plus" style="color: red;">+ Adicionar despesa</a>
-							<br>
-							<br>
-							<hr>
-						</div>
-
-						<div class="col-md-12">
-							<p>R$200</p>
-							<a href="#" class="plus" style="color:green">+ Adicionar investimento</a>
-							<br>
-							<br>
-						</div>
-					</div>
-				</div><!-- fim container Atividades -->
+			<div class="col-md-4" id="contas_despesas_investimentos">
+				
 			</div>
 
 			<div class="col-md-4">

@@ -18,8 +18,10 @@
 	$resultado_id = mysqli_query($con,$sql_dados_caixa);
 
 
+	
 	if($resultado_id){
 		$i = 0;
+
 		while($linha = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
 			$i++;
 			echo '
@@ -121,103 +123,27 @@
 				</div>
 				';
 
-				/*
-									<form id="form_alterar_dados_fornecedores_'.$i.'">
-										<div id="form_editar_fornecedor_'.$i.'">
-											<div class="d-none">
-												<input type="text" name="id_fornecedor" value="'.$linha['id_fornecedor'].'">
-											</div>
-										    <div class="col-12">Atualizar dados fornecedor: '.$linha["nome_fornecedor"].'</div>
-										    <div class="input-group mb-3">
-												<input id="editar_nome_fornecedor'.$i.'" name="editar_nome_fornecedor" type="text" class="form-control" placeholder="Novo nome fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_cpf_fornecedor'.$i.'" name="editar_cpf_fornecedor" type="text" class="form-control" placeholder="Novo CPF fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_telefone_fornecedor'.$i.'" name="editar_telefone_fornecedor" type="text" class="form-control" placeholder="Novo número telefone fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_rua_fornecedor'.$i.'" name="editar_rua_fornecedor" type="text" class="form-control" placeholder="Nova rua fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_numero_casa_fornecedor'.$i.'" name="editar_numero_casa_fornecedor" type="text" class="form-control" placeholder="Novo número casa fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_bairro_fornecedor'.$i.'" name="editar_bairro_fornecedor" type="text" class="form-control" placeholder="Novo bairro fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_cidade_fornecedor'.$i.'" name="editar_cidade_fornecedor" type="text" class="form-control" placeholder="Nova cidade fornecedor">
-											</div>
-											<div class="input-group mb-3">
-												<input id="editar_uf_fornecedor'.$i.'" name="editar_uf_fornecedor" type="text" class="form-control" placeholder="Novo estado fornecedor">
-											</div>
-
-
-											<div class="input-group mb-3">
-												
-												<input id="editar_ceep_fornecedor'.$i.'" name="editar_ceep_fornecedor" type="text" class="form-control" placeholder="Novo ceep fornecedor">
-											</div>
-											<button class="btn btn-outline-secondary" type="button" id="btn_editar_'.$i.'" onclick="atualizar_fornecedor('.$i.')">Mudar</button>
-
-											
-								   		</div>
-								   	</form>	
-				*/
 				
-					/*<div class="d-none">
-						<input type="text" name="id_produto" value="'.$linha['id_fornecedor'].'">
-					</div>
-
-					<div id="cliente_'.$i.'" class="row d-block d-flex align-items-center justify-content-center">
-					
-						'.
-						"<div class='col-md-3 produto'>
-							<div>
-								<input type='text' name='nome_produto' class='form-control'style='text-align: center;' readonly value='".$linha['nome_produto']."'>
-							</div>".'
-						</div>
-
-						<div class="col-md-1 produto">
-							<div>
-								<input type="text" name="tamanho" class="form-control"style="text-align: center;" readonly value='.$linha["tamanho"].'>
-							</div>
-						</div>'.
-						"<div class='col-md-2 produto'>
-							<div>
-								<input type='text' name='cor' class='form-control'style='text-align: center;' readonly value='".$linha['cor']."'>
-							</div>
-						</div>".'
-						<div class="col-md-2 produto">
-							<div style="margin-top:20px">
-								<input type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_fornecedor"].'>
-								<input type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
-							</div>
-						</div>
-						<div class="col-md-2 produto">
-							<div>
-								<input type="text" name="quantidade" class="form-control"style="text-align: center;" readonly value='.$linha['quantidade'].'>
-							</div>
-						</div>
-					</div>
-					<div class="col-12">
-						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#meuModal'.$i.'" onclick="teste('.$i.')" id="'.$i.'">Editar</button>
-						
-						<div class="btn-group">
-						  <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						    Excluir
-						  </button>
-						  <ul class="dropdown-menu" style="text-align:center">
-						    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_produto('.$i.')">Sim</button></li>
-						    <hr>
-						    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-						  </ul>
-						</div>
-					</div>*/
-				
-
 			
 		}
+		$resultado_id_pesquisa = mysqli_fetch_array($resultado_id);
+		if(!$resultado_id_pesquisa){
+			echo '
+				<div id="fornecedor_'.$i.'" class="row linha_pesquisa d-flex align-items-center justify-content-center">
+					<div class="col-md-2">
+						<p>Não econtrado</p>
+					</div>
+					<div class="col-md-2">
+						<p>Não econtrado</p>
+					</div>
+					<div class="col-md-2">
+						<p>Não econtrado</p>
+					</div>
+					<div class="col-md-6">
+						<p>Não econtrado</p>
+					</div>
+				</div>';
+			}
 
 	}
 

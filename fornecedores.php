@@ -169,7 +169,7 @@
 				
 				<br>
                 <div class="col-12">
-                	<a href="fornecedor_novo.php"><button class="btn btn-large btn-outline-primary">+ NOVO FORNECEDOR</button></a>
+                	<a href="fornecedor_novo.php"><button class="btn btn-large btn-primary">+ NOVO FORNECEDOR</button></a>
                 </div>
 	           	<br>
 				<div class="row">

@@ -118,61 +118,28 @@
 				</div>
 				';
 				
-					/*<div class="d-none">
-						<input type="text" name="id_produto" value="'.$linha['id_cliente'].'">
-					</div>
-
-					<div id="cliente_'.$i.'" class="row d-block d-flex align-items-center justify-content-center">
 					
-						'.
-						"<div class='col-md-3 produto'>
-							<div>
-								<input type='text' name='nome_produto' class='form-control'style='text-align: center;' readonly value='".$linha['nome_produto']."'>
-							</div>".'
-						</div>
-
-						<div class="col-md-1 produto">
-							<div>
-								<input type="text" name="tamanho" class="form-control"style="text-align: center;" readonly value='.$linha["tamanho"].'>
-							</div>
-						</div>'.
-						"<div class='col-md-2 produto'>
-							<div>
-								<input type='text' name='cor' class='form-control'style='text-align: center;' readonly value='".$linha['cor']."'>
-							</div>
-						</div>".'
-						<div class="col-md-2 produto">
-							<div style="margin-top:20px">
-								<input type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_fornecedor"].'>
-								<input type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
-							</div>
-						</div>
-						<div class="col-md-2 produto">
-							<div>
-								<input type="text" name="quantidade" class="form-control"style="text-align: center;" readonly value='.$linha['quantidade'].'>
-							</div>
-						</div>
-					</div>
-					<div class="col-12">
-						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#meuModal'.$i.'" onclick="teste('.$i.')" id="'.$i.'">Editar</button>
-						
-						<div class="btn-group">
-						  <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						    Excluir
-						  </button>
-						  <ul class="dropdown-menu" style="text-align:center">
-						    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_produto('.$i.')">Sim</button></li>
-						    <hr>
-						    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-						  </ul>
-						</div>
-					</div>*/
-				
-
-			
 		}
 
 	}
+	$resultado_id_pesquisa = mysqli_fetch_array($resultado_id);
+		if(!$resultado_id_pesquisa){
+			echo '
+				<div id="fornecedor_'.$i.'" class="row linha_pesquisa d-flex align-items-center justify-content-center">
+					<div class="col-md-2">
+						<p>Não econtrado</p>
+					</div>
+					<div class="col-md-2">
+						<p>Não econtrado</p>
+					</div>
+					<div class="col-md-2">
+						<p>Não econtrado</p>
+					</div>
+					<div class="col-md-6">
+						<p>Não econtrado</p>
+					</div>
+				</div>';
+			}
 
 
 ?>

@@ -41,6 +41,7 @@
 
 					<div class="d-none">
 						<input type="text" name="id_produto" value="'.$linha['id_produto'].'">
+						
 					</div>
 					<div id="item_'.$i.'" class="row d-block d-flex align-items-center justify-content-center">
 						'.$imagem.
@@ -201,29 +202,26 @@
 										
 									</div>
 							    </div>
-							    <!-- fim Modal Editar itens -->					
-							</form>
-					    </div>
-						      
-					    </div>
-					  </div>
-					</div>
+							    <!-- fim Modal Editar itens -->		
+							</div>
+					    </div
+				    </div>
+				  </div>
+				</div>
 
 					<!-- Modal Exibir itens -->
 					<div class="modal fade" id="ComprarMais'.$i.'" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="false">
 						<div class="modal-dialog">
 						    <div class="modal-content">
 						    	<div class="modal-header">
-							        <h5 class="modal-title" id="modalLabel">Comprar Produto</h5>
-							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+							    	<h5 class="modal-title" id="modalLabel">Comprar Produto</h5>
+							    	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
 						     	</div>
 								<div class="modal-body">
-								<form">
-								'.'
-								
-									<div class="row d-block d-flex align-items-center justify-content-center" id="item_'.$i.'">'.$imagem
-								
-								.'	</div>'.
+								<div">
+									<div class="row d-block d-flex align-items-center justify-content-center" id="item_'.$i.'">
+									'.$imagem.'
+									</div>'.
 									"
 									<div>
 										<div class='row'>
@@ -231,7 +229,7 @@
 												<span style='color:orange'>Nome Produto:<span>
 											</div>
 											<div class='col-8'>
-												<input id='exibir_nome_produto_$i' type='text' name='nome_produto' class='form-control'style='text-align: center;' readonly value='".$linha['nome_produto']."'>
+												<input id='comprar_exibir_nome_produto_$i' type='text' name='nome_produto' class='form-control'style='text-align: center;' readonly value='".$linha['nome_produto']."'>
 											</div>
 										</div>
 									</div>".'
@@ -241,7 +239,7 @@
 												<span style="color:orange">Tamanho Produto:<span>
 											</div>
 											<div class="col-8">
-												<input id="exibir_tamanho_produto_'.$i.'" type="text" name="tamanho" class="form-control"style="text-align: center;" readonly value='.$linha["tamanho"].'>
+												<input id="comprar_exibir_tamanho_produto_'.$i.'" type="text" name="tamanho" class="form-control"style="text-align: center;" readonly value='.$linha["tamanho"].'>
 											</div>
 										</div>
 									</div>
@@ -253,21 +251,19 @@
 												<span style='color:orange'>Cor Produto:<span>
 											</div>
 											<div class='col-8'>
-												<input id='exibir_cor_produto_$i' type='text' name='cor' class='form-control'style='text-align: center;' readonly value='".$linha['cor']."'>
+												<input id='comprar_exibir_cor_produto_$i' type='text' name='cor' class='form-control'style='text-align: center;' readonly value='".$linha['cor']."'>
 											</div>
 										</div>
-
 									</div>
 								".'
 								
 									<div>
 										<div class="row">
-
 											<div class="col-4">
 												<span style="color:orange">$ Fornecedor:<span>
 											</div>
 											<div class="col-8">
-												<input id="preco_produto_'.$i.'" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value='.$linha["preco_produto_fornecedor"].'>
+												<input id="comprar_preco_produto_'.$i.'" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value='.$linha["preco_produto_fornecedor"].'>
 											</div>
 										</div>
 									</div>
@@ -275,22 +271,20 @@
 								
 									<div>
 										<div class="row">
-
 											<div class="col-4">
-
 												<span style="color:orange">Quantidade em estoque:<span>
 											</div>
 											<div class="col-8">
-												<input id="qtd_produto_'.$i.'" type="text" name="quantidade" class="form-control"style="text-align: center;" readonly value='.$linha['quantidade'].'>
+												<input id="comprar_qtd_produto_'.$i.'" type="text" name="quantidade" class="form-control"style="text-align: center;" readonly value='.$linha['quantidade'].'>
 											</div>
 										</div>
 									</div>
-								'.'</div>
+							'.'</div>
 								<!-- fim Modal Exibir itens -->	
 								<hr>
 
 
-								<form id="comprar_produto">
+								<form>
 								    <div>Comprar Produto</div>
 								    <br/>
 								    <div class="row">
@@ -321,10 +315,9 @@
 											<p>Taxa<p>
 										</div>
 										<div class="col-6">
-											<select name="forma_pagamento_fornecedor" class="form-select">
+											<select name="forma_pagamento_comprar" class="form-select">
 												<option value="dinheiro">Dinheiro</option>
 												<option value="debito">Débito</option>
-												<option value="credito">Crédito</option>
 											</select>
 											<select id="parcelas_'.$i.'" name="forma_pagamento_parcelado_comprar" class="form-select">
 												<option value="1">1</option>
@@ -378,14 +371,16 @@
 									
 
 								</form>				
-							</form>
-					    </div>
-						      
-					    </div>
-					  </div>
-					</div>
+							</div>
+					    </div>						      
+				    </div>
+					
+					 					      
+				    </div>
+				  </div>
+				</div>
 
-				</form>
+			</form>
 					';
 			$i++;
 			}

@@ -81,6 +81,44 @@
 
 		});
 		
+		
+		function visualizarSubTotal(id_subTotal) {
+
+			$.ajax({
+				success: function(){
+					var preco_produto = $('#preco_produto_'+id_subTotal).val();
+					var parcelas = $('#parcelas_'+id_subTotal).val();
+					var desconto_reais = $('#desconto_'+id_subTotal).val();
+					var taxa = $('#taxa_'+id_subTotal).val();
+					var qtd_disponivel_1 = $('#qtd_produto_'+id_subTotal).val();
+					var qtd_vender_1 = $('#produto_quantidade_'+id_subTotal).val();
+					var subtotal = 0;
+					var subtotal_mes = 0;
+
+
+
+					subtotal = qtd_vender_1*preco_produto;
+					subtotal *= taxa;
+					subtotal -= desconto_reais;
+					subtotal = subtotal.toFixed(2);
+					subtotal_mes = subtotal/parcelas;
+					subtotal_mes = subtotal_mes.toFixed(2);
+					//$('#subtotal_'+id_subTotal).val('R$'+subtotal_mes+' x '+parcelas+' mês(meses) total de: R$'+subtotal);
+					$('#subtotal_'+id_subTotal).val('R$'+subtotal_mes+' x '+parcelas+' mês(meses) total de: R$'+subtotal);
+
+					
+					
+					/*
+					if(qtd_vender<=qtd_disponivel){
+						subtotal = preco_produto*qtd_vender;
+						alert(subtotal);
+					}else{
+						alert('Quantidade indisponível');
+					}*/
+				}
+			});
+		}
+
 
 		function excluir_produto(get_id) {
 			$.ajax({
@@ -201,9 +239,7 @@
 	</script>
 	<style type="text/css">
 
-		input{
-			width: 100%;
-		}
+		
 	</style>
 </head>
 

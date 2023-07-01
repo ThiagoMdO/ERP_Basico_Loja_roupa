@@ -22,7 +22,7 @@
 	$resultado_pesquisa_id = mysqli_query($con,$sql_resultado_pesquisa);
 
 	//SQL pegar informações de clientes
-	$sql_pesquisa_clientes = "SELECT id_cliente, nome_cliente FROM clientes  WHERE nome_cliente like'%$nome_cliente%' ORDER BY nome_cliente";
+	$sql_pesquisa_clientes = "SELECT id_cliente, nome_cliente FROM clientes  WHERE nome_cliente like '%$nome_cliente%' ORDER BY nome_cliente";
 
 	if($resultado_pesquisa_id){
 		$i = 1;

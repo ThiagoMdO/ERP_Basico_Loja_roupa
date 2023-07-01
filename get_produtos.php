@@ -12,14 +12,15 @@
 
 	
 	$nomeProduto = isset($_POST['nomeProduto'])?$_POST['nomeProduto']:'';
+	
 
 	//SQL para pegar valores da pesquisa, teste com nome
 	$sql_resultado_pesquisa = "SELECT * FROM produto_estoque WHERE nome_produto like'%$nomeProduto%' ORDER BY nome_produto";
 
 	$resultado_pesquisa_id = mysqli_query($con,$sql_resultado_pesquisa);
 
-	//SQL pegar informações de clientes
-
+	//SQL pegar informações de fornecedores
+	$sql_pesquisa_fornecedoredores = "SELECT id_fornecedor, nome_fornecedor FROM fornecedores  WHERE 1=1 ORDER BY nome_fornecedor";
 
 
 	if($resultado_pesquisa_id){
@@ -72,7 +73,9 @@
 						</div>
 					</div>
 					<div class="col-12">
-						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#meuModal'.$i.'" onclick="teste('.$i.')" id="'.$i.'">Editar</button>
+						<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ComprarMais'.$i.'">Comprar mais</button>
+						
+						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#meuModal'.$i.'"  id="'.$i.'">Editar</button>
 						
 						<div class="btn-group">
 						  <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -146,7 +149,7 @@
 												<span style="color:blue">Preço Produto:<span>
 											</div>
 											<div class="col-8">
-												<input id="exibir_preco_produto_'.$i.'" type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
+												<input id="exibir_preco_produto_'.$i.'" type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value='.$linha["preco_produto_cliente"].'>
 											</div>
 										</div>
 									</div>
@@ -206,13 +209,12 @@
 					  </div>
 					</div>
 
-					<!-- Modal Vender Item -->
 					<!-- Modal Exibir itens -->
-					<div class="modal fade" id="modalVender_'.$i.'" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="false">
+					<div class="modal fade" id="ComprarMais'.$i.'" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="false">
 						<div class="modal-dialog">
 						    <div class="modal-content">
 						    	<div class="modal-header">
-							        <h5 class="modal-title" id="modalLabel">Vender Produto</h5>
+							        <h5 class="modal-title" id="modalLabel">Comprar Produto</h5>
 							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
 						     	</div>
 								<div class="modal-body">
@@ -226,7 +228,7 @@
 									<div>
 										<div class='row'>
 											<div class='col-4'>
-												<span style='color:blue'>Nome Produto:<span>
+												<span style='color:orange'>Nome Produto:<span>
 											</div>
 											<div class='col-8'>
 												<input id='exibir_nome_produto_$i' type='text' name='nome_produto' class='form-control'style='text-align: center;' readonly value='".$linha['nome_produto']."'>
@@ -236,7 +238,7 @@
 									<div>
 										<div class="row">
 											<div class="col-4">
-												<span style="color:blue">Tamanho Produto:<span>
+												<span style="color:orange">Tamanho Produto:<span>
 											</div>
 											<div class="col-8">
 												<input id="exibir_tamanho_produto_'.$i.'" type="text" name="tamanho" class="form-control"style="text-align: center;" readonly value='.$linha["tamanho"].'>
@@ -248,7 +250,7 @@
 									<div>
 										<div class='row'>
 											<div class='col-4'>
-												<span style='color:blue'>Cor Produto:<span>
+												<span style='color:orange'>Cor Produto:<span>
 											</div>
 											<div class='col-8'>
 												<input id='exibir_cor_produto_$i' type='text' name='cor' class='form-control'style='text-align: center;' readonly value='".$linha['cor']."'>
@@ -262,10 +264,10 @@
 										<div class="row">
 
 											<div class="col-4">
-												<span style="color:blue">Preço Produto:<span>
+												<span style="color:orange">$ Fornecedor:<span>
 											</div>
 											<div class="col-8">
-												<input id="exibir_preco_produto_'.$i.'" type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
+												<input id="preco_produto_'.$i.'" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value='.$linha["preco_produto_fornecedor"].'>
 											</div>
 										</div>
 									</div>
@@ -276,23 +278,113 @@
 
 											<div class="col-4">
 
-												<span style="color:blue">Quantidade Produto:<span>
+												<span style="color:orange">Quantidade em estoque:<span>
 											</div>
 											<div class="col-8">
-												<input id="exibir_qtd_produto_'.$i.'" type="text" name="quantidade" class="form-control"style="text-align: center;" readonly value='.$linha['quantidade'].'>
+												<input id="qtd_produto_'.$i.'" type="text" name="quantidade" class="form-control"style="text-align: center;" readonly value='.$linha['quantidade'].'>
 											</div>
 										</div>
 									</div>
 								'.'</div>
 								<!-- fim Modal Exibir itens -->	
 								<hr>
+
+
+								<form id="comprar_produto">
+								    <div>Comprar Produto</div>
+								    <br/>
+								    <div class="row">
+										<div class="col-6">
+											<span>Fornecedores<span>
+										</div>
+										<div class="col-6">
+											<select name="comprar_fornecedor" class="form-select">
+												';
+													
+													$resultado_pesquisa_id_fornecedo = mysqli_query($con, $sql_pesquisa_fornecedoredores);
+
+													if($resultado_pesquisa_id_fornecedo){
+														while($nome = mysqli_fetch_array($resultado_pesquisa_id_fornecedo, MYSQLI_ASSOC)){
+															echo '<option value="'.$nome["nome_fornecedor"].'">'.$nome["nome_fornecedor"].'</option>';
+														}
+													}
+			echo '
+											</select>
+										</div>
+									</div>
+									<br>
+									<div class="row">
+										<div class="col-6">
+											<p>Forma de pagamento<p>
+											<p>Parcelas pagamento<p>
+											<p>Desconto dinheiro R$<p>
+											<p>Taxa<p>
+										</div>
+										<div class="col-6">
+											<select name="forma_pagamento_fornecedor" class="form-select">
+												<option value="dinheiro">Dinheiro</option>
+												<option value="debito">Débito</option>
+												<option value="credito">Crédito</option>
+											</select>
+											<select id="parcelas_'.$i.'" name="forma_pagamento_parcelado_comprar" class="form-select">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+											</select>
+											<input id="desconto_'.$i.'" name="desconto_comprar" placeholder="R$" type="number" class="form-control" value="0"/>
+											<input id="taxa_'.$i.'" name="taxa_comprar" type="number" class="form-control" value="1"/>
+										</div>
+									</div>
+
+									<br>
+								    <div class="row">
+										<div class="col-6">
+											<span>Quantidade para Comprar<span>
+										</div>
+										<div class="col-6">
+											<input type="number" id="produto_quantidade_'.$i.'" name="quantidade_Comprar" class="form-control" style="text-align: center;" value=1>
+										</div>
+									</div>
+									<br>
+									<div class="row">
+										<div class="col-3">
+											<span>Sub Total<span>
+										</div>
+										<div class="col-9">
+											<input type="text" id="subtotal_'.$i.'" readonly name="subtotal_Comprar" class="form-control" style="text-align: center;">
+										</div>
+									</div>
+									<br>
+									<hr>
+									<div class="row">
+										<div class="col-4">
+											<button type="button" class="btn btn-outline-success" onclick="ComprarProduto('.$i.')">Comprar</button>
+										</div>
+										<div class="col-4">
+											<button type="button" class="btn btn-outline-warning" onclick="visualizarSubTotal('.$i.')">Visualizar Total</button>
+										</div>
+										<div class="col-4">
+											<button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Fechar" >Cancelar</button>
+										</div>
+									</div>
+									<br>
 									
+
+								</form>				
 							</form>
 					    </div>
 						      
 					    </div>
 					  </div>
 					</div>
+
 				</form>
 					';
 			$i++;

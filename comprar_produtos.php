@@ -53,23 +53,13 @@
 		}
 	}
 
-	
+
 	if($quantidade_Comprar>0){
 		$sub_quantidade = $quantidade_estoque_produto + $quantidade_Comprar;
 	}else{
 		echo 'Valor invalido';
 		return false;
 	}
-
-	//SQL para atualizar o estoque
-	$sql_alterar_quantidade_produto = "UPDATE produto_estoque SET quantidade = $sub_quantidade WHERE id_produto = '$id_produto'";
-	$resultado_id_atualiza_quantidade = mysqli_query($con, $sql_alterar_quantidade_produto);
-	if($resultado_id_atualiza_quantidade){
-		echo $nomeProduto.' comprado com sucesso de '.$comprar_fornecedor;
-	}
-
-
-
 
 		/* -- Atualizar Saldo -- */
 	$sql_atualiza_saldos = "";
@@ -85,19 +75,39 @@
 	}
 
 	$novo_saldo_dinheiro = $saldo_dinheiro-$subtotal;
-	$novo_saldo_banco = $saldo_banco-$subtotal;
+	$novo_saldo_banco = $saldo_banco-$subtotal;	
+		
 
 	switch($forma_pagamento_comprar){
 		case 'dinheiro':
-			$sql_atualiza_saldos = "UPDATE empresa set saldo_dinheiro = $novo_saldo_dinheiro WHERE dono_empresa = 1";
+			if($saldo_dinheiro>=$subtotal){
+				$sql_atualiza_saldos = "UPDATE empresa set saldo_dinheiro = $novo_saldo_dinheiro WHERE dono_empresa = 1";
+			}else{
+				echo 'Saldo em dinheiro insuficiente';
+				return false;
+			}
 		break;
 		case 'debito':
-			$sql_atualiza_saldos = "UPDATE empresa set saldo_banco = $novo_saldo_banco WHERE dono_empresa = 1";
+			if($saldo_banco>=$subtotal){
+				$sql_atualiza_saldos = "UPDATE empresa set saldo_banco = $novo_saldo_banco WHERE dono_empresa = 1";
+			}else{
+				echo 'Saldo no banco insuficiente';
+				return false;
+			}
 		break;
 		
 		default:
 			echo 'Erro em selecionar forma de pagamento';
 	}	
+
+
+
+	//SQL para atualizar o estoque
+	$sql_alterar_quantidade_produto = "UPDATE produto_estoque SET quantidade = $sub_quantidade WHERE id_produto = '$id_produto'";
+	$resultado_id_atualiza_quantidade = mysqli_query($con, $sql_alterar_quantidade_produto);
+	if($resultado_id_atualiza_quantidade){
+		echo $nomeProduto.' comprado com sucesso de '.$comprar_fornecedor;
+	}
 
 	$resposta_id_saldo = mysqli_query($con, $sql_atualiza_saldos);
 	if($resposta_id_saldo){
@@ -108,7 +118,6 @@
 
 
 
-die();
 		/* -- Atualizar historico -- */
 
 	$sql_consulta_id_fornecedor = "SELECT id_fornecedor FROM fornecedores WHERE nome_fornecedor = '$comprar_fornecedor'";

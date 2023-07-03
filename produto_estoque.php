@@ -146,15 +146,14 @@
 				method: 'post',
 				data: $('#form_produto_'+id_produto).serialize(),
 				success: function(data){
-					alert(data);
-					die();
 					var qtd_disponivel = $('#comprar_qtd_produto_'+id_produto).val();
-					var qtd_vender = $('#produto_quantidade_'+id_produto).val();
-					var qtd_disponivel = qtd_disponivel * 1;
-					var qtd_vender = qtd_vender *1;
+					var qtd_comprar = $('#produto_quantidade_'+id_produto).val();
+					//transformar em numero
+					qtd_disponivel = qtd_disponivel * 1;
+					qtd_comprar = qtd_comprar * 1;
 					
-					if(qtd_vender<=qtd_disponivel){
-						var sub = qtd_disponivel - qtd_vender;
+					if(qtd_disponivel){
+						var sub = qtd_disponivel + qtd_comprar;
 						alert(data);
 						$('#comprar_qtd_produto_'+id_produto).val(sub);
 					}else{

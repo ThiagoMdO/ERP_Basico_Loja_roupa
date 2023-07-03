@@ -31,7 +31,9 @@
 	<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
 	<!-- CSS externo -->
-	<link rel="stylesheet" type="text/css" href="estilos/estilo.css">
+	<link rel="stylesheet" type="text/css" href="estilos/estilo.css"icone.png>
+
+	<link rel="icon" href="img/icone.png">
 
 	<script type="text/javascript">
 		$(document).ready(function(){

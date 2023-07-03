@@ -127,7 +127,7 @@
 			
 		}
 		$resultado_id_pesquisa = mysqli_fetch_array($resultado_id);
-		if(!$resultado_id_pesquisa){
+		if($resultado_id_pesquisa){
 			echo '
 				<div id="fornecedor_'.$i.'" class="row linha_pesquisa d-flex align-items-center justify-content-center">
 					<div class="col-md-2">

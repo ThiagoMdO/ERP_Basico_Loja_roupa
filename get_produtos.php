@@ -12,6 +12,8 @@
 
 	
 	$nomeProduto = isset($_POST['nomeProduto'])?$_POST['nomeProduto']:'';
+	$saldo_dinheiro = '';
+	$saldo_banco = '';
 	
 
 	//SQL para pegar valores da pesquisa, teste com nome
@@ -22,9 +24,20 @@
 	//SQL pegar informações de fornecedores
 	$sql_pesquisa_fornecedoredores = "SELECT id_fornecedor, nome_fornecedor FROM fornecedores  WHERE 1=1 ORDER BY nome_fornecedor";
 
+	//SQL pegar informações de saldos, usa-la na tela de compra, para impedir que seja alterado quantidade de estoque quando nçao tiver saldo suficiente
+	$sql_info_saldo = "SELECT saldo_dinheiro, saldo_banco FROM empresa WHERE id_empresa = 1";
+	$resultado_info_saldo = mysqli_query($con, $sql_info_saldo);
+	if ($resultado_info_saldo) {
+		foreach ($resultado_info_saldo as $linha) {
+			$saldo_dinheiro = $linha['saldo_dinheiro'];
+			$saldo_banco = $linha['saldo_banco'];
+		}
+	}
 
+		//die();
 	if($resultado_pesquisa_id){
 		$i = 1;
+		
 		while($linha = mysqli_fetch_array($resultado_pesquisa_id, MYSQLI_ASSOC)){
 			$imagem;
 			switch($linha["nome_produto"]){
@@ -40,8 +53,7 @@
 				<form id="form_produto_'.$i.'">
 
 					<div class="d-none">
-						<input type="text" name="id_produto" value="'.$linha['id_produto'].'">
-						
+						<input name="id_produto" value="'.$linha['id_produto'].'">
 					</div>
 					<div id="item_'.$i.'" class="row d-block d-flex align-items-center justify-content-center">
 						'.$imagem.

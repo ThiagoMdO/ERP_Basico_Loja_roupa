@@ -42,6 +42,12 @@
 				atualizarQtd();
 				return false; //para não ativar a trigger de submit do formulário
 			});
+			$('#nome_cliente').keyup(function(){
+				$('#nome_fornecedor').val(false);
+			});
+			$('#nome_fornecedor').keyup(function(){
+				$('#nome_cliente').val(false);
+			})
 
 			$('#btn_pesquisar').click(function(){
 				atualizarQtd();
@@ -51,6 +57,45 @@
 			$('#registros_por_pagina').change(function(){
 				atualizarQtd();
 				return false; //para não ativar a trigger de submit do formulário
+			});
+
+
+			//botoes de historicos
+			var historico_vendas_cliente = $('#nome_cliente');
+			var historico_compras_fornecedores = $('#nome_fornecedor');
+
+			var btn_historico_vendas = $('#btn_historico_vendas');
+			var btn_historico_compras = $('#btn_historico_compras');
+
+			var relacionado = $('#relacionado');
+
+
+			$('#btn_historico_vendas').click(function(){
+				btn_historico_vendas.addClass('active');
+				btn_historico_compras.removeClass('active');
+
+				relacionado.html('Cliente');
+
+				historico_compras_fornecedores.val(false);
+				historico_vendas_cliente.val(' ');
+				historico_compras_fornecedores.addClass('d-none');
+				historico_vendas_cliente.removeClass('d-none');
+
+				atualizarQtd();
+			});
+
+			$('#btn_historico_compras').click(function(){
+				btn_historico_compras.addClass('active');
+				btn_historico_vendas.removeClass('active');
+
+				relacionado.html('Fornecedor');
+
+				historico_vendas_cliente.val(false);
+				historico_compras_fornecedores.val(' ');
+				historico_vendas_cliente.addClass('d-none');
+				historico_compras_fornecedores.removeClass('d-none');
+				atualizarQtd();
+
 			});
 
 			function atualizarQtd(){
@@ -175,11 +220,11 @@
 	           		
 
 					<div class="col-md-4">
-						<a href="historico.php"><button class="btn btn-large btn-outline-primary active">Histórico de Vendas</button></a>
-						<button class="btn btn-large btn-outline-primary">Histórico de Compras</button>					
+						<button id="btn_historico_vendas" class="btn btn-large btn-outline-primary active">Histórico de Vendas</button>
+						<button id="btn_historico_compras" class="btn btn-large btn-outline-primary">Histórico de Compras</button>					
 					</div>
 					<div class="col-md-4">
-						<button class="btn btn-large btn-outline-primary">Histórico de Despesas</button>					
+						<button id="" class="btn btn-large btn-outline-primary">Histórico de Despesas</button>					
 						<button class="btn btn-large btn-outline-primary">Histórico de Investimentos</button>					
 					</div>
 					<div class="col-md-4">
@@ -196,6 +241,7 @@
 							</div>
 							<div class="col-4">
 		                    	<input type="text" id="nome_cliente" class="form-control pesquisa" placeholder="Procurar Cliente" maxlength="140" name="nome_cliente">
+		                    	<input type="text" id="nome_fornecedor" class="form-control pesquisa d-none" placeholder="Procurar Fornecedor" maxlength="140" name="nome_fornecedor">
 								
 							</div>
 							<div class="col-4">
@@ -219,7 +265,7 @@
 	                <div class="col-md-12">
 	                    <div>
 	                    	<div class="row">
-								<div class="col-2">Cliente</div>
+								<div id="relacionado" class="col-2">Cliente</div>
 								<div class="col-8">Descrição venda</div>
 								<div class="col-2">Data</div>
 							</div>

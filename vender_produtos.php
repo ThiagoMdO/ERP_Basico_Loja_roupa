@@ -39,7 +39,7 @@
 	$subtotal_mes = $subtotal/$parcelas;
 	//$subtotal_mes = number_format($subtotal_mes, 2);
 
-	$descricao_venda ='Produto: '.$nomeProduto.', TAM: '.$tamanho.', COR: '.$cor.', $Fornecedor: '.$preco_produto_fornecedor.', $Cliente: '.$preco_produto.', QTD: '.$quantidade_produto_vender.'<br> Método: '.$forma_pagamento_vender.', Parcelo em: '.$parcelas.', Desconto: '.$desconto_vender.' e Taxa: '.$taxa_vender.'<br> Total: R$'.$subtotal;
+	$descricao_venda ='Produto: '.$nomeProduto.', TAM: '.$tamanho.', COR: '.$cor.', $Fornecedor: '.$preco_produto_fornecedor.', $Cliente: '.$preco_produto.', QTD: '.$quantidade_produto_vender.'<br> Método: '.$forma_pagamento_vender.', Parcelado em: '.$parcelas.', Desconto: '.$desconto_vender.' e Taxa: '.$taxa_vender.'<br> Total: R$'.$subtotal;
 
 	
 

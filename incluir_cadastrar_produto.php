@@ -20,7 +20,7 @@
 	$preco_produto_cliente = isset($_POST['preco_cadastrar_cliente'])?$_POST['preco_cadastrar_cliente']:false;;
 
 
-	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, data_venda, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente,quantidade) VALUES ('$nome_produto', '$data_venda_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente')";
+	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, data_venda, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente) VALUES ('$nome_produto', '$data_venda_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente')";
 
 	//sql vai testar se existe registro especificos e não deixar cadastar o mesmo produto
 	$slq_testa_produto_existente = "SELECT * FROM produto_estoque WHERE nome_produto = '$nome_produto' && cor = '$cor_produto' && tamanho = '$tamanho_produto'";

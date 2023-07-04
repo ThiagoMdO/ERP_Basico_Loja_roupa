@@ -73,25 +73,27 @@
 			$saldo_banco = $linha['saldo_banco'];
 		}
 	}
-
-	$novo_saldo_dinheiro = $saldo_dinheiro-$subtotal;
-	$novo_saldo_banco = $saldo_banco-$subtotal;	
-		
+	
 
 	switch($forma_pagamento_comprar){
 		case 'dinheiro':
 			if($saldo_dinheiro>=$subtotal){
+				$novo_saldo_dinheiro = $saldo_dinheiro-$subtotal;
 				$sql_atualiza_saldos = "UPDATE empresa set saldo_dinheiro = $novo_saldo_dinheiro WHERE dono_empresa = 1";
+
 			}else{
-				echo 'Saldo em dinheiro insuficiente';
+				//echo 'Saldo em dinheiro insuficiente';				
+				echo '1';
 				return false;
 			}
 		break;
 		case 'debito':
 			if($saldo_banco>=$subtotal){
+				$novo_saldo_banco = $saldo_banco-$subtotal;
 				$sql_atualiza_saldos = "UPDATE empresa set saldo_banco = $novo_saldo_banco WHERE dono_empresa = 1";
-			}else{
-				echo 'Saldo no banco insuficiente';
+			}
+			else{
+				echo '2';
 				return false;
 			}
 		break;

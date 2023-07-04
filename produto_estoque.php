@@ -83,7 +83,7 @@
 
 		});
 		
-		
+		var subtotal;
 		function visualizarSubTotal(id_subTotal) {
 
 			$.ajax({
@@ -94,7 +94,7 @@
 					var taxa = $('#taxa_'+id_subTotal).val();
 					var qtd_disponivel_1 = $('#qtd_produto_'+id_subTotal).val();
 					var qtd_vender_1 = $('#produto_quantidade_'+id_subTotal).val();
-					var subtotal = 0;
+					subtotal = 0;
 					var subtotal_mes = 0;
 
 
@@ -150,18 +150,32 @@
 				success: function(data){
 					var qtd_disponivel = $('#comprar_qtd_produto_'+id_produto).val();
 					var qtd_comprar = $('#produto_quantidade_'+id_produto).val();
+					
+					visualizarSubTotal(id_produto);
+
+					var saldo_dinheiro = $('#saldo_dinheiro').val();
+					var saldo_banco = $('#saldo_banco').val();
 					//transformar em numero
 					qtd_disponivel = qtd_disponivel * 1;
-					qtd_comprar = qtd_comprar * 1;
+					qtd_comprar = qtd_comprar * 1;		
 					
-					if(qtd_disponivel){
-						var sub = qtd_disponivel + qtd_comprar;
-						alert(data);
-						$('#comprar_qtd_produto_'+id_produto).val(sub);
-					}else{
-						alert('Quantidade indisponível');
-						return false;
+					switch(data){
+						case '1':
+							alert('Saldo em dinheiro insuficiente');
+							return false;
+							break;
+						case '2':
+							alert('Saldo no banco insuficiente');
+							return false;
+							break;
 					}
+
+					alert(' Comprado com sucesso')
+					var sub = qtd_disponivel + qtd_comprar;
+					$('#comprar_qtd_produto_'+id_produto).val(sub);				
+						
+					
+					
 				}
 			})
 		}

@@ -16,16 +16,16 @@
 	$cor_produto = isset($_POST['cor_cadastrar'])?$_POST['cor_cadastrar']:false;
 	$tamanho_produto = isset($_POST['tamanho_cadastrar'])?$_POST['tamanho_cadastrar']:false;
 	$preco_produto_fornecedor = isset($_POST['preco_cadastrar_fornecedor'])?$_POST['preco_cadastrar_fornecedor']:false;
-	$quantidade_produto = isset($_POST['qtd_cadastrar'])?$_POST['qtd_cadastrar']:false;
+	//$quantidade_produto = isset($_POST['qtd_cadastrar'])?$_POST['qtd_cadastrar']:false;
 	$preco_produto_cliente = isset($_POST['preco_cadastrar_cliente'])?$_POST['preco_cadastrar_cliente']:false;;
 
 
-	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, data_venda, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente,quantidade) VALUES ('$nome_produto', '$data_venda_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente','$quantidade_produto')";
+	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, data_venda, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente,quantidade) VALUES ('$nome_produto', '$data_venda_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente')";
 
 	//sql vai testar se existe registro especificos e não deixar cadastar o mesmo produto
 	$slq_testa_produto_existente = "SELECT * FROM produto_estoque WHERE nome_produto = '$nome_produto' && cor = '$cor_produto' && tamanho = '$tamanho_produto'";
 	$resultado_id_existe = mysqli_query($con,$slq_testa_produto_existente);
-	if($nome_produto && $data_venda_produto && $cor_produto && $tamanho_produto && $preco_produto_fornecedor && $quantidade_produto && $preco_produto_cliente){
+	if($nome_produto && $data_venda_produto && $cor_produto && $tamanho_produto && $preco_produto_fornecedor && $preco_produto_cliente){
 		if($resultado_id_existe){
 			$resposta_sql = mysqli_fetch_array($resultado_id_existe, MYSQLI_ASSOC);
 			if (!$resposta_sql) {

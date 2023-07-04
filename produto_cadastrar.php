@@ -53,7 +53,7 @@
 							<div class='col-2 produto'><div><input type="text" name="cor_cadastrar" maxlength="20"></div></div>
 							<div class='col-2 produto'><div><input type="text" name="preco_cadastrar_fornecedor" maxlength="4"></div></div>
 							<div class='col-2 produto'><div><input type="text" name="preco_cadastrar_cliente" maxlength="4"></div></div>
-							<div class='col-2 produto'><div><input type="text" name="qtd_cadastrar" maxlength="3"></div></div>
+							<!-- <div class='col-2 produto'><div><input type="text" name="qtd_cadastrar" maxlength="3"></div></div> -->
 							<div class='col-1 produto'><div><input  type="date" name="data_cadastrar" maxlength="3"></div></div>
 							<div class="col-12">
 								<hr>
@@ -149,7 +149,7 @@
 					<div class="col-2">COR</div>
 					<div class="col-2">$ fornecedor</div>
 					<div class="col-2">$ cliente</div>
-					<div class="col-2">QTD</div>
+					<!-- <div class="col-2">QTD</div> -->
 					<div class="col-1">Data</div>
 				</div>
 				<br />
@@ -184,11 +184,11 @@
 										<input type="text" name="preco_cadastrar_cliente" maxlength="4">
 									</div>
 								</div>
-								<div class='col-2 produto'>
+								<!-- <div class='col-2 produto'>
 									<div>
 										<input type="text" name="qtd_cadastrar" maxlength="3">
 									</div>
-								</div>
+								</div> -->
 								<div class='col-1 produto'>
 									<div>
 										<input  type="date" name="data_cadastrar" maxlength="3">

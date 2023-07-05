@@ -59,12 +59,9 @@
 			$total_paginas = ceil($quantidade_historico / $registros_por_pagina);
 						//1/5
 			$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
-			for($i = 1; $i <= $total_paginas; $i++) {
-		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
-		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$i.'">'.$i.'</button>';
-		     }
-		     if($nome_cliente<>''){
-		     	
+			for($e = 1; $e <= $total_paginas; $e++) {
+		        $classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$e.'">'.$e.'</button>';
 		     }
 			while($linha = mysqli_fetch_array($resultado_id_historico, MYSQLI_ASSOC)){
 				$i++;
@@ -101,9 +98,9 @@
 
 				
 			}
-			for($i = 1; $i <= $total_paginas; $i++) {
-		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
-		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$i.'">'.$i.'</button>';
+			for($e = 1; $e <= $total_paginas; $e++) {
+		        $classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$e.'">'.$e.'</button>';
 		     }
 
 		}

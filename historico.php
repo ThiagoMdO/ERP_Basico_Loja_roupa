@@ -60,43 +60,77 @@
 			});
 
 
-			//botoes de historicos
+			//campos inputs historico
+			var class_inputs_historico = $('.inputs_historico');
 			var historico_vendas_cliente = $('#nome_cliente');
 			var historico_compras_fornecedores = $('#nome_fornecedor');
+			var historico_contas_despesas = $('#nome_conta_despesa');
+			var historico_contas_investimento = $('#nome_conta_investimento');
 
+			//botoes de historicos
+			var class_btn_historico = $('.btn_historico');
 			var btn_historico_vendas = $('#btn_historico_vendas');
 			var btn_historico_compras = $('#btn_historico_compras');
+			var btn_historico_contas_despesas = $('#btn_historico_contas_despesas');
+			var btn_historico_contas_investimentos = $('#btn_historico_contas_investimentos');
+
 
 			var relacionado = $('#relacionado');
+			var vendas_e_compras = $('#vendas_e_compras');
+			var relacao_contas = $('#relacao_contas');
 
 
-			$('#btn_historico_vendas').click(function(){
-				btn_historico_vendas.addClass('active');
-				btn_historico_compras.removeClass('active');
+			
 
-				relacionado.html('Cliente');
+			/*//Comando padrao para todos .btn_historico
+			class_btn_historico.click(function(){
+				class_btn_historico.removeClass('active');
+				
+				class_inputs_historico.val(false);
+				
+				//class_inputs_historico.addClass('d-none');
+				vendas_e_compras.addClass('d-none');
+			});
 
-				historico_compras_fornecedores.val(false);
+			//btn VENDAS - CLIENTES
+			btn_historico_vendas.click(function(){				
+
 				historico_vendas_cliente.val(' ');
-				historico_compras_fornecedores.addClass('d-none');
+				
 				historico_vendas_cliente.removeClass('d-none');
 
+				btn_historico_vendas.addClass('active');
+				relacionado.html('Cliente');
+				vendas_e_compras.removeClass('d-none');
+
 				atualizarQtd();
-			});
+			});*/
+/*
+			//btn COMPRAS - FORNECEDORES
+			btn_historico_compras.click(function(){				
 
-			$('#btn_historico_compras').click(function(){
-				btn_historico_compras.addClass('active');
-				btn_historico_vendas.removeClass('active');
-
-				relacionado.html('Fornecedor');
-
-				historico_vendas_cliente.val(false);
 				historico_compras_fornecedores.val(' ');
-				historico_vendas_cliente.addClass('d-none');
+				
 				historico_compras_fornecedores.removeClass('d-none');
-				atualizarQtd();
 
-			});
+				btn_historico_compras.addClass('active');
+				relacionado.html('Fornecedor');
+				vendas_e_compras.removeClass('d-none');
+
+				atualizarQtd();
+			});*/
+/*
+			//btn CONTAS - DESPESAS
+			btn_historico_contas_despesas.click(function(){
+				historico_contas_despesas.val(' ');
+				
+				historico_contas_despesas.removeClass('d-none');
+
+				btn_historico_contas_despesas.addClass('active');
+
+			});*/
+
+			
 
 			function atualizarQtd(){
 				$.ajax({
@@ -220,12 +254,12 @@
 	           		
 
 					<div class="col-md-4">
-						<button id="btn_historico_vendas" class="btn btn-large btn-outline-primary active">Histórico de Vendas</button>
-						<button id="btn_historico_compras" class="btn btn-large btn-outline-primary">Histórico de Compras</button>					
+						<button id="btn_historico_vendas" class="btn btn_historico btn-large btn-outline-primary active">Histórico de Vendas</button>
+						<button id="btn_historico_compras" class="btn btn_historico btn-large btn-outline-primary">Histórico de Compras</button>					
 					</div>
 					<div class="col-md-4">
-						<button id="" class="btn btn-large btn-outline-primary">Histórico de Despesas</button>					
-						<button class="btn btn-large btn-outline-primary">Histórico de Investimentos</button>					
+						<button id="btn_historico_contas_despesas" class="btn btn_historico btn-large btn-outline-primary">Histórico de Despesas</button>					
+						<button id="btn_historico_contas_investimentos" class="btn btn_historico btn-large btn-outline-primary">Histórico de Investimentos</button>					
 					</div>
 					<div class="col-md-4">
 						<button class="btn btn-large btn-outline-primary">Histórico de Edição</button>					
@@ -240,8 +274,11 @@
 		                        <input type="text" class="form-control" name="offset" id="offset" value="0"/>
 							</div>
 							<div class="col-4">
-		                    	<input type="text" id="nome_cliente" class="form-control pesquisa" placeholder="Procurar Cliente" maxlength="140" name="nome_cliente">
-		                    	<input type="text" id="nome_fornecedor" class="form-control pesquisa d-none" placeholder="Procurar Fornecedor" maxlength="140" name="nome_fornecedor">
+		                    	<input type="text" id="nome_cliente" class="form-control pesquisa inputs_historico" placeholder="Procurar Cliente" maxlength="140" name="nome_cliente">
+		                    	<input type="text" id="nome_fornecedor" class="form-control pesquisa inputs_historico d-none" placeholder="Procurar Fornecedor" maxlength="140" name="nome_fornecedor">
+
+		                    	<input type="text" id="nome_conta_despesa" class="form-control pesquisa inputs_historico d-none" placeholder="Procurar Despesa" maxlength="140" name="nome_conta_despesa">
+		                    	<input type="text" id="nome_conta_investimento" class="form-control pesquisa inputs_historico d-none" placeholder="Procurar Investimento" maxlength="140" name="nome_conta_investimento">
 								
 							</div>
 							<div class="col-4">
@@ -256,24 +293,31 @@
 			                    	<option value="80">80</option>
 			                    </select>
 			                </div>
-			                    <button type="button" class="btn btn-primary" id="btn_pesquisar">Filtro</button>
 		            	</form>
-				</div>
-				<br>
-	            <div class="row">
-				<br>
-	                <div class="col-md-12">
-	                    <div>
-	                    	<div class="row">
-								<div id="relacionado" class="col-2">Cliente</div>
-								<div class="col-8">Descrição venda</div>
-								<div class="col-2">Data</div>
+							<div id="relacao_contas" class="col-12 d-flex align-items-center">
+		                    	<div class="col-2">Nome</div>
+								<div class="col-2">Valor</div>
+								<div class="col-1">Método</div>
+								<div class="col-1">Parcelas</div>
+								<div class="col-2">Vencimento</div>
+								<div class="col-2">Registrado</div>
+								<div class="col-2">Pago em</div>								
 							</div>
-	                    </div>
-	                    <div id="div_resultado_paginacao_historico">
-	                    </div>
-	                </div>
-	            </div>
+		            </div>
+			            <div class="row">
+			                <div class="col-md-12">	                   
+		                    	<div id="vendas_e_compras" class="row">
+									<div id="relacionado" class="col-2">Cliente</div>
+									<div class="col-8">Descrição</div>
+									<div class="col-2">Data</div>
+								</div>	                    
+			                    <div id="div_resultado_paginacao_historico">
+			                    </div>
+			                </div>
+			            </div>
+					</div>
+					<br>
+					<br>
 				</div>
 				<div id="sair">
 					<button class="btn btn-outline-danger"><a href="sair.php">SAIR</a></button>

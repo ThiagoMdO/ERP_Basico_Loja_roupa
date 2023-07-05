@@ -183,7 +183,7 @@
 								<div class="col-2">Nome</div>
 								<div class="col-1">Natureza</div>
 								<div class="col-2">Valor</div>
-								<div class="col-2">Forma de Pagamento</div>
+								<div class="col-2">Método</div>
 								<div class="col-1">Parcelas</div>
 								<div class="col-2">Vencimento</div>
 								<div class="col-2">Registrado</div>

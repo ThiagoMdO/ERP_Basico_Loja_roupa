@@ -12,7 +12,7 @@
 					<a href="graficos.php"><button class="btn btn-outline-success"><h3>GRAFICOS</h3></button></a>
 				</div>
 				<div class="nav_pag col-md-4">
-					<a href="editar_dados.php"><button class="btn btn-outline-success"><h3>EDITAR DADOS</h3></button></a>
+					<a href="editar_dados.php"><button class="btn btn-outline-success"><h3>CARRINHO</h3></button></a>
 				</div>'
 			)
 

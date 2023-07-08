@@ -77,12 +77,13 @@
 			var class_btn_historico = $('.btn_historico');
 			var btn_historico_vendas = $('#btn_historico_vendas');
 			var btn_historico_compras = $('#btn_historico_compras');
-			var btn_historico_devolucoes = $('#btn_historico_devolucoes');
+			//var btn_historico_devolucoes = $('#btn_historico_devolucoes');//posteriormente
 			var btn_historico_contas = $('#btn_historico_contas');
+			var btn_historico_cadastros = $('#btn_historico_cadastros');
 
 			//forms historico
 			var form_historico_vendas_compras = $('#form_historico_vendas_compras');
-
+			var paginacao_cadastro = $('#paginacao_cadastro');
 
 			var relacionado = $('#relacionado');
 			var vendas_e_compras = $('#vendas_e_compras');
@@ -178,6 +179,12 @@
 			registros_por_pagina_contas.change(function(){
 				atualizarContas();
 			})
+
+
+			//btn CADASTRO - Produtos, Clientes, Fornecedores 
+			btn_historico_cadastros.click(function(){
+				alert('das');
+			});
 
 			function atualizarContas(){
 				$.ajax({
@@ -278,11 +285,12 @@
 		input{
 			width: 100%;
 		}
-*{
-	text-decoration: none;
-	list-style: none;
-}	</style>
-</head>
+		*{
+		text-decoration: none;
+		list-style: none;
+		}
+	</style>
+	</head>
 
 <body id="main_home">
 	<div class="container-fluid conteudo_home">
@@ -344,11 +352,12 @@
 					</div>
 					<div class="col-md-4">
 						<button class="btn btn-large btn-outline-primary btn_historico">Histórico de Edição</button>					
-						<button class="btn btn-large btn-outline-primary btn_historico">Histórico de Cadastros</button>					
+						<button id="btn_historico_cadastros" class="btn btn-large btn-outline-primary btn_historico">Histórico de Cadastros</button>					
 					</div>
 	           	</div>
 	           	<br>
 				<div class="row">
+					<!-- HISTORICO DE VENDAS E COMPRAS -->
 					<div class="col-md-12">	
 						<form id="form_historico_vendas_compras" class="input-group form_procurar_historico">					
 		                    <div class="form-group d-none">
@@ -373,6 +382,10 @@
 			                </div>
 			                    <button type="button" class="btn btn-primary d-none" id="btn_pesquisar">Filtro</button>
 		            	</form>
+		            	<!-- FIM HISTORICO DE VENDAS E COMPRAS -->
+
+
+		            	<!-- HISTORICO DE CONTAS -->
 		            	<div class="relacao_contas" class="col-12 d-flex align-items-center d-none">
 		            		<form id="form_contas">
 		            			<div class="form-group d-none">
@@ -403,7 +416,7 @@
 			            			</div>
 			            			
 			            		</div>
-		            		</form><!-- Fim form contas -->			
+		            		</form><!-- Fim form contas -->
 						</div><!-- fim relacao contas -->
 						<div class="row relacao_contas">
 		            		<div class="col-2">Nome</div>
@@ -414,8 +427,48 @@
 							<div class="col-2">Registrado</div>
 							<div class="col-2">Pago em</div>	
             			</div>
+            			<!-- FIM HISTORICO DE CONTAS -->
+
+            			<!-- HISTORICO DE CADASTROS -->
+            			<div class="col-12 d-none" >
+            				<form id="historico_cadastros">
+            					<div class="form-group d-none">
+			                        <input type="text" class="form-control" name="offset_cadastros" id="offset_cadastros" value="0"/>
+								</div>
+			            		<div class="col-12">
+			            			<div class="row">
+			            				<div class="col-4">
+					            			<input type="text" id="nome_produto" class="form-control inputs_historico_cadastro" placeholder="Procurar por Nome" maxlength="140" name="nome_produto">
+			            				</div>
+			            				<div class="col-4">
+			            					<select class="form-select" id="historico_cadastro_select" name="historico_cadastro_select">
+			            						<option value="produtos">Produtos</option>
+			            						<option value="Despesa">Clientes</option>
+			            						<option value="Investimento">Fornecedores</option>
+			            					</select>
+			            					<input type="text" id="historico_cadastro" class="form-control inputs_historico_cadastro d-none" placeholder="Procurar Investimento" maxlength="140" name="historico_cadastro">
+			            				</div>
+		            					<div id="paginacao_cadastro" class="form-group col-4">
+						                    <select class="form-select" id="registros_por_pagina_contas" name="registros_por_pagina_contas">
+						                    	<option value="5">5</option>
+						                    	<option value="10">10</option>
+						                    	<option value="20">20</option>
+						                    	<option value="40">40</option>
+						                    	<option value="80">80</option>
+						                    </select>
+						                </div>
+			            			</div>
+			            		</div>
+            				</form>
+            			</div>
+            			<div class="row relacao_cadastro">
+		            		<div class="col-2">Nome</div>
+							<div class="col-8">Descrição</div>
+		            		<div class="col-2">Data</div>
+            			</div>
+            			<!-- FIM HISTORICO DE CADASTROS -->
 					</div>
-				</div>
+				</div><!-- Fim barras de pesquisas -->
 				<br>
 	            <div class="row">
 				<br>

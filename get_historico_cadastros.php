@@ -18,6 +18,8 @@
 	$natureza_conta = isset($_POST['historico_contas_select'])?$_POST['historico_contas_select']:'';
 
 
+die();
+
 	//SQL para pegar informações de ccontas sda empresa
 	$sql_dados_atividades = "SELECT DATE_FORMAT(vencimento, '%d %b %Y') AS data_inclusao, DATE_FORMAT(data_registro, '%d %b %Y') AS data_registro, nome_conta, natureza_conta, valor_conta, forma_pagamento_conta, parcelas, vencimento, id_conta 
 							FROM contas 

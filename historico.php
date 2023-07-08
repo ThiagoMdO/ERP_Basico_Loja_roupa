@@ -71,6 +71,7 @@
 
 			//selects
 			var historico_contas_select = $('#historico_contas_select');
+			var registros_por_pagina_contas = $('#registros_por_pagina_contas');
 
 			//botoes de historicos
 			var class_btn_historico = $('.btn_historico');
@@ -110,6 +111,7 @@
 				
 				vendas_e_compras.addClass('d-none');
 				relacao_contas.addClass('d-none');
+
 			});
 
 			//btn VENDAS - CLIENTES
@@ -169,15 +171,41 @@
 
 			});
 
+			historico_contas_select.change(function(){
+				atualizarContas();
+			})
+
+			registros_por_pagina_contas.change(function(){
+				atualizarContas();
+			})
+
 			function atualizarContas(){
 				$.ajax({
 					url:'get_historico_contas.php',
 					method: 'post',
-					data: $('#form_contas').serialize(),
-					success: function(data){
-						$('#div_resultado_paginacao_historico').html(data);
-					}
-				});
+					data: $('#form_contas').serialize()
+				}).done(function(data){
+					$('#div_resultado_paginacao_historico').html(data);
+					//ação que será tomada após clicar no link de paginação
+                    $('.paginar_contas').click(function(){
+
+
+                        var pagina_clicada = $(this).data('pagina_clicada');
+                        pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
+                       
+                        //recupera os parametros de paginacao do formulario
+                        var registros_por_pagina = $('#registros_por_pagina_contas').val(); // = 5
+
+                        var offset_atualizado = pagina_clicada * registros_por_pagina;
+                        //aplica o valor atualizado do offset ao campo do form
+                        $('#offset_contas').val(offset_atualizado);
+
+                        //refaz a pesquisa (chamada recursiva do método)
+                        
+                       	atualizarContas();
+                    });
+
+				});;
 			}
 
 
@@ -214,15 +242,27 @@
 		});
 		
 			function excluir_historico(get_id) {
-			$.ajax({
-				url: 'excluir_historico.php',
-				method: 'post',
-				data: $('#form_historico_'+get_id).serialize(),
-				success: function(data){
-					alert(data);
-				}
+				$.ajax({
+					url: 'excluir_historico.php',
+					method: 'post',
+					data: $('#form_historico_'+get_id).serialize(),
+					success: function(data){
+						alert(data);
+					}
 
-				})
+				});
+			}
+
+			function excluir_historico_conta(get_id) {
+				$.ajax({
+					url: 'excluir_historico_contas.php',
+					method: 'post',
+					data: $('#form_historico_contas'+get_id).serialize(),
+					success: function(data){
+						alert(data);
+					}
+
+				});
 			}
 
 		
@@ -335,10 +375,13 @@
 		            	</form>
 		            	<div class="relacao_contas" class="col-12 d-flex align-items-center d-none">
 		            		<form id="form_contas">
+		            			<div class="form-group d-none">
+			                        <input type="text" class="form-control" name="offset_contas" id="offset_contas" value="0"/>
+								</div>
 			            		<div class="col-12">
 			            			<div class="row">
 			            				<div class="col-4">
-					            			<input type="text" id="nome_conta_despesa_investimento" class="form-control inputs_historico_contas" placeholder="Procurar Despesa" maxlength="140" name="nome_conta_despesa_investimento">
+					            			<input type="text" id="nome_conta_despesa_investimento" class="form-control inputs_historico_contas" placeholder="Procurar Conta" maxlength="140" name="nome_conta_despesa_investimento">
 			            				</div>
 			            				<div class="col-4">
 			            					<select class="form-select" id="historico_contas_select" name="historico_contas_select">
@@ -364,8 +407,8 @@
 						</div><!-- fim relacao contas -->
 						<div class="row relacao_contas">
 		            		<div class="col-2">Nome</div>
-							<div class="col-2">Valor</div>
-							<div class="col-1">Método</div>
+							<div class="col-1">Valor</div>
+							<div class="col-2">Método</div>
 							<div class="col-1">Parcelas</div>
 							<div class="col-2">Vencimento</div>
 							<div class="col-2">Registrado</div>

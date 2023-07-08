@@ -11,7 +11,7 @@
 	$con = $objDb->conecta_mysql();
 
 	$registros_por_pagina =isset($_POST['registros_por_pagina_contas'])?$_POST['registros_por_pagina_contas']:5;
-	$offset =isset($_POST['offset'])?$_POST['offset']:0;
+	$offset =isset($_POST['offset_contas'])?$_POST['offset_contas']:0;
 
 
 	$nome_conta = isset($_POST['nome_conta_despesa_investimento'])?$_POST['nome_conta_despesa_investimento']:'';
@@ -71,22 +71,23 @@
 		$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 		for($i = 1; $i <= $total_paginas; $i++) {
 	        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
-	        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$i.'">'.$i.'</button>';
+	        echo '<button class="btn '.$classe_botao.' paginar_contas" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 	     }
 		while($linha = mysqli_fetch_array($resultado_id_historico, MYSQLI_ASSOC)){
 			$i++;
 			echo '	<hr>
 					<form id="form_historico_contas'.$i.'">
 						<div class="d-none"><input name="id_conta" value="'.$linha["id_conta"].'"/></div>
+						<div class="d-none"><input name="nome_conta" value="'.$linha["nome_conta"].'"/></div>
 					</form>
 					<div class="row linha_pesquisa d-flex align-items-center justify-content-center">
 						<div class="col-md-2">
 							<p>'.$linha["nome_conta"].'</p>
 						</div>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<p>'.$linha["valor_conta"].'</p>
 						</div>
-						<div class="col-md-1">
+						<div class="col-md-2">
 							<p>'.$linha["natureza_conta"].'</p>
 						</div>
 						<div class="col-md-1">

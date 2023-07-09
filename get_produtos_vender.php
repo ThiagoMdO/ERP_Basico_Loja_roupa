@@ -75,8 +75,9 @@
 						</div>
 					</div>
 					<div class="col-12">
+						<button type="button" class="btn btn-dark btn_devolver" data-bs-toggle="modal" data-bs-target="#modalDevolver_'.$i.'">Devolução</button>
 						<button type="button" class="btn btn-outline-success btn_vender" data-bs-toggle="modal" data-bs-target="#modalVender_'.$i.'">Vender</button>
-						<button type="button" class="btn btn-outline-warning btn_adicionar_carrinho" >Adicionar Carrinho</button>
+						<button type="button" class="btn btn-warning btn_adicionar_carrinho" >+ Carrinho Vender</button>
 						
 					</div>
 					<!-- fim Exibir estoque tela -->

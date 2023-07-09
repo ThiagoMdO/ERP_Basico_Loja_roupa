@@ -49,7 +49,7 @@
 							<p style="color:orange;">R$ '.$total_soma.'</p>
 						</div>
 						<div class="col-12 row-space-controle">
-							<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_transferir">Transferir</button>
+							<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_transferir">Trocar Saldos</button>
 						</div>
 						<div class="col-12 row-space-controle">
 							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal">Editar manualmente</button>

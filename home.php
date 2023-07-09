@@ -229,7 +229,7 @@
 							<input id="input_transfere_atualiza_saldo_receber" name="transferir_novo_saldo" type="number" class="form-control" placeholder="Valor para transferir" >
 
 						</div>
-						Transferir de:
+						Trocar Saldos de:
 						<select name="transferir_de" class="form-select">
 							<option value="de_dinheiro">Conta Dinheiro</option>
 							<option value="de_banco">Conta Banco</option>

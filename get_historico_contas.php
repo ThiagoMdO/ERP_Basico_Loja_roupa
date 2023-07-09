@@ -14,7 +14,7 @@
 	$offset =isset($_POST['offset_contas'])?$_POST['offset_contas']:0;
 
 
-	$nome_conta = isset($_POST['nome_conta_despesa_investimento'])?$_POST['nome_conta_despesa_investimento']:'';
+	$nome_conta = isset($_POST['historico_contas_despesas_investimentos'])?$_POST['historico_contas_despesas_investimentos']:'';
 	$natureza_conta = isset($_POST['historico_contas_select'])?$_POST['historico_contas_select']:'';
 
 

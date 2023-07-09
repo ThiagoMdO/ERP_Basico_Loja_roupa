@@ -67,7 +67,7 @@
 			var historico_vendas_cliente = $('#nome_cliente');
 			var historico_nome_produto = $('#nome_produto');
 			var historico_compras_fornecedores = $('#nome_fornecedor');
-			var historico_contas_despesas = $('#nome_conta_despesa_investimento');
+			var historico_contas_despesas_investimentos = $('#historico_contas_despesas_investimentos');
 
 			//selects
 			var historico_contas_select = $('#historico_contas_select');
@@ -88,6 +88,7 @@
 			var relacionado = $('#relacionado');
 			var vendas_e_compras = $('#vendas_e_compras');
 			var relacao_contas = $('.relacao_contas');
+			var relacao_cadastro = $('.relacao_cadastro');
 
 			//Comando padrao para todos .inputs_historico
 			class_inputs_historico.keyup(function(){
@@ -112,6 +113,7 @@
 				
 				vendas_e_compras.addClass('d-none');
 				relacao_contas.addClass('d-none');
+				relacao_cadastro.addClass('d-none');
 
 			});
 
@@ -164,11 +166,11 @@
 			btn_historico_contas.click(function(){
 				btn_historico_contas.addClass('active');
 				relacao_contas.removeClass('d-none');
-				historico_contas_despesas.removeClass('d-none');
+				historico_contas_despesas_investimentos.removeClass('d-none');
 
-				historico_contas_despesas.val('%%');
+				historico_contas_despesas_investimentos.val('%%');
 				atualizarContas();
-				historico_contas_despesas.val('');
+				historico_contas_despesas_investimentos.val('');
 
 			});
 
@@ -183,8 +185,68 @@
 
 			//btn CADASTRO - Produtos, Clientes, Fornecedores 
 			btn_historico_cadastros.click(function(){
-				alert('das');
+				btn_historico_cadastros.addClass('active');
+				relacao_cadastro.removeClass('d-none');
+				atualiza_historico_cadastro();
+
 			});
+
+			function atualiza_historico_cadastro(){
+				$.ajax({
+					url: 'get_historico_cadastros.php',
+					method: 'post',
+					data: $('#historico_cadastros').serialize(),
+				}).done(function(data){
+					$('#div_resultado_paginacao_historico').html(data);
+					//ação que será tomada após clicar no link de paginação
+                   /* $('.paginar').click(function(){
+
+                        var pagina_clicada = $(this).data('pagina_clicada');
+                        pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
+                       
+                        //recupera os parametros de paginacao do formulario
+                        var registros_por_pagina = $('#registros_por_pagina').val(); // = 5
+
+                        var offset_atualizado = pagina_clicada * registros_por_pagina;
+                        //aplica o valor atualizado do offset ao campo do form
+                        $('#offset').val(offset_atualizado);
+
+                        //refaz a pesquisa (chamada recursiva do método)
+                        
+                        $('#btn_pesquisar').click();
+                    });*/
+
+				});
+			}
+
+
+			function atualizarQtd(){
+				$.ajax({
+					url: 'get_historico.php',
+					method: 'post',
+					data: $('.form_procurar_historico').serialize(),					
+				}).done(function(data){
+					$('#div_resultado_paginacao_historico').html(data);
+					//ação que será tomada após clicar no link de paginação
+                    $('.paginar').click(function(){
+
+                        var pagina_clicada = $(this).data('pagina_clicada');
+                        pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
+                       
+                        //recupera os parametros de paginacao do formulario
+                        var registros_por_pagina = $('#registros_por_pagina').val(); // = 5
+
+                        var offset_atualizado = pagina_clicada * registros_por_pagina;
+                        //aplica o valor atualizado do offset ao campo do form
+                        $('#offset').val(offset_atualizado);
+
+                        //refaz a pesquisa (chamada recursiva do método)
+                        
+                        $('#btn_pesquisar').click();
+                    });
+
+				});
+			}
 
 			function atualizarContas(){
 				$.ajax({
@@ -216,33 +278,6 @@
 			}
 
 
-			function atualizarQtd(){
-				$.ajax({
-					url: 'get_historico.php',
-					method: 'post',
-					data: $('.form_procurar_historico').serialize(),					
-				}).done(function(data){
-					$('#div_resultado_paginacao_historico').html(data);
-					//ação que será tomada após clicar no link de paginação
-                    $('.paginar').click(function(){
-
-                        var pagina_clicada = $(this).data('pagina_clicada');
-                        pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
-                       
-                        //recupera os parametros de paginacao do formulario
-                        var registros_por_pagina = $('#registros_por_pagina').val(); // = 5
-
-                        var offset_atualizado = pagina_clicada * registros_por_pagina;
-                        //aplica o valor atualizado do offset ao campo do form
-                        $('#offset').val(offset_atualizado);
-
-                        //refaz a pesquisa (chamada recursiva do método)
-                        
-                        $('#btn_pesquisar').click();
-                    });
-
-				});
-			}
 			btn_historico_vendas.click();
 
 
@@ -394,7 +429,7 @@
 			            		<div class="col-12">
 			            			<div class="row">
 			            				<div class="col-4">
-					            			<input type="text" id="nome_conta_despesa_investimento" class="form-control inputs_historico_contas" placeholder="Procurar Conta" maxlength="140" name="nome_conta_despesa_investimento">
+					            			<input type="text" id="historico_contas_despesas_investimentos" class="form-control inputs_historico_contas" placeholder="Procurar Conta" maxlength="140" name="historico_contas_despesas_investimentos">
 			            				</div>
 			            				<div class="col-4">
 			            					<select class="form-select" id="historico_contas_select" name="historico_contas_select">
@@ -430,23 +465,22 @@
             			<!-- FIM HISTORICO DE CONTAS -->
 
             			<!-- HISTORICO DE CADASTROS -->
-            			<div class="col-12 d-none" >
+            			<div class="col-12 d-none relacao_cadastro" >
             				<form id="historico_cadastros">
             					<div class="form-group d-none">
 			                        <input type="text" class="form-control" name="offset_cadastros" id="offset_cadastros" value="0"/>
 								</div>
 			            		<div class="col-12">
-			            			<div class="row">
+			            			<div class="row ">
 			            				<div class="col-4">
 					            			<input type="text" id="nome_produto" class="form-control inputs_historico_cadastro" placeholder="Procurar por Nome" maxlength="140" name="nome_produto">
 			            				</div>
 			            				<div class="col-4">
 			            					<select class="form-select" id="historico_cadastro_select" name="historico_cadastro_select">
 			            						<option value="produtos">Produtos</option>
-			            						<option value="Despesa">Clientes</option>
-			            						<option value="Investimento">Fornecedores</option>
+			            						<option value="clientes">Clientes</option>
+			            						<option value="fornecedores">Fornecedores</option>
 			            					</select>
-			            					<input type="text" id="historico_cadastro" class="form-control inputs_historico_cadastro d-none" placeholder="Procurar Investimento" maxlength="140" name="historico_cadastro">
 			            				</div>
 		            					<div id="paginacao_cadastro" class="form-group col-4">
 						                    <select class="form-select" id="registros_por_pagina_contas" name="registros_por_pagina_contas">
@@ -461,7 +495,7 @@
 			            		</div>
             				</form>
             			</div>
-            			<div class="row relacao_cadastro">
+            			<div class="row relacao_cadastro d-none">
 		            		<div class="col-2">Nome</div>
 							<div class="col-8">Descrição</div>
 		            		<div class="col-2">Data</div>

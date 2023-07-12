@@ -111,19 +111,24 @@
 
 		/* -- Atualizar historico -- */
 
-	$sql_consulta_id_cliente = "SELECT id_cliente FROM clientes WHERE nome_cliente = '$cliente_vender'";
+	$sql_consulta_id_cliente = "SELECT id_cliente, nome_cliente, contato_telefone FROM clientes WHERE nome_cliente = '$cliente_vender'";
 	$resultado_id_cliente = mysqli_query($con, $sql_consulta_id_cliente);
 	$id_cliente = '';
+	$nome_cliente = '';
+	$contato_telefone_cliente = '';
 	if($resultado_id_cliente){
 		while($linha = mysqli_fetch_array($resultado_id_cliente)){
 			$id_cliente = $linha['id_cliente'];
+			$nome_cliente = $linha['nome_cliente'];
+			$contato_telefone_cliente = $linha['contato_telefone'];
 		}
 	}
 
+
 	//sql_inclui_notas_vender
-	$sql_nota_venda = "INSERT INTO notas_compras (id_cliente,id_produto,descricao_venda,metodo_pagamento,parcelas,desconto,taxa)VALUES('$id_cliente','$id_produto','$descricao_venda','$forma_pagamento_vender','$parcelas','$desconto_vender','$taxa_vender')";
+	$sql_nota_venda = "INSERT INTO notas_compras (id_cliente, nome_cliente, contato_telefone_cliente, id_produto,nome_produto,descricao_venda,metodo_pagamento,parcelas,desconto,taxa)VALUES('$id_cliente','$nome_cliente','$contato_telefone_cliente','$id_produto','$nomeProduto', '$descricao_venda','$forma_pagamento_vender','$parcelas','$desconto_vender','$taxa_vender')";
 
 	$resultado_id_venda = mysqli_query($con, $sql_nota_venda);
 
-
+		
 ?>

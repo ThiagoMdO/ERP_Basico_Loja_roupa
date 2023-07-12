@@ -73,6 +73,15 @@
 	        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
 	        echo '<button class="btn '.$classe_botao.' paginar_contas" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 	     }
+	     echo '<div class="row relacao_contas">
+		            		<div class="col-2">Nome</div>
+							<div class="col-1">Valor</div>
+							<div class="col-2">Método</div>
+							<div class="col-1">Parcelas</div>
+							<div class="col-2">Vencimento</div>
+							<div class="col-2">Registrado</div>
+							<div class="col-2">Pago em</div>	
+            			</div>';
 		while($linha = mysqli_fetch_array($resultado_id_historico, MYSQLI_ASSOC)){
 			$i++;
 			echo '	<hr>

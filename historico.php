@@ -79,14 +79,13 @@
 			var btn_historico_compras = $('#btn_historico_compras');
 			//var btn_historico_devolucoes = $('#btn_historico_devolucoes');//posteriormente
 			var btn_historico_contas = $('#btn_historico_contas');
-			var btn_historico_cadastros = $('#btn_historico_cadastros');
+			var btn_historico_alteracoes = $('#btn_historico_alteracoes');
 
 			//forms historico
 			var form_historico_vendas_compras = $('#form_historico_vendas_compras');
 			var paginacao_cadastro = $('#paginacao_cadastro');
 
-			var relacionado = $('#relacionado');
-			var vendas_e_compras = $('#vendas_e_compras');
+			
 			var relacao_contas = $('.relacao_contas');
 			var relacao_cadastro = $('.relacao_cadastro');
 
@@ -111,7 +110,6 @@
 
 				form_historico_vendas_compras.addClass('d-none');
 				
-				vendas_e_compras.addClass('d-none');
 				relacao_contas.addClass('d-none');
 				relacao_cadastro.addClass('d-none');
 
@@ -132,10 +130,7 @@
 
 				form_historico_vendas_compras.removeClass('d-none');				
 
-				vendas_e_compras.removeClass('d-none'); //remove d-none em vendas e compras
-
-				relacionado.html('Cliente'); //para vendas e compras
-
+				
 			});
 
 			
@@ -155,9 +150,6 @@
 
 				form_historico_vendas_compras.removeClass('d-none');
 
-				vendas_e_compras.removeClass('d-none'); //remove d-none em vendas e compras
-
-				relacionado.html('Fornecedores'); //para vendas e compras
 
 			});
 			
@@ -184,8 +176,8 @@
 
 
 			//btn CADASTRO - Produtos, Clientes, Fornecedores 
-			btn_historico_cadastros.click(function(){
-				btn_historico_cadastros.addClass('active');
+			btn_historico_alteracoes.click(function(){
+				btn_historico_alteracoes.addClass('active');
 				relacao_cadastro.removeClass('d-none');
 				atualiza_historico_cadastro();
 
@@ -193,7 +185,7 @@
 
 			function atualiza_historico_cadastro(){
 				$.ajax({
-					url: 'get_historico_cadastros.php',
+					url: 'get_historico_alteracoes.php',
 					method: 'post',
 					data: $('#historico_cadastros').serialize(),
 				}).done(function(data){
@@ -382,12 +374,11 @@
 						<button id="btn_historico_compras" class="btn btn-large btn-outline-primary btn_historico">Histórico de Compras</button>					
 					</div>
 					<div class="col-md-4">
-						<button id="" class="btn btn-large btn-outline-primary btn_historico">Histórico de Devoluções</button>					
+						<!-- <button id="" class="btn btn-large btn-outline-primary btn_historico">Histórico de Devoluções</button>	 -->				
 						<button id="btn_historico_contas" class="btn btn-large btn-outline-primary btn_historico">Histórico de Contas</button>					
 					</div>
-					<div class="col-md-4">
-						<button class="btn btn-large btn-outline-primary btn_historico">Histórico de Edição</button>					
-						<button id="btn_historico_cadastros" class="btn btn-large btn-outline-primary btn_historico">Histórico de Cadastros</button>					
+					<div class="col-md-4">					
+						<button id="btn_historico_alteracoes" class="btn btn-large btn-outline-primary btn_historico">Histórico de Alterações</button>					
 					</div>
 	           	</div>
 	           	<br>
@@ -453,15 +444,7 @@
 			            		</div>
 		            		</form><!-- Fim form contas -->
 						</div><!-- fim relacao contas -->
-						<div class="row relacao_contas">
-		            		<div class="col-2">Nome</div>
-							<div class="col-1">Valor</div>
-							<div class="col-2">Método</div>
-							<div class="col-1">Parcelas</div>
-							<div class="col-2">Vencimento</div>
-							<div class="col-2">Registrado</div>
-							<div class="col-2">Pago em</div>	
-            			</div>
+						
             			<!-- FIM HISTORICO DE CONTAS -->
 
             			<!-- HISTORICO DE CADASTROS -->
@@ -472,17 +455,25 @@
 								</div>
 			            		<div class="col-12">
 			            			<div class="row ">
-			            				<div class="col-4">
+			            				<div class="col-3">
 					            			<input type="text" id="nome_produto" class="form-control inputs_historico_cadastro" placeholder="Procurar por Nome" maxlength="140" name="nome_produto">
 			            				</div>
-			            				<div class="col-4">
+			            				<div class="col-3">
 			            					<select class="form-select" id="historico_cadastro_select" name="historico_cadastro_select">
 			            						<option value="produtos">Produtos</option>
 			            						<option value="clientes">Clientes</option>
 			            						<option value="fornecedores">Fornecedores</option>
 			            					</select>
 			            				</div>
-		            					<div id="paginacao_cadastro" class="form-group col-4">
+			            				<div class="col-3">
+			            					<select class="form-select" id="historico_cadastro_select_tipo" name="historico_cadastro_select_tipo">
+			            						<option value="">Todos</option>
+			            						<option value="Cadastro">Cadastro</option>
+			            						<option value="Edicao">Edição</option>
+			            						<option value="Excluidos">Excluidos</option>
+			            					</select>
+			            				</div>
+		            					<div id="paginacao_cadastro" class="form-group col-3">
 						                    <select class="form-select" id="registros_por_pagina_contas" name="registros_por_pagina_contas">
 						                    	<option value="5">5</option>
 						                    	<option value="10">10</option>
@@ -495,11 +486,7 @@
 			            		</div>
             				</form>
             			</div>
-            			<div class="row relacao_cadastro d-none">
-		            		<div class="col-2">Nome</div>
-							<div class="col-8">Descrição</div>
-		            		<div class="col-2">Data</div>
-            			</div>
+            			
             			<!-- FIM HISTORICO DE CADASTROS -->
 					</div>
 				</div><!-- Fim barras de pesquisas -->
@@ -507,13 +494,7 @@
 	            <div class="row">
 				<br>
 	                <div class="col-md-12">
-	                    <div id="vendas_e_compras">
-	                    	<div class="row">
-								<div id="relacionado" class="col-2">Cliente</div>
-								<div class="col-8">Descrição venda</div>
-								<div class="col-2">Data</div>
-							</div>
-	                    </div>
+	                    
 	                    <div id="div_resultado_paginacao_historico">
 	                    </div>
 	                </div>

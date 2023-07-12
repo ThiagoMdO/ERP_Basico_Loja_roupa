@@ -20,8 +20,16 @@
 
 
 	/* -----------------  Consultar Vendas - CLIENTES ------------------- */
-	if($nome_cliente==true || $nome_cliente == ''){
+	if($nome_cliente != 'false'){
+		// consultar registro de Vendas
+		$sql_historico_qtd_vendas = "SELECT COUNT(*) AS total_registros
+			FROM (
+				SELECT id_nota_compras
+				FROM notas_compras
+				WHERE nome_cliente LIKE '%$nome_cliente%' AND nome_produto LIKE '%$nome_produto%'
+			) AS subconsulta";
 
+		/*
 		// consultar registro de Vendas
 		$sql_historico_qtd = "SELECT COUNT(*) AS total_registros
 			FROM (
@@ -31,16 +39,25 @@
 			    JOIN produto_estoque AS pe ON nc.id_produto = pe.id_produto
 			    WHERE c.nome_cliente LIKE '%$nome_cliente%' AND pe.nome_produto LIKE '%$nome_produto%'
 			) AS subconsulta";
+		*/
 
 		$quantidade_historico;
-		$resultado_id_historico_qtd = mysqli_query($con,$sql_historico_qtd);
+		$resultado_id_historico_qtd = mysqli_query($con,$sql_historico_qtd_vendas);
 		if($resultado_id_historico_qtd){
 			while($linha = mysqli_fetch_array($resultado_id_historico_qtd)){
 				$quantidade_historico = $linha['total_registros'];
 			}
 		}
 
-		//SQL historico e paginação Vendas 
+		//SQL historico e paginação Vendas
+		$sql_historico_vendas = "SELECT DATE_FORMAT(data_inclusao, '%d %b %Y %T') AS data_inclusao, id_nota_compras, id_cliente, nome_cliente, contato_telefone_cliente, id_produto, nome_produto, descricao_venda
+			FROM notas_compras 
+			WHERE nome_cliente LIKE '%$nome_cliente%' AND nome_produto LIKE '%$nome_produto%'
+			ORDER BY data_inclusao DESC
+			LIMIT $registros_por_pagina
+			OFFSET $offset";
+				
+		/*//SQL historico e paginação Vendas 
 		$sql_historico = "SELECT DATE_FORMAT(nc.data_inclusao, '%d %b %Y %T') AS data_inclusao, nc.id_nota_compras, nc.descricao_venda, nc.metodo_pagamento, nc.parcelas, nc.desconto, nc.taxa, c.nome_cliente, c.contato_telefone, pe.nome_produto
 			FROM notas_compras as nc 
 			JOIN clientes as c on(nc.id_cliente = c.id_cliente)
@@ -49,9 +66,9 @@
 			ORDER BY data_inclusao DESC
 			LIMIT $registros_por_pagina
 			OFFSET $offset ";
+		*/
 		
-		
-		$resultado_id_historico = mysqli_query($con,$sql_historico);
+		$resultado_id_historico = mysqli_query($con,$sql_historico_vendas);
 		if($resultado_id_historico){
 			$offset++;
 			$i = 0;
@@ -63,16 +80,27 @@
 		        $classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
 		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$e.'">'.$e.'</button>';
 		     }
+
+		     echo '<div id="vendas_e_compras_clientes">
+	                    <div class="row">
+							<div class="col-2">Clientes</div>
+							<div class="col-8">Descrição venda</div>
+							<div class="col-2">Data</div>
+						</div>
+	                </div>';
 			while($linha = mysqli_fetch_array($resultado_id_historico, MYSQLI_ASSOC)){
 				$i++;
-				echo '	<hr>
+
+				echo '
+							
+		                <hr>
 						<form id="form_historico_'.$i.'">
 							<div class="d-none"><input name="id_nota_compras" value="'.$linha["id_nota_compras"].'"/></div>
 						</form>
 						<div class="row linha_pesquisa">
 							<div class="col-md-2">
 									<p>'.$linha["nome_cliente"].'</p>
-									<p>Fone: '.$linha["contato_telefone"].'</p>
+									<p>Fone: '.$linha["contato_telefone_cliente"].'</p>
 							</div>
 							<div class="col-md-8">
 									<p>'.$linha["descricao_venda"].'</p>
@@ -113,7 +141,8 @@
 	$registros_por_pagina =isset($_POST['registros_por_pagina'])?$_POST['registros_por_pagina']:5;
 
 	/* -----------------  Consultar Compras - FORNECEDORES ------------------- */
-	if($nome_fornecedor == true || $nome_fornecedor == ''){
+	if($nome_fornecedor != 'false'){
+		
 		// consultar registro de Compras
 		$sql_historico_qtd_compras = "SELECT COUNT(*) AS total_registros
 			FROM (
@@ -155,10 +184,18 @@
 			for($i = 1; $i <= $total_paginas; $i++) {
 		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
 		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$i.'">'.$i.'</button>';
-		     }
+		     };
+		     echo '<div id="vendas_e_compras_fornecedores">
+	                    <div class="row">
+							<div class="col-2">Fornecedores</div>
+							<div class="col-8">Descrição venda</div>
+							<div class="col-2">Data</div>
+						</div>
+	                </div>';
 			while($linha = mysqli_fetch_array($resultado_id_historico_compras, MYSQLI_ASSOC)){
 				$i++;
-				echo '	<hr>
+				echo '
+						<hr>
 						<form id="form_historico_'.$i.'">
 							<div class="d-none"><input name="id_nota_compras" value="'.$linha["id_nota_compras"].'"/></div>
 						</form>

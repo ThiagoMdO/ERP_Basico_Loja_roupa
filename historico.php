@@ -68,10 +68,14 @@
 			var historico_nome_produto = $('#nome_produto');
 			var historico_compras_fornecedores = $('#nome_fornecedor');
 			var historico_contas_despesas_investimentos = $('#historico_contas_despesas_investimentos');
+			var historico_nome_produto_alteracao = $('#nome_produto_alteracao');
 
 			//selects
 			var historico_contas_select = $('#historico_contas_select');
 			var registros_por_pagina_contas = $('#registros_por_pagina_contas');
+			var historico_cadastro_select = $('#historico_cadastro_select');
+			var historico_cadastro_select_tipo = $('#historico_cadastro_select_tipo');
+			var registros_por_pagina_alteracoes = $('#registros_por_pagina_alteracoes');
 
 			//botoes de historicos
 			var class_btn_historico = $('.btn_historico');
@@ -179,34 +183,47 @@
 			btn_historico_alteracoes.click(function(){
 				btn_historico_alteracoes.addClass('active');
 				relacao_cadastro.removeClass('d-none');
-				atualiza_historico_cadastro();
+				atualiza_historico_alteracoes();
 
 			});
+			historico_nome_produto_alteracao.keyup(function(){
+				atualiza_historico_alteracoes();
+			});
 
-			function atualiza_historico_cadastro(){
+			historico_cadastro_select.change(function(){
+				atualiza_historico_alteracoes();
+			});
+			historico_cadastro_select_tipo.change(function(){
+				atualiza_historico_alteracoes();
+			})
+			registros_por_pagina_alteracoes.change(function(){
+				atualiza_historico_alteracoes();
+			})
+
+			function atualiza_historico_alteracoes(){
 				$.ajax({
 					url: 'get_historico_alteracoes.php',
 					method: 'post',
-					data: $('#historico_cadastros').serialize(),
+					data: $('#historico_alteracoes').serialize(),
 				}).done(function(data){
 					$('#div_resultado_paginacao_historico').html(data);
 					//ação que será tomada após clicar no link de paginação
-                   /* $('.paginar').click(function(){
+                    $('.paginar_alteracoes').click(function(){
 
                         var pagina_clicada = $(this).data('pagina_clicada');
                         pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
                        
                         //recupera os parametros de paginacao do formulario
-                        var registros_por_pagina = $('#registros_por_pagina').val(); // = 5
+                        var registros_por_pagina = $('#registros_por_pagina_alteracoes').val(); // = 5
 
                         var offset_atualizado = pagina_clicada * registros_por_pagina;
                         //aplica o valor atualizado do offset ao campo do form
-                        $('#offset').val(offset_atualizado);
+                        $('#offset_alteracoes').val(offset_atualizado);
 
                         //refaz a pesquisa (chamada recursiva do método)
                         
-                        $('#btn_pesquisar').click();
-                    });*/
+                        atualiza_historico_alteracoes();
+                    });
 
 				});
 			}
@@ -449,14 +466,14 @@
 
             			<!-- HISTORICO DE CADASTROS -->
             			<div class="col-12 d-none relacao_cadastro" >
-            				<form id="historico_cadastros">
+            				<form id="historico_alteracoes">
             					<div class="form-group d-none">
-			                        <input type="text" class="form-control" name="offset_cadastros" id="offset_cadastros" value="0"/>
+			                        <input type="text" class="form-control" name="offset_alteracoes" id="offset_alteracoes" value="0"/>
 								</div>
 			            		<div class="col-12">
 			            			<div class="row ">
 			            				<div class="col-3">
-					            			<input type="text" id="nome_produto" class="form-control inputs_historico_cadastro" placeholder="Procurar por Nome" maxlength="140" name="nome_produto">
+					            			<input type="text" id="nome_produto_alteracao" class="form-control inputs_historico_cadastro" placeholder="Procurar por Nome" maxlength="140" name="nome_produto_alteracao">
 			            				</div>
 			            				<div class="col-3">
 			            					<select class="form-select" id="historico_cadastro_select" name="historico_cadastro_select">
@@ -474,7 +491,7 @@
 			            					</select>
 			            				</div>
 		            					<div id="paginacao_cadastro" class="form-group col-3">
-						                    <select class="form-select" id="registros_por_pagina_contas" name="registros_por_pagina_contas">
+						                    <select class="form-select" id="registros_por_pagina_alteracoes" name="registros_por_pagina_alteracoes">
 						                    	<option value="5">5</option>
 						                    	<option value="10">10</option>
 						                    	<option value="20">20</option>
@@ -484,7 +501,7 @@
 						                </div>
 			            			</div>
 			            		</div>
-            				</form>
+            				</form><!-- fim form historico alterações -->
             			</div>
             			
             			<!-- FIM HISTORICO DE CADASTROS -->

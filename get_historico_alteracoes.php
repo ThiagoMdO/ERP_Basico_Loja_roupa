@@ -10,20 +10,38 @@
 	$objDb = new db();
 	$con = $objDb->conecta_mysql();
 
-	$registros_por_pagina =isset($_POST['registros_por_pagina_contas'])?$_POST['registros_por_pagina_contas']:5;
-	$offset =isset($_POST['offset_cadastros'])?$_POST['offset_cadastros']:0;
+	$registros_por_pagina =isset($_POST['registros_por_pagina_alteracoes'])?$_POST['registros_por_pagina_alteracoes']:5;
+	$offset =isset($_POST['offset_alteracoes'])?$_POST['offset_alteracoes']:0;
 
 
-	$nome_produto = isset($_POST['nome_produto'])?$_POST['nome_produto']:'';
+	$nome_produto = isset($_POST['nome_produto_alteracao'])?$_POST['nome_produto_alteracao']:'';
 	$select_cadastro = isset($_POST['historico_cadastro_select'])?$_POST['historico_cadastro_select']:'';
+	$historico_cadastro_select_tipo = isset($_POST['historico_cadastro_select_tipo'])?$_POST['historico_cadastro_select_tipo']:'';
 
+	
+	$select_cadastro_consultar = $select_cadastro;
+	switch($select_cadastro_consultar){
+		case '':
+			$select_cadastro_consultar = 'id_alteracao';
+		break;
+		case 'produtos':
+			$select_cadastro_consultar = 'id_produto';
+		break;
+		case 'clientes':
+			$select_cadastro_consultar = 'id_cliente';
+		break;
+		case 'fornecedores':
+			$select_cadastro_consultar = 'id_fornecedor';
+		break;
+
+	}
 	/* -----------------  Consultar Cadastro ------------------- */
 	// consultar registro de Cadastro
 	$sql_historico_qtd = "SELECT COUNT(*) AS total_registros
 		FROM (
-		    SELECT id_produto
-		    FROM produto_estoque
-		    WHERE nome_produto LIKE '%$nome_produto%'
+		    SELECT id_alteracao
+			    FROM historico_alteracoes
+			    WHERE nome_alteracao LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
 		) AS subconsulta";
 
 	$quantidade_historico;
@@ -36,16 +54,22 @@
 
 
 	//SQL da pesquisa de cadastro, irá alternar entre consultas de produtos, clientes e fornecedores
-	$sql_historico_cadastro = '';
+	$sql_historico_alteracao = '';
 		//verificar o tipo da consulta com base no que foi selecionado
 	
 	
-	switch($select_cadastro){
-		case 'produtos':
-			$sql_historico_cadastro = "SELECT *, DATE_FORMAT(data_venda, '%d %M %Y') as data_venda1 
-			FROM produto_estoque 
-			WHERE nome_produto LIKE '%$nome_produto%'";
-			$resultado_id = mysqli_query($con,$sql_historico_cadastro);
+	if($select_cadastro_consultar){
+		
+			//Faz a seleção do tipo de alteração, todos, cadastro, edição ou excluidos
+			$sql_historico_alteracao = "
+			SELECT *, DATE_FORMAT(data_alteracao, '%d %b %Y') as data_alteracao 
+			FROM historico_alteracoes
+		    WHERE nome_alteracao LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
+		    ORDER BY data_alteracao DESC
+		    LIMIT $registros_por_pagina
+		    OFFSET $offset";
+
+			$resultado_id = mysqli_query($con,$sql_historico_alteracao);
 			$offset++;
 			$i = 0;
 
@@ -54,11 +78,12 @@
 			$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 			for($i = 1; $i <= $total_paginas; $i++) {
 		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
-		        echo '<button class="btn '.$classe_botao.' paginar_contas" data-pagina_clicada="'.$i.'">'.$i.'</button>';
+		        echo '<button class="btn '.$classe_botao.' paginar_alteracoes" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 		     };
 		     echo '<div class="row relacao_cadastro">
 	            		<div class="col-2">Nome</div>
-						<div class="col-8">Descrição</div>
+	            		<div class="col-1">Operacao</div>
+						<div class="col-7">Descrição</div>
 	            		<div class="col-2">Data</div>
         			</div>';
 			while($linha = mysqli_fetch_array($resultado_id)){
@@ -69,13 +94,16 @@
 						</form>
 						<div class="row linha_pesquisa d-flex align-items-center justify-content-center">
 							<div class="col-md-2">
-								<p>'.$linha["nome_produto"].'</p>
+								<p>'.$linha['id_produto'].'-'.$linha["nome_alteracao"].'</p>
 							</div>
-							<div class="col-md-8">
-								<p>TAM: '.$linha["tamanho"].', Cor: '.$linha['cor'].', $Fornecedor: '.$linha['preco_produto_fornecedor'].', $Cliente: '.$linha['preco_produto_cliente'].'</p>
+							<div class="col-md-1">
+								<p>'.$linha['tipo_operacao'].'</p>
+							</div>
+							<div class="col-md-7">
+								<p>'.$linha['descricao'].'</p>
 							</div>
 							<div class="col-md-2">
-								<p>'.$linha["data_venda1"].'</p>
+								<p>'.$linha["data_alteracao"].'</p>
 							</div>
 						
 							<div class="col-md-12">
@@ -98,7 +126,7 @@
 					</div>
 					';
 			}
-		break;
+		
 	}
 		
 die();
@@ -156,7 +184,7 @@ die();
 		$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 		for($i = 1; $i <= $total_paginas; $i++) {
 	        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
-	        echo '<button class="btn '.$classe_botao.' paginar_contas" data-pagina_clicada="'.$i.'">'.$i.'</button>';
+	        echo '<button class="btn '.$classe_botao.' paginar_alteracoes" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 	     }
 		while($linha = mysqli_fetch_array($resultado_id_historico, MYSQLI_ASSOC)){
 			$i++;

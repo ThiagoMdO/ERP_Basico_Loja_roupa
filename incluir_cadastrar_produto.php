@@ -17,9 +17,10 @@
 	$tamanho_produto = isset($_POST['tamanho_cadastrar'])?$_POST['tamanho_cadastrar']:false;
 	$preco_produto_fornecedor = isset($_POST['preco_cadastrar_fornecedor'])?$_POST['preco_cadastrar_fornecedor']:false;
 	//$quantidade_produto = isset($_POST['qtd_cadastrar'])?$_POST['qtd_cadastrar']:false;
-	$preco_produto_cliente = isset($_POST['preco_cadastrar_cliente'])?$_POST['preco_cadastrar_cliente']:false;;
+	$preco_produto_cliente = isset($_POST['preco_cadastrar_cliente'])?$_POST['preco_cadastrar_cliente']:false;
 
 
+	$descricao_produto = 'TAM: '.$tamanho_produto.', Cor: '.$cor_produto.', $Fornecedor: '.$preco_produto_fornecedor.', $Cliente: '.$preco_produto_cliente.'';
 	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, data_venda, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente) VALUES ('$nome_produto', '$data_venda_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente')";
 
 	//sql vai testar se existe registro especificos e não deixar cadastar o mesmo produto
@@ -29,8 +30,17 @@
 		if($resultado_id_existe){
 			$resposta_sql = mysqli_fetch_array($resultado_id_existe, MYSQLI_ASSOC);
 			if (!$resposta_sql) {
-
 				$resultado_id = mysqli_query($con,$sql_incluir_produto);
+				$sql_teste = "SELECT id_produto FROM produto_estoque WHERE nome_produto = '$nome_produto'";
+				$resultado_id_teste = mysqli_query($con, $sql_teste);
+				$id_novo_produto = 0;
+				if($resultado_id_teste){
+					while($linha = mysqli_fetch_array($resultado_id_teste)){
+						$id_novo_produto = $linha['id_produto'];
+					}
+				}
+				$sql_incluir_produto_historico = "INSERT INTO historico_alteracoes (id_produto,nome_alteracao,descricao,data_alteracao,tipo_operacao) VALUES ($id_novo_produto,'$nome_produto','$descricao_produto','$data_venda_produto','Cadastro')";
+				$acrescentar_historico = mysqli_query($con, $sql_incluir_produto_historico);
 				echo 'Produto cadastrado com sucesso';
 			}else{
 				echo 'Produto já existe, por favor, edite a quantidade que desejar na página estoque';
@@ -41,6 +51,7 @@
 		echo 'Preencha todos os campos do formulário';
 	}
 	
+
 	die();
 
 	/*if($nome_produto && $data_venda_produto && $cor_produto && $tamanho_produto && $preco_produto_fornecedor){

@@ -93,17 +93,7 @@
 			var relacao_contas = $('.relacao_contas');
 			var relacao_cadastro = $('.relacao_cadastro');
 
-			//Comando padrao para todos .inputs_historico
-			class_inputs_historico.keyup(function(){
-				atualizarQtd();
-
-			});
-
-			class_inputs_historico_contas.keyup(function(){
-				atualizarContas();
-			});
-
-
+			
 			//Comando padrao para todos .btn_historico
 			class_btn_historico.click(function(){
 
@@ -118,6 +108,7 @@
 				relacao_cadastro.addClass('d-none');
 
 			});
+
 
 			//btn VENDAS - CLIENTES
 			btn_historico_vendas.click(function(){
@@ -136,9 +127,12 @@
 
 				
 			});
+			class_inputs_historico.keyup(function(){
+				atualizarQtd();
+
+			});
 
 			
-
 			//btn COMPRAS - FORNECEDORES
 			btn_historico_compras.click(function(){
 
@@ -155,6 +149,9 @@
 				form_historico_vendas_compras.removeClass('d-none');
 
 
+			});
+			class_inputs_historico_contas.keyup(function(){
+				atualizarContas();
 			});
 			
 
@@ -200,35 +197,8 @@
 				atualiza_historico_alteracoes();
 			})
 
-			function atualiza_historico_alteracoes(){
-				$.ajax({
-					url: 'get_historico_alteracoes.php',
-					method: 'post',
-					data: $('#historico_alteracoes').serialize(),
-				}).done(function(data){
-					$('#div_resultado_paginacao_historico').html(data);
-					//ação que será tomada após clicar no link de paginação
-                    $('.paginar_alteracoes').click(function(){
 
-                        var pagina_clicada = $(this).data('pagina_clicada');
-                        pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
-                       
-                        //recupera os parametros de paginacao do formulario
-                        var registros_por_pagina = $('#registros_por_pagina_alteracoes').val(); // = 5
-
-                        var offset_atualizado = pagina_clicada * registros_por_pagina;
-                        //aplica o valor atualizado do offset ao campo do form
-                        $('#offset_alteracoes').val(offset_atualizado);
-
-                        //refaz a pesquisa (chamada recursiva do método)
-                        
-                        atualiza_historico_alteracoes();
-                    });
-
-				});
-			}
-
-
+			
 			function atualizarQtd(){
 				$.ajax({
 					url: 'get_historico.php',
@@ -284,6 +254,34 @@
                     });
 
 				});;
+			}
+
+			function atualiza_historico_alteracoes(){
+				$.ajax({
+					url: 'get_historico_alteracoes.php',
+					method: 'post',
+					data: $('#historico_alteracoes').serialize(),
+				}).done(function(data){
+					$('#div_resultado_paginacao_historico').html(data);
+					//ação que será tomada após clicar no link de paginação
+                    $('.paginar_alteracoes').click(function(){
+
+                        var pagina_clicada = $(this).data('pagina_clicada');
+                        pagina_clicada = pagina_clicada - 1; //necessário para ajustar o parâmetro offset = 0
+                       
+                        //recupera os parametros de paginacao do formulario
+                        var registros_por_pagina = $('#registros_por_pagina_alteracoes').val(); // = 5
+
+                        var offset_atualizado = pagina_clicada * registros_por_pagina;
+                        //aplica o valor atualizado do offset ao campo do form
+                        $('#offset_alteracoes').val(offset_atualizado);
+
+                        //refaz a pesquisa (chamada recursiva do método)
+                        
+                        atualiza_historico_alteracoes();
+                    });
+
+				});
 			}
 
 

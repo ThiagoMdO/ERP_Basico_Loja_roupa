@@ -146,13 +146,21 @@
 		// consultar registro de Compras
 		$sql_historico_qtd_compras = "SELECT COUNT(*) AS total_registros
 			FROM (
+				SELECT id_nota_compras
+				FROM notas_compras
+				WHERE nome_fornecedor LIKE '%$nome_fornecedor%' AND nome_produto LIKE '%$nome_produto%'
+			) AS subconsulta";
+
+		/*
+		$sql_historico_qtd_compras = "SELECT COUNT(*) AS total_registros
+			FROM (
 			    SELECT nc.id_nota_compras
 			    FROM notas_compras AS nc
 			    JOIN fornecedores AS f ON nc.id_fornecedor = f.id_fornecedor
 			    JOIN produto_estoque AS pe ON nc.id_produto = pe.id_produto
 			    WHERE f.nome_fornecedor LIKE '%$nome_fornecedor%' AND pe.nome_produto LIKE '%$nome_produto%'
 			) AS subconsulta";
-
+		*/
 		$quantidade_historico_compras;
 		$resultado_id_historico_qtd_compras = mysqli_query($con,$sql_historico_qtd_compras);
 		if($resultado_id_historico_qtd_compras){
@@ -160,7 +168,18 @@
 				$quantidade_historico_compras = $linha['total_registros'];
 			}
 		}
-		//SQL historico e paginação Compras	
+
+		//SQL historico e paginação Compras
+		$sql_historico_compras = "SELECT DATE_FORMAT(data_inclusao, '%d %b %Y %T') AS data_inclusao, id_nota_compras, id_fornecedor, nome_fornecedor, contato_telefone_fornecedor, id_produto, nome_produto, descricao_venda
+			FROM notas_compras 
+			WHERE nome_fornecedor LIKE '%$nome_fornecedor%' AND nome_produto LIKE '%$nome_produto%'
+			ORDER BY data_inclusao DESC
+			LIMIT $registros_por_pagina
+			OFFSET $offset";
+
+		
+		/*
+		//SQL historico e paginação Compras
 		
 		$sql_historico_compras = "SELECT DATE_FORMAT(nc.data_inclusao, '%d %b %Y %T') AS data_inclusao, nc.id_nota_compras, nc.descricao_venda, nc.metodo_pagamento, nc.parcelas, nc.desconto, nc.taxa, f.nome_fornecedor, f.contato_telefone, pe.nome_produto
 			FROM notas_compras as nc 
@@ -170,7 +189,7 @@
 			ORDER BY data_inclusao DESC
 			LIMIT $registros_por_pagina
 			OFFSET $offset ";
-
+		*/
 		
 		$resultado_id_historico_compras = mysqli_query($con,$sql_historico_compras);
 		
@@ -202,7 +221,7 @@
 						<div class="row linha_pesquisa">
 							<div class="col-md-2">
 									<p>'.$linha["nome_fornecedor"].'</p>
-									<p>Fone: '.$linha["contato_telefone"].'</p>
+									<p>Fone: '.$linha["contato_telefone_fornecedor"].'</p>
 							</div>
 							<div class="col-md-8">
 									<p>'.$linha["descricao_venda"].'</p>

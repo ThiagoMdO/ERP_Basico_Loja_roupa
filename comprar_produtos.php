@@ -122,17 +122,22 @@
 
 		/* -- Atualizar historico -- */
 
-	$sql_consulta_id_fornecedor = "SELECT id_fornecedor FROM fornecedores WHERE nome_fornecedor = '$comprar_fornecedor'";
+	$sql_consulta_id_fornecedor = "SELECT * FROM fornecedores WHERE nome_fornecedor = '$comprar_fornecedor'";
 	$resultado_id_fornecedor = mysqli_query($con, $sql_consulta_id_fornecedor);
 	$id_fornecedor = '';
+	$nome_fornecedor = '';
+	$contato_telefone_fornecedor = '';
 	if($resultado_id_fornecedor){
 		while($linha = mysqli_fetch_array($resultado_id_fornecedor)){
 			$id_fornecedor = $linha['id_fornecedor'];
+			$nome_fornecedor = $linha['nome_fornecedor'];
+			$contato_telefone_fornecedor = $linha['contato_telefone'];
 		}
 	}
+	
 
 	//sql_inclui_notas_vender
-	$sql_nota_venda = "INSERT INTO notas_compras (id_fornecedor,id_produto,descricao_venda,metodo_pagamento,parcelas,desconto,taxa)VALUES('$id_fornecedor','$id_produto','$descricao_venda','$forma_pagamento_comprar','$parcelas','$desconto_comprar','$taxa_comprar')";
+	$sql_nota_venda = "INSERT INTO notas_compras (id_fornecedor,nome_fornecedor,contato_telefone_fornecedor,id_produto,nome_produto,descricao_venda,metodo_pagamento,parcelas,desconto,taxa)VALUES('$id_fornecedor','$nome_fornecedor','$contato_telefone_fornecedor','$id_produto','$nomeProduto','$descricao_venda','$forma_pagamento_comprar','$parcelas','$desconto_comprar','$taxa_comprar')";
 
 	$resultado_id_venda = mysqli_query($con, $sql_nota_venda);
 

@@ -143,14 +143,14 @@
 			</div>
 			<div class="col-md-9 border_custom">				
 				<br>				
-				<div class="row">
+				<div class="row d-flex align-items-center justify-content-center">
 					<div class="col-2">Nome</div>
 					<div class="col-1">TAM</div>
 					<div class="col-2">COR</div>
 					<div class="col-2">$ fornecedor</div>
 					<div class="col-2">$ cliente</div>
 					<!-- <div class="col-2">QTD</div> -->
-					<div class="col-1">Data</div>
+					<!-- <div class="col-1">Data</div> -->
 				</div>
 				<br />
 
@@ -158,7 +158,7 @@
 				<div class="row d-flex align-items-center justify-content-center">
 					<form id="formCadastrar">
 						<div class="container-fluid" id="cadastar_produto_todos">
-							<div class="row">
+							<div class="row  d-flex align-items-center justify-content-center">
 								<div class='col-2 produto'>
 									<div>
 										<input type="text" name="nomeProduto_cadastrar" maxlength="20">
@@ -189,11 +189,11 @@
 										<input type="text" name="qtd_cadastrar" maxlength="3">
 									</div>
 								</div> -->
-								<div class='col-1 produto'>
+								<!-- <div class='col-1 produto'>
 									<div>
 										<input  type="date" name="data_cadastrar" maxlength="3">
 									</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<br>

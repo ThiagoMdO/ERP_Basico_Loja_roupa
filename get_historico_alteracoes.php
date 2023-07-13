@@ -62,7 +62,7 @@
 		
 			//Faz a seleção do tipo de alteração, todos, cadastro, edição ou excluidos
 			$sql_historico_alteracao = "
-			SELECT *, DATE_FORMAT(data_alteracao, '%d %b %Y') as data_alteracao 
+			SELECT *, DATE_FORMAT(data_alteracao, '%d %b %Y %T') as data_alteracao 
 			FROM historico_alteracoes
 		    WHERE nome_alteracao LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
 		    ORDER BY data_alteracao DESC
@@ -126,6 +126,10 @@
 					</div>
 					';
 			}
+			for($i = 1; $i <= $total_paginas; $i++) {
+		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        echo '<button class="btn '.$classe_botao.' paginar_alteracoes" data-pagina_clicada="'.$i.'">'.$i.'</button>';
+		     };
 		
 	}
 		

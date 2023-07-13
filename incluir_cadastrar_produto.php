@@ -12,7 +12,7 @@
 
 	
 	$nome_produto = isset($_POST['nomeProduto_cadastrar'])?$_POST['nomeProduto_cadastrar']:false;
-	$data_venda_produto = isset($_POST['data_cadastrar'])?$_POST['data_cadastrar']:false;
+	//$data_venda_produto = isset($_POST['data_cadastrar'])?$_POST['data_cadastrar']:false;
 	$cor_produto = isset($_POST['cor_cadastrar'])?$_POST['cor_cadastrar']:false;
 	$tamanho_produto = isset($_POST['tamanho_cadastrar'])?$_POST['tamanho_cadastrar']:false;
 	$preco_produto_fornecedor = isset($_POST['preco_cadastrar_fornecedor'])?$_POST['preco_cadastrar_fornecedor']:false;
@@ -21,12 +21,12 @@
 
 
 	$descricao_produto = 'TAM: '.$tamanho_produto.', Cor: '.$cor_produto.', $Fornecedor: '.$preco_produto_fornecedor.', $Cliente: '.$preco_produto_cliente.'';
-	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, data_venda, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente) VALUES ('$nome_produto', '$data_venda_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente')";
+	$sql_incluir_produto = "INSERT INTO produto_estoque (nome_produto, cor, tamanho, preco_produto_fornecedor,preco_produto_cliente) VALUES ('$nome_produto', '$cor_produto', '$tamanho_produto', '$preco_produto_fornecedor','$preco_produto_cliente')";
 
 	//sql vai testar se existe registro especificos e não deixar cadastar o mesmo produto
 	$slq_testa_produto_existente = "SELECT * FROM produto_estoque WHERE nome_produto = '$nome_produto' && cor = '$cor_produto' && tamanho = '$tamanho_produto'";
 	$resultado_id_existe = mysqli_query($con,$slq_testa_produto_existente);
-	if($nome_produto && $data_venda_produto && $cor_produto && $tamanho_produto && $preco_produto_fornecedor && $preco_produto_cliente){
+	if($nome_produto && $cor_produto && $tamanho_produto && $preco_produto_fornecedor && $preco_produto_cliente){
 		if($resultado_id_existe){
 			$resposta_sql = mysqli_fetch_array($resultado_id_existe, MYSQLI_ASSOC);
 			if (!$resposta_sql) {
@@ -39,7 +39,7 @@
 						$id_novo_produto = $linha['id_produto'];
 					}
 				}
-				$sql_incluir_produto_historico = "INSERT INTO historico_alteracoes (id_produto,nome_alteracao,descricao,data_alteracao,tipo_operacao) VALUES ($id_novo_produto,'$nome_produto','$descricao_produto','$data_venda_produto','Cadastro')";
+				$sql_incluir_produto_historico = "INSERT INTO historico_alteracoes (id_produto,nome_alteracao,descricao,tipo_operacao) VALUES ($id_novo_produto,'$nome_produto','$descricao_produto','Cadastro')";
 				$acrescentar_historico = mysqli_query($con, $sql_incluir_produto_historico);
 				echo 'Produto cadastrado com sucesso';
 			}else{

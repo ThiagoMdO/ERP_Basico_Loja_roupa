@@ -35,8 +35,8 @@
 		break;
 
 	}
-	/* -----------------  Consultar Cadastro ------------------- */
-	// consultar registro de Cadastro
+	/* -----------------  Consultar ------------------- */
+	// consultar registro
 	$sql_historico_qtd = "SELECT COUNT(*) AS total_registros
 		FROM (
 		    SELECT id_alteracao

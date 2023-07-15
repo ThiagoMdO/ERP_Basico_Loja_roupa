@@ -18,12 +18,8 @@
 	$select_cadastro = isset($_POST['historico_cadastro_select'])?$_POST['historico_cadastro_select']:'';
 	$historico_cadastro_select_tipo = isset($_POST['historico_cadastro_select_tipo'])?$_POST['historico_cadastro_select_tipo']:'';
 
-	
 	$select_cadastro_consultar = $select_cadastro;
 	switch($select_cadastro_consultar){
-		case '':
-			$select_cadastro_consultar = 'id_alteracao';
-		break;
 		case 'produtos':
 			$select_cadastro_consultar = 'id_produto';
 		break;
@@ -84,7 +80,7 @@
 	            		<div class="col-2">Nome</div>
 	            		<div class="col-1">Operacao</div>
 						<div class="col-7">Descrição</div>
-	            		<div class="col-2">Data</div>
+	            		<div class="col-2">Alterado em</div>
         			</div>';
 			while($linha = mysqli_fetch_array($resultado_id)){
 				$i++;
@@ -94,7 +90,7 @@
 						</form>
 						<div class="row linha_pesquisa d-flex align-items-center justify-content-center">
 							<div class="col-md-2">
-								<p>'.$linha['id_produto'].'-'.$linha["nome_alteracao"].'</p>
+								<p>'.$linha["$select_cadastro_consultar"].'-'.$linha["nome_alteracao"].'</p>
 							</div>
 							<div class="col-md-1">
 								<p>'.$linha['tipo_operacao'].'</p>

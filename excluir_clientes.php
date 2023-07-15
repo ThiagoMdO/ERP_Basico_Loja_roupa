@@ -17,6 +17,13 @@
 	$sql_deletar_produto = "DELETE FROM clientes WHERE id_cliente = '$id_cliente'";
 	 $resultado_id = mysqli_query($con,$sql_deletar_produto);
 	 if($resultado_id){
+	 	//sql registrar exclusao produto
+		$sql_registro_exclusao = "INSERT INTO historico_alteracoes 
+							(id_cliente, nome_alteracao, descricao, tipo_operacao)
+							VALUES
+							($id_cliente,'$nome_cliente','Excluido do Banco de Dados','Excluidos')";
+		$executar_registro_exclusao = mysqli_query($con, $sql_registro_exclusao);
+
 	 	echo $nome_cliente.' foi deletado do banco de dados, atualize a página';
 	 }else{
 	 	echo 'Falha ao tentar excluir cliente';

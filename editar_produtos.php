@@ -95,7 +95,7 @@
 	}
 
 	
-	//SQL para pegar valores da pesquisa, teste com nome
+	//SQL para pegar executar a alteração
 	$resultado_id = mysqli_query($con,$sql_alterar_produto);
 
 

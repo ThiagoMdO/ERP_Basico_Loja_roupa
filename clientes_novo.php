@@ -50,15 +50,6 @@
 
 
 		});
-		
-
-		
-	
-		
-		
-		
-
-
 	</script>
 	<style type="text/css">
 
@@ -120,7 +111,7 @@
 				<br>
 				<form id="cadastrar_cliente" class="col-md-6">
 					<div class="input-group mb-3">
-						*<input id="novo_cliente_nome" name="novo_cliente_nome" type="text" class="form-control" placeholder="Nome cliente">*
+						<input id="novo_cliente_nome" name="novo_cliente_nome" type="text" class="form-control" placeholder="Nome cliente">
 					</div>
 					<div class="input-group mb-3">
 						<input id="novo_cliente_cpf" name="novo_cliente_cpf" type="text" class="form-control" placeholder="CPF cliente">

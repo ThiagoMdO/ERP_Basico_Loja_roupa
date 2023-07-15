@@ -195,8 +195,11 @@
 
 /*===================== Tipografia =====================*/
 *{
-	text-decoration: none;
 	list-style: none;
+}
+u{
+	text-decoration: underline;
+	color: white;
 }
 input{
 	width: 100%;

@@ -314,6 +314,17 @@
 				});
 			}
 
+			function excluir_historico_alteracoes(get_id){
+				$.ajax({
+					url:'excluir_historico_alteracoes.php',
+					method: 'post',
+					data: $('#form_historico_alteracoes'+get_id).serialize(),
+					success: function (data){
+						alert(data);
+					}
+				})
+			}
+
 		
 	
 		

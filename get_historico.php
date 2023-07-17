@@ -103,6 +103,7 @@
 									<p>Fone: '.$linha["contato_telefone_cliente"].'</p>
 							</div>
 							<div class="col-md-8">
+									<p> Nota número: '.$linha["id_nota_compras"].'</p>
 									<p>'.$linha["descricao_venda"].'</p>
 							</div>
 							<div class="col-md-2">
@@ -224,6 +225,7 @@
 									<p>Fone: '.$linha["contato_telefone_fornecedor"].'</p>
 							</div>
 							<div class="col-md-8">
+									<p> Nota número: '.$linha["id_nota_compras"].'</p>
 									<p>'.$linha["descricao_venda"].'</p>
 							</div>
 							<div class="col-md-2">

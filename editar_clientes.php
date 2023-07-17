@@ -63,7 +63,6 @@
 		}
 	}
 
-	$sql_alterar_cliente = '';
 	$valor_operacao_novo = '';
 
 

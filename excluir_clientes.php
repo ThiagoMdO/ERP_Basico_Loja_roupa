@@ -14,10 +14,10 @@
 	$nome_cliente = isset($_POST['nome_cliente'])?$_POST['nome_cliente']:false;
 
 	//sql deleta cliente
-	$sql_deletar_produto = "DELETE FROM clientes WHERE id_cliente = '$id_cliente'";
-	 $resultado_id = mysqli_query($con,$sql_deletar_produto);
+	$sql_deletar_cliente = "DELETE FROM clientes WHERE id_cliente = '$id_cliente'";
+	 $resultado_id = mysqli_query($con,$sql_deletar_cliente);
 	 if($resultado_id){
-	 	//sql registrar exclusao produto
+	 	//sql registrar exclusao cliente
 		$sql_registro_exclusao = "INSERT INTO historico_alteracoes 
 							(id_cliente, nome_alteracao, descricao, tipo_operacao)
 							VALUES

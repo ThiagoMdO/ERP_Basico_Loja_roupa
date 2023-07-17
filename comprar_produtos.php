@@ -40,7 +40,7 @@
 	$subtotal_mes = $subtotal/$parcelas;
 	//$subtotal_mes = number_format($subtotal_mes, 2);
 
-	$descricao_venda ='Produto: '.$nomeProduto.', TAM: '.$tamanho.', COR: '.$cor.', $Fornecedor: '.$preco_produto_fornecedor.', QTD: '.$quantidade_Comprar.'<br> Método: '.$forma_pagamento_comprar.', Parcelo em: '.$parcelas.', Desconto: '.$desconto_comprar.' e Taxa: '.$taxa_comprar.'<br> R$'.$subtotal_mes.'x'.$parcelas.' mês(meses)<br> Total: R$'.$subtotal;
+	$descricao_venda ='Produto: '.$nomeProduto.', TAM: '.$tamanho.', COR: '.$cor.', $Fornecedor: '.$preco_produto_fornecedor.', QTD: '.$quantidade_Comprar.'<br> Método: '.$forma_pagamento_comprar.', Parcelado em: '.$parcelas.', Desconto: '.$desconto_comprar.' e Taxa: '.$taxa_comprar.'<br> R$'.$subtotal_mes.'x'.$parcelas.' mês(meses)<br> Total: R$'.$subtotal;
 
 
 		/* -- Atualizar Estoque -- */
@@ -82,8 +82,6 @@
 				$sql_atualiza_saldos = "UPDATE empresa set saldo_dinheiro = $novo_saldo_dinheiro WHERE dono_empresa = 1";
 
 			}else{
-				//echo 'Saldo em dinheiro insuficiente';				
-				echo '1';
 				return false;
 			}
 		break;
@@ -93,7 +91,6 @@
 				$sql_atualiza_saldos = "UPDATE empresa set saldo_banco = $novo_saldo_banco WHERE dono_empresa = 1";
 			}
 			else{
-				echo '2';
 				return false;
 			}
 		break;

@@ -39,6 +39,8 @@
 	$subtotal_mes = $subtotal/$parcelas;
 	//$subtotal_mes = number_format($subtotal_mes, 2);
 
+	$subtotal_receber = $subtotal-$subtotal_mes;
+
 	$descricao_venda ='Produto: '.$nomeProduto.', TAM: '.$tamanho.', COR: '.$cor.', $Fornecedor: '.$preco_produto_fornecedor.', $Cliente: '.$preco_produto.', QTD: '.$quantidade_produto_vender.'<br> Método: '.$forma_pagamento_vender.', Parcelado em: '.$parcelas.', Desconto: '.$desconto_vender.' e Taxa: '.$taxa_vender.'<br> Total: R$'.$subtotal;
 
 	
@@ -81,26 +83,34 @@
 			$saldo_receber = $linha['saldo_receber'];
 		}
 	}
-	$novo_saldo_dinheiro = $saldo_dinheiro+$subtotal;
-	$novo_saldo_banco = $saldo_banco+$subtotal;
-	$novo_saldo_receber = $saldo_receber+$subtotal;
+	$novo_saldo_dinheiro = $saldo_dinheiro+$subtotal_mes;
+	$novo_saldo_banco = $saldo_banco+$subtotal_mes;
+	$novo_saldo_receber = 0;
+
 
 	switch($forma_pagamento_vender){
 		case 'dinheiro':
 			$sql_atualiza_saldos = "UPDATE empresa set saldo_dinheiro = $novo_saldo_dinheiro WHERE dono_empresa = 1";
+			$novo_saldo_receber = $saldo_receber+$subtotal_receber;
 		break;
 		case 'debito':
 			$sql_atualiza_saldos = "UPDATE empresa set saldo_banco = $novo_saldo_banco WHERE dono_empresa = 1";
+			$novo_saldo_receber = $saldo_receber+$subtotal_receber;
 		break;
 		case 'credito':
-			$sql_atualiza_saldos = "UPDATE empresa set saldo_receber = $novo_saldo_receber WHERE dono_empresa = 1";
+			$sql_atualiza_saldos = "UPDATE empresa set saldo_receber = $subtotal WHERE dono_empresa = 1";
+			$novo_saldo_receber = $saldo_receber + $subtotal;
 		break;
 		default:
 			echo 'Erro em selecionar forma de pagamento';
-	}	
-
+	}
 	$resposta_id_saldo = mysqli_query($con, $sql_atualiza_saldos);
-	if($resposta_id_saldo){
+	
+	
+	$sql_atualiza_receber_parcelado = "UPDATE empresa SET saldo_receber = $novo_saldo_receber WHERE dono_empresa = 1";
+	$resposta_id_saldo_receber_parcelado = mysqli_query($con, $sql_atualiza_receber_parcelado);
+	
+	if($resposta_id_saldo && $resposta_id_saldo_receber_parcelado){
 		echo 'Saldo atualizado';
 	}else{
 		echo 'Erro ao atualizar saldo';

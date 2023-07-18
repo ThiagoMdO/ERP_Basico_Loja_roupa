@@ -482,7 +482,7 @@
 			            		<div class="col-12">
 			            			<div class="row ">
 			            				<div class="col-3">
-					            			<input type="text" id="nome_produto_alteracao" class="form-control inputs_historico_cadastro" placeholder="Procurar por Nome" maxlength="140" name="nome_produto_alteracao">
+					            			<input type="text" id="nome_produto_alteracao" class="form-control inputs_historico_cadastro" placeholder="Procurar id ou Nome" maxlength="140" name="nome_produto_alteracao">
 			            				</div>
 			            				<div class="col-3">
 			            					<select class="form-select" id="historico_cadastro_select" name="historico_cadastro_select">

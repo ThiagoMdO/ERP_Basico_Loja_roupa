@@ -18,6 +18,8 @@
 	$select_cadastro = isset($_POST['historico_cadastro_select'])?$_POST['historico_cadastro_select']:'';
 	$historico_cadastro_select_tipo = isset($_POST['historico_cadastro_select_tipo'])?$_POST['historico_cadastro_select_tipo']:'';
 
+
+	
 	$select_cadastro_consultar = $select_cadastro;
 	switch($select_cadastro_consultar){
 		case 'produtos':
@@ -31,15 +33,21 @@
 		break;
 
 	}
+	$alternador_pesquisa = '';
+	if(is_numeric($nome_produto)){
+		$alternador_pesquisa = $select_cadastro_consultar;
+	}else if(is_string($nome_produto)){
+		$alternador_pesquisa = 'nome_alteracao';
+	}
 	/* -----------------  Consultar ------------------- */
 	// consultar registro
 	$sql_historico_qtd = "SELECT COUNT(*) AS total_registros
 		FROM (
 		    SELECT id_alteracao
 			    FROM historico_alteracoes
-			    WHERE nome_alteracao LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
+			    WHERE $alternador_pesquisa LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
 		) AS subconsulta";
-
+	
 	$quantidade_historico;
 	$resultado_id_historico_qtd = mysqli_query($con,$sql_historico_qtd);
 	if($resultado_id_historico_qtd){
@@ -60,7 +68,7 @@
 			$sql_historico_alteracao = "
 			SELECT *, DATE_FORMAT(data_alteracao, '%d %b %Y %T') as data_alteracao 
 			FROM historico_alteracoes
-		    WHERE nome_alteracao LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
+		    WHERE $alternador_pesquisa LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
 		    ORDER BY data_alteracao DESC
 		    LIMIT $registros_por_pagina
 		    OFFSET $offset";

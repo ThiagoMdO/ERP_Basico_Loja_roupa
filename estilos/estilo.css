@@ -6,6 +6,226 @@
 
 /*========================= layout =========================*/
 
+
+/* === inputs === */
+
+/* - input pesquisa - */
+.barra_pesquisa{
+	width: 350px;
+	border: none;
+	border-radius: 5px;
+	background: #F7F9FB;
+	padding: 5px;
+	margin-left: 3px;
+}
+.barra_pesquisa input{
+	margin-top: 6px;
+	color: #969696;
+	width: 300px;
+}
+.lupa_pesquisa{
+	padding-top: 8px;
+	width: 35px;
+	height: 35px;
+	float: left;
+}
+
+/* === selects === */
+.selects{
+	color: #1C1C1C;
+	font-weight: 500;
+	border: none;
+	border-radius: 5px;	
+	height: 50px;
+	width: 150px;
+	padding: 5px;
+	box-shadow: 0 0 1px #969696;
+}
+/* == filtro método pesquisa == */
+.filtro{
+	margin-bottom: 40px;
+}
+.info_dados{
+	margin-top: 30px;
+	color: #585757;
+	font-size: 21px;
+	font-weight: 500;
+}
+
+/* == itens de pesquisa == */
+.item_exibir_inteiro{
+	margin-bottom: 50px;
+}
+.item_exibir{
+	background: #F1F1F1;
+	margin: 0;
+	padding: 0;
+	min-height: 110px;
+	max-height: auto;
+	border-bottom: .5px #E8E8E8 solid;
+}
+
+/* == btn_opcao == */
+
+.btn-group{
+	padding-bottom: 2px;
+	border: .5px #E8E8E8 solid;
+}
+.btn-group {
+	padding-bottom: 2px;
+	border: .5px #E8E8E8 solid;
+}
+.btn-group:hover .btn_pagar{
+	left: -60px;
+	opacity: 1;
+	width: 60px;
+}
+.btn_pagar{
+	background: #E8E8E8;
+	cursor: pointer;
+	border: .5px #E8E8E8 solid;
+	position: absolute;
+	opacity: 0;
+	left: 0;
+	padding: 9px;
+	border-radius: 1px;
+	transition: all ease .3s;
+
+}
+.btn_pagar:hover{
+	background: #49ED10;
+}
+.btn_pagar:hover .btn_pagar_sim{
+	left: -60px;
+	opacity: 1;
+	width: 60px;
+
+}
+.btn_pagar_sim, .btn_editar_pessoa{
+	position: absolute;
+	opacity: 0;	
+	padding: 8.5px;
+	top: 0;
+	left: -30px;
+	border-radius: 1px;
+	transition: all ease .3s;
+	border: none;
+}
+.btn_pagar_sim:hover{
+	background: #49ED10;
+}
+
+
+.btn_opcao{
+	background:#FFF;
+	display: relative;
+	border: none;
+	z-index: 10;
+}
+.btn_opcao:hover{
+
+}
+.btn_opcao img{
+	width: 43px;
+}
+
+
+.btn-group:hover .btn_excluir{
+	left: 56px;
+	opacity: 1;
+	width: 60px;
+}
+.btn-group:hover .btn_excluir_pessoa{
+	left: 115px;
+	opacity: 1;
+	width: 60px;
+}
+.btn-group:hover .btn_editar_pessoa{
+	left: -55px;
+	opacity: 1;
+	width: 60px;
+}
+.btn_excluir, .btn_excluir_pessoa, .btn_editar_pessoa{
+	background: #E8E8E8;
+	cursor: pointer;
+	border: .5px #E8E8E8 solid;
+	position: absolute;
+	opacity: 0;
+	left: 0px;
+	padding: 9px;
+	border-radius: 1px;
+	transition: all ease .3s;
+
+}
+.btn_editar_pessoa{
+	top: 0;
+	background: #FFC107;
+}
+.btn_editar_pessoa:hover{
+	background: #E1A901;
+	opacity: 1;
+}
+
+.btn_excluir:hover{
+	background: #E04A35;
+}
+.btn_excluir_sim{
+	position: absolute;
+	opacity: 0;	
+	padding: 8.5px;
+	height: 42px;
+	top: 0;
+	left: 30px;
+	border-radius: 1px;
+	transition: all ease .3s;
+	border: none;
+	width: 60px;
+}
+
+.btn_excluir:hover .btn_excluir_sim, .btn_excluir_pessoa:hover .btn_excluir_sim{
+	left: 57px;
+	opacity: 1;
+}
+.btn_excluir_sim:hover{
+	background: #E04A35;
+}
+/* -- Página contas_despesas_investimentos.php -- */
+.valor_conta p{
+	padding: 5px 0;
+	border-radius: 3px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+	text-align: center;
+}
+.Investimento p{
+	background: #C5BF3B;
+}
+.Despesa p{
+	background: #E04A35;
+}
+
+.metodos p{
+	padding: 5px 0;
+	border-radius: 3px;
+
+}
+.Dinheiro p{
+	background: #79A61A;
+}
+.Debito p{
+	background: #77ABE0;
+}
+.Credito p{
+	background: #AF8415;
+}
+
+.btn_pagar, .btn_editar_pessoa_f{
+	width: 0;
+	height: 43px;
+}
+
+
 /* --------------- Index --------------- */
 #main{
 	display: flex;
@@ -14,13 +234,14 @@
 	height: 100vh;
 }
 
+
+/* --- Tela de Login --- */
 .red{
 	display: flex;
 	align-items: center;
 	justify-content:center;
 }
 
-/* --- Tela de Login --- */
 #login{
 	width: 50vh;
 	height: 50vh;
@@ -42,20 +263,172 @@
 #main_home{
 	text-align: center;
 	text-decoration: none;
-	background: rgb(29, 73, 118);
+	background: #EBEEF0;
 }
 
-.conteudo_home{
+.menu_principal{
+	height: 110px;
+	background: #FFFFFF;
+	box-shadow: .5px .1px 10px gray;
+	padding-top: 20px;
+	margin-bottom: 20px;
+
+}
+.btn-sair{
+	border: none;
+}
+.menu_principal a{
+	text-decoration: none;
+	font-weight: 500;
+	color: black;
+}
+
+#separador{
+	width: 1px;
+	height: 35px;
+	background: gray;
+	margin: 10px;
+}
+
+/* -- Configurações -- */
+.configuracoes{
+	background: #FFFFFF;
+	margin: 0 10px;
+	height: 700px;
+	border-radius: 2px;
+	box-shadow: 0px 0px 1px .1px gray;
+	padding-top: 15px;
+	font-family: 'Semi-bold';
+}
+
+.configuracoes img{
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+.configuracoes .titulo_configuracoes{
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.configuracoes .top_configuracoes{
+	margin-bottom: 50px;
+}
+.configuracoes .seletores_configuracoes{
+	font-size: 20px;
+}
+.seletores_menu{
+	cursor: pointer;
+	border-radius: 9px;
+	padding: 5px;
+	transition: ease all .3s;
+}
+.seletores_menu:hover{
+	background: #EBEEF0;
+}
+.menu_ativo{
+	background: #EBEEF0;
+}
+/* -- Tela informações -- Caixa -- & -- Contas A pagar --- home.php */
+.tela_informacoes{
+	background: #FFF;
+	border-radius: 2px;
+	padding-top: 100px;
+
+}
+.caixa, .contas{
 	
 
 }
-.row-up{
-	padding-top: 100px;
-	padding-bottom: 10px;
-
+.caixa h4, .contas h4{
+	text-align: left;
+	font-family: 'H6-Bold';
+	font-weight: 600;
 }
+.dados_nome_saldo{	
+	width: 185px;
+	height: 132px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	background: gray;
+}
+
+.dados_valor_saldo{
+	color: #FFF;
+	height: 35px;
+	border-radius: 10px;
+}
+
+.alinhar_meio{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+}
+
+.caixa .dinheiro{
+	background: #79A61A;
+}
+.caixa .banco{
+	background: #77ABE0;
+}
+.caixa .a_receber{
+	background: #AF8415;
+}
+.caixa .bruto{
+	background: #853846;
+}
+
+.editar_saldos{
+	margin-top: 100px;
+}
+.editar_saldos h5{
+	font-weight: 700;
+}
+
+.caixa .btn_caixa{
+	width: 500px;
+	height: 32px;
+	margin: 30px auto 0;
+	padding: 5px;
+	color: #2507DE;
+}
+.btn_trocar_saldo{
+	background: #C2FAF6;
+}
+.btn_trocar_saldo:hover{
+	background: #5DF1E8;
+}
+
+.btn_editar_saldo{
+	background: #D0F4FF;
+}
+.btn_editar_saldo:hover{
+	background: #7ADFFF;
+}
+
+
+/* -- Contas a pagar -- */
+.contas .despesa{
+	background: #E04A35;
+}
+.contas .investimento{
+	background: #C5BF3B;
+}
+.contas .total_contas{
+	background: #8763D4;
+}
+
+.contas .btn_adicionar_conta{
+	width: 190px;
+	background: #8763D4;
+	color: #FFF;
+	margin: 100px auto 12px;
+	padding: 25px 0;
+}
+
+
 .row-down{
-	background: #D3D3D3;
 	color: white;
 	font-weight: 600;
 }
@@ -73,7 +446,6 @@
 
 
 .row-header{
-	background: #3CB371;
 	border-radius: 15px 15px 0 0;
 }
 
@@ -127,10 +499,50 @@
 #formCadastrar{
 	
 }
+.produto_cadastrar{
+	
+
+}
+.top_header_informacoes h4{
+	text-align: left;
+	font-family: 'H6-Bold';
+	font-weight: 600;
+}
+.btn_cadastro{
+	width: 190px;
+	height: 60px;
+	margin: 30px auto;
+}
+.btn_resetar_cadastro_produto{
+	background: #FFC107;
+	
+}
+.btn_adicionar_cadastro_produto{
+	background: #0B5ED7;
+	color: #FFF;
+}
+.btn_resetar_cadastro_produto:hover{
+
+	background: #E1A901;
+}
+
+.btn_adicionar_cadastro_produto:hover{
+	background: #0449AE;
+	color: #FFF;
+}
+
 
 /* --------------- vender.php --------------- */
 .modal-content{
 	color: black;
+}
+.btn_vender{
+	background: #198754;
+	color: #FFF;
+}
+.btn_vender:hover{
+	background: #067843;
+	color: #FFF;
 }
 
 
@@ -155,44 +567,151 @@
 }
 
 /* -- Estoque -- */
+.tela_produtos{
+	
+
+}
 .foto_produto{
 	height: 150px;
 	border-radius: 10px;
 	background: gray;
 }
+.info_produto{
+	
+	height: 30px;
+	color: #FFF;
+	font-weight: 700;
+	background: #88848E;
+	border: .7px #E8E8E8 solid;
+	border-radius: 5px;
 
+}
 .produto{
 	height: 100px;
-	background: rgb(86, 91, 99);
+	background: #88848E;
 	margin: auto 0;
-	border-right: solid 1px black;
+	border: .7px #E8E8E8 solid;
 	border-radius: 5px;
 }
 .produto div{
 	margin: 40px 0;
 }
-
-.tamanho_produto{
-
-}
-.cor_produto{
-
-}
-.qtd_produto{
-
-}
-.preco_produto{
-
+.produto input{
+	background: #D5CDE5;
+	border-radius: 5px;
+	border: .7px #88848E solid;
 }
 
+.btn_group_estoque{
+	margin-bottom: 20px;
+}
+.btn_estoque{
+	width: 136px;
+	height: 45px;
+	border-radius: 2px;
+}
+
+.btn_comprar_mais{
+	background: #0DCAF0;
+
+}
+
+.btn_comprar_mais:hover{
+	background: #08B9DD;
+}
+
+.btn_editar{
+	background: #FFC107;
+}
+.btn_editar:hover{
+	background: #E1A901;
+}
+
+.btn_excluir_produto{
+	background: #DC3545;
+}
+
+.btn_excluir_produto:hover{
+	background: #D80015;
+}
+
+/* --------------- clientes.php --------------- */
+.imagem_loja_cadastro{
+	background: url('img/loja.jpg');
+}
+.btn-group-pessoa{
+
+}
 /* --------------- historico.php --------------- */
-.linha_pesquisa{
-	border-radius: 10px;
-	background: rgb(86, 91, 99);
+#div_resultado_paginacao_historico{
+	padding-top: 50px;
+}
+.btn_historico{
+	width: 192px;
+	height: 62px;
+	border: .7px solid #88848E;
+	border-radius: 3px;
+	margin: 2px;
+	transition: all ease .3s;
+}
+.btn_historico:hover{
+	background: #D0F4FF;
+}
+
+.btn_historico_ativo{
+	background: #D0F4FF;
+}
+.barra_pesquisa_historico{
+	margin-top: 50px;
+	width: 300px;
+	border: none;
+	border-radius: 5px;
+	background: #F7F9FB;
+	padding: 5px;
+	margin-left: 3px;
 }
 
 
+.barra_pesquisa_historico input{
+	margin-top: 6px;
+	color: #969696;
+	width: 250px;
+}
+.lupa_pesquisa_historico{
+	padding-top: 8px;
+	width: 35px;
+	height: 35px;
+	float: left;
+}
 
+.barra_pesquisa_historico_select{
+	padding-top: 10px;
+}
+.selects_historico{
+	margin-top: 5px;
+}
+.alterecoes{
+	width: 220px;
+
+}
+.alterecoes input{
+	width: 175px;
+}
+
+.btn_selecionar_pagina{
+	color: #093E8C;
+	background: #D0F4FF;
+	border-radius: 4px;
+}
+.btn_selecionar_pagina:hover{
+	background: #D0F4FF;
+}
+.btn_sem_selecionar_pagina:hover{
+	background: #D0F4FF;
+}
+.vendas_e_compras_clientes{
+
+}
 /*===================== Tipografia =====================*/
 *{
 	list-style: none;

@@ -77,12 +77,13 @@
 						//1/5
 			$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 			for($e = 1; $e <= $total_paginas; $e++) {
-		        $classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        $classe_botao = $pagina_atual == $e ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina'; //aplica a classe para o botão da página atual
+		        //$classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary';
 		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$e.'">'.$e.'</button>';
 		     }
 
 		     echo '<div id="vendas_e_compras_clientes">
-	                    <div class="row">
+	                    <div class="row info_dados">
 							<div class="col-2">Clientes</div>
 							<div class="col-8">Descrição venda</div>
 							<div class="col-2">Data</div>
@@ -97,7 +98,7 @@
 						<form id="form_historico_'.$i.'">
 							<div class="d-none"><input name="id_nota_compras" value="'.$linha["id_nota_compras"].'"/></div>
 						</form>
-						<div class="row linha_pesquisa">
+						<div class="row item_exibir d-flex align-items-center justify-content-center">
 							<div class="col-md-2">
 									<p>'.$linha["nome_cliente"].'</p>
 									<p>Fone: '.$linha["contato_telefone_cliente"].'</p>
@@ -109,16 +110,21 @@
 							<div class="col-md-2">
 									<p>'.$linha["data_inclusao"].'</p>
 							</div>
-							<div class="col-md-12">
-								<div class="btn-group">
-								  <button type="button" class="btn btn-small btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-								    Excluir
-								  </button>
-								  <ul class="dropdown-menu" style="text-align:center">
-								    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_historico('.$i.')">Sim</button></li>
-								    <hr>
-								    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-								  </ul>
+							  
+						</div>
+						<div class="col-12">
+							<div class="btn-group">									
+
+								<button class="btn_opcao">
+									<img src="img/3_pontos.png">
+								</button>
+
+
+								<div class="btn_excluir">
+									<span>Excluir</span>
+									<div>
+										<button type="button" class="btn_excluir_sim" onclick="excluir_historico('.$i.')">Sim</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -128,7 +134,8 @@
 				
 			}
 			for($e = 1; $e <= $total_paginas; $e++) {
-		        $classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        //$classe_botao = $pagina_atual == $e ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        $classe_botao = $pagina_atual == $e ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$e.'">'.$e.'</button>';
 		     }
 
@@ -202,11 +209,12 @@
 						//1/5
 			$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 			for($i = 1; $i <= $total_paginas; $i++) {
-		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        //$classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        $classe_botao = $pagina_atual == $i ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 		     };
 		     echo '<div id="vendas_e_compras_fornecedores">
-	                    <div class="row">
+	                    <div class="row info_dados">
 							<div class="col-2">Fornecedores</div>
 							<div class="col-8">Descrição venda</div>
 							<div class="col-2">Data</div>
@@ -219,7 +227,7 @@
 						<form id="form_historico_'.$i.'">
 							<div class="d-none"><input name="id_nota_compras" value="'.$linha["id_nota_compras"].'"/></div>
 						</form>
-						<div class="row linha_pesquisa">
+						<div class="row item_exibir d-flex align-items-center justify-content-center">
 							<div class="col-md-2">
 									<p>'.$linha["nome_fornecedor"].'</p>
 									<p>Fone: '.$linha["contato_telefone_fornecedor"].'</p>
@@ -231,16 +239,22 @@
 							<div class="col-md-2">
 									<p>'.$linha["data_inclusao"].'</p>
 							</div>
-							<div class="col-md-12">
-								<div class="btn-group">
-								  <button type="button" class="btn btn-small btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-								    Excluir
-								  </button>
-								  <ul class="dropdown-menu" style="text-align:center">
-								    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_historico('.$i.')">Sim</button></li>
-								    <hr>
-								    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-								  </ul>
+
+							
+						</div>
+						<div class="col-12">
+							<div class="btn-group">									
+
+								<button class="btn_opcao">
+									<img src="img/3_pontos.png">
+								</button>
+
+
+								<div class="btn_excluir">
+									<span>Excluir</span>
+									<div>
+										<button type="button" class="btn_excluir_sim" onclick="excluir_historico('.$i.')">Sim</button>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -250,7 +264,8 @@
 				
 			}
 			for($i = 1; $i <= $total_paginas; $i++) {
-		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        //$classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        $classe_botao = $pagina_atual == $i ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 		        echo '<button class="btn '.$classe_botao.' paginar" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 		    }
 		}

@@ -76,8 +76,8 @@
 						</div>".'
 						<div class="col-md-2 produto">
 							<div style="margin-top:20px">
-								<input type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_fornecedor"].'>
-								<input type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
+								<input title="Preço Fornecedor" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_fornecedor"].'>
+								<input title="Preço Cliente" type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
 							</div>
 						</div>
 						<div class="col-md-2 produto">
@@ -86,19 +86,17 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-12">
-						<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ComprarMais'.$i.'">Comprar mais</button>
+					<div class="col-12 btn_group_estoque">
+						<button type="button" class="btn btn_estoque btn_comprar_mais" data-bs-toggle="modal" data-bs-target="#ComprarMais'.$i.'">Comprar mais</button>
 						
-						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#meuModal'.$i.'"  id="'.$i.'">Editar</button>
+						<button type="button" class="btn btn_estoque btn_editar" data-bs-toggle="modal" data-bs-target="#meuModal'.$i.'"  id="'.$i.'">Editar</button>
 						
 						<div class="btn-group">
-						  <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						  <button type="button" class="btn btn_estoque btn_excluir_produto dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 						    Excluir
 						  </button>
 						  <ul class="dropdown-menu" style="text-align:center">
 						    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_produto('.$i.')">Sim</button></li>
-						    <hr>
-						    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
 						  </ul>
 						</div>
 					</div>
@@ -276,7 +274,7 @@
 												<span style="color:orange">$ Fornecedor:<span>
 											</div>
 											<div class="col-8">
-												<input id="comprar_preco_produto_'.$i.'" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value='.$linha["preco_produto_fornecedor"].'>
+												<input title="dsa" id="comprar_preco_produto_'.$i.'" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value='.$linha["preco_produto_fornecedor"].'>
 											</div>
 										</div>
 									</div>

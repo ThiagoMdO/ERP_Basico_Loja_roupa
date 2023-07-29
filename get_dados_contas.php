@@ -35,34 +35,138 @@
 		}
 		$total = $valor_conta_despesas + $valor_conta_investimento;
 			echo '
-				<div class="container nav_select d-block">
-					<div class="row row-header">
-						<h2>CONTAS</h2>
-						<hr>
-					</div>
-					<div class="row row-space-controle d-flex justify-content-center align-items-center">						
-						<div class="col-md-12">
-							<h3>Despesas</h3>
-							<p style="color: red">R$'.$valor_conta_despesas.'</p>
+				<div class="contas">
+					<div id="tela_informacoes" class="container">
+						<div class="top_header_informacoes">
+							<h4>Informações de Conta</h4>
 						</div>
-						<hr>
+						<div class="dados_saldos d-flex justify-content-between">
+							<div class="d-block">
+								<div class="dados_nome_saldo despesa alinhar_meio">Despesas</div>
+								<div class="dados_valor_saldo despesa alinhar_meio"><span>R$'.$valor_conta_despesas.'</span></div>
+							</div>
 
-						<div class="col-md-12">
-							<h3>Investimentos</h3>
-							<p style="color: blue">R$'.$valor_conta_investimento.'</p>
-							
+							<div class="d-block">
+								<div class="dados_nome_saldo investimento alinhar_meio">Investimentos</div>
+								<div class="dados_valor_saldo investimento alinhar_meio"><span>R$'.$valor_conta_investimento.'</span></div>
+							</div>
+
+							<div class="d-block">
+								<div class="dados_nome_saldo total_contas alinhar_meio">Total Contas</div>
+								<div class="dados_valor_saldo total_contas alinhar_meio"><span>R$'.$total.'</span></div>
+							</div>							
 						</div>
-						<hr>
-						<div class="col-md-12">
-							<h4>Total contas</h4>
-							<p style="color: orange">R$'.$total.'</p>
-							
-						</div>
+
+						<div class="col-12">
+		                	<button type="button" class="btn btn_adicionar_conta" data-bs-toggle="modal" data-bs-target="#modal_nova_conta" id="">Adicionar Nova Conta</button>
+		                </div>
 					</div>
-					<a href="contas_despesas_investimentos.php" class="plus">+ Adicionar Nova Conta</a>
-				</div><!-- fim container Atividades -->
+				</div>
+				
+				<!-- Modal Exibir itens -->
+				<div class="modal fade" id="modal_nova_conta" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="false">
+					<div class="modal-dialog">
+					    <div class="modal-content">
+					    	<div class="modal-header">
+						        <h5 class="modal-title" id="modalLabel">Cadastrar nova Conta</h5>
+					        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+				     	</div>
+
+						<div class="modal-body"  style="text-align: center;">
+							<form id="form_cadastrar_conta" >
+								<div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Descrição da conta:
+										</div>
+										<div class="col-6">
+
+											<input class="form-control" type="text" name="nome_conta" id="nome_conta" placeholder="Nome da conta">
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Natureza:
+										</div>
+										<div class="col-6">
+											<select name="natureza_conta" id="natureza_conta" class="form-select">
+												<option value="Despesa">Despesa</option>
+												<option value="Investimento">Investimento</option>
+											</select>
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Valor da conta:
+										</div>
+										<div class="col-6">
+											<input class="form-control" type="number" name="valor_conta" id="valor_conta" placeholder="Valor">
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Já foi pago?
+										</div>
+										<div class="col-6">
+											<select name="pago_conta" id="pago_conta" class="form-select">
+												<option value="NAO">NÃO</option>
+												<option value="SIM">SIM</option>
+											</select>
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Forma de Pagamento:
+										</div>
+										<div class="col-6">
+											<select name="forma_pagamento_conta" id="forma_pagamento_conta" class="form-select">
+												<option value="Dinheiro">Dinheiro</option>
+												<option value="Debito">Débito</option>
+												<option value="Credito">Credito</option>
+											</select>
+										</div>
+									</div>
+									<div class="input-group mb-3">
+										<div class="col-6">
+											Quantidade de parcelas:
+										</div>
+										<div class="col-6">
+											<select name="parcelas" id="parcelas" class="form-select">
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+									</div>
+
+								    <div class="input-group mb-3">
+										<div class="col-6">
+											Data vencimento:
+										</div>
+										<div class="col-6">
+											<input class="form-control" type="date" name="vencimento" id="vencimento">
+										</div>
+									</div>
+								    
+
+									<button class="btn btn-outline-secondary" type="button" id="btn_editar" onclick="incluir_conta()">Cadastrar</button>
+
+									
+						   		</div>
+							</form>								
+						</div><!-- fim Modal body -->
+					</div>
+				</div><!-- Fim Modal -->
 				';
 	}
-	
 
 ?>

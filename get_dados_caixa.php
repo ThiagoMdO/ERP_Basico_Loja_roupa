@@ -26,39 +26,46 @@
 			$saldo_receber = $linha['saldo_receber'];
 			$total_soma = $saldo_dinheiro+$saldo_banco+$saldo_receber;
 			echo '
-				<div class="container nav_select d-block">
-					<div class="row row-header">
-						<h2>CAIXA</h2>
-						<hr>
-					</div>
-					<div class="row d-block">
-						<div class="col-12 row-space-controle">
-							<li>Saldo em dinheiro</li>
-							<p style="color:green;">R$ '.$linha['saldo_dinheiro'].'</p>
+				<div class="caixa">
+					<div id="tela_informacoes" class="container">
+						<div class="top_header_informacoes">
+							<h4>Informações de Caixa</h4>
 						</div>
-						<div class="col-12 row-space-controle">
-							<li>Saldo em Banco</li>
-							<p style="color:blue;">R$ '.$linha['saldo_banco'].'</p>
-						</div>
-						<div class="col-12 row-space-controle">
-							<li>Saldo a receber</li>
-							<p style="color:brown;">R$ '.$linha['saldo_receber'].'</p>
-						</div>
-						<div class="col-12 row-space-controle">
-							<li>Bruto:</li>
-							<p style="color:orange;">R$ '.$total_soma.'</p>
-						</div>
-						<div class="col-12 row-space-controle">
-							<button type="button" class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#modal_transferir">Trocar Saldos</button>
-						</div>
-						<div class="col-12 row-space-controle">
-							<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#meuModal">Editar manualmente</button>
-						</div>
-					</div>
-				</div><!-- fim container Caixa -->'
-				;
+						<div class="dados_saldos d-flex justify-content-between">
+							<div class="d-block">
+								<div class="dados_nome_saldo dinheiro alinhar_meio">Dinheiro</div>
+								<div class="dados_valor_saldo dinheiro alinhar_meio"><span>R$'.$linha['saldo_dinheiro'].'</span></div>
+							</div>
 
-			
+							<div class="d-block">
+								<div class="dados_nome_saldo banco alinhar_meio">Banco</div>
+								<div class="dados_valor_saldo banco alinhar_meio"><span>R$'.$linha['saldo_banco'].'</span></div>
+							</div>
+
+							<div class="d-block">
+								<div class="dados_nome_saldo a_receber alinhar_meio">A Receber</div>
+								<div class="dados_valor_saldo a_receber alinhar_meio"><span>R$'.$linha['saldo_receber'].'</span></div>
+							</div>
+
+							<div class="d-block">
+								<div class="dados_nome_saldo bruto alinhar_meio">Bruto</div>
+								<div class="dados_valor_saldo bruto alinhar_meio"><span>R$'.$total_soma.'</span></div>
+							</div>
+						</div>
+
+						<div class="row editar_saldos alinhar_meio">
+							<div class"col-12>
+								<h5>Editar Dados de Saldos</h5>
+							</div>
+							<div class="col-12 d-flex">
+								<button type="button" class="btn btn_caixa btn_trocar_saldo" data-bs-toggle="modal" data-bs-target="#modal_transferir">Trocar Saldos</button>
+							</div>
+							<div class="col-12 d-flex">
+								<button type="button" class="btn btn_caixa btn_editar_saldo" data-bs-toggle="modal" data-bs-target="#meuModal">Editar manualmente</button>
+							</div>
+						</div>
+					</div>
+				</div>';
 		}
 
 	}

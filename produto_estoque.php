@@ -80,7 +80,30 @@
 					}
 				})
 			}
-			
+			$('#menu_caixa').click(function(){
+				window.location.href = "home.php";
+			});
+			$('#menu_contas').click(function(){
+				window.location.href = "contas_despesas_investimentos.php";				
+			});
+			$('#menu_cadastrar').click(function(){
+				window.location.href = "produto_cadastrar.php";
+			});
+			$('#menu_estoque').click(function(){
+				window.location.href = "produto_estoque.php";
+			});
+			$('#menu_vender').click(function(){
+				window.location.href = "vender.php";
+			});
+			$('#menu_clientes').click(function(){
+				window.location.href = "clientes.php";
+			});
+			$('#menu_fornecedores').click(function(){
+				window.location.href = "fornecedores.php";
+			});
+			$('#menu_historico').click(function(){
+				window.location.href = "historico.php";
+			});
 
 		});
 		
@@ -293,6 +316,7 @@
 					}*/
 
 				}
+
 			})
 		}
 		
@@ -306,93 +330,182 @@
 </head>
 
 <body id="main_home">
-	<div class="container-fluid conteudo_home">
-		<div class="row row-up d-flex justify-content-center align-items-center">
+	
 			<?php
 				include_once 'menu_principal.php';
 			?>
-		</div><!-- Fim row 1 -->
-		<div class="row row-down">
-			<div class="col-md-3 border_custom">
-				<div class="container border_custom">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="configuracoes col-md-3">
+					<div class="top_configuracoes">
+						<span id="navbar_config">
+							<img src="img/navbar_icon.png" width="40px">
+						</span>
+						<span class="titulo_configuracoes">Configurações</span>
+					</div>			
+
+					<div id="menu_caixa" class="row seletores_menu" style="text-align:right;">
+						<div class="col-3">
+							<span >
+								<img src="img/caixa.png" width="30px">
+							</span>
+						</div>
+						<div class="col-9" style="text-align:left;">					
+							<span class="seletores_configuracoes ">Caixa</span>
+						</div>
+					</div>
+
+					<div id="menu_contas" class="row seletores_menu" style="text-align:right;">
+						<div class="col-3">
+							<span >
+								<img src="img/contas_pagar.png" width="30px">
+							</span>
+						</div>
+						<div class="col-9" style="text-align:left;">					
+							<span class="seletores_configuracoes">Contas A pagar</span>
+						</div>
+					</div>
+
+					<div id="menu_controles" class="row seletores_menu menu_ativo" style="text-align:right;">
+						<div class="col-3">
+							<span >
+								<img src="img/controles.png" width="30px">
+							</span>
+						</div>
+						<div class="col-9" style="text-align:left;">					
+							<span class="seletores_configuracoes">Controles</span>
+						</div>
+					</div>
+
+					<div class="row seletores_menu menu_ativo" style="text-align:right;">
+						<div class="col-4">
+							<span >
+								<img src="img/produtos.png" width="30px">
+							</span>
+						</div>
+						<div class="col-8" style="text-align:left;">					
+							<span class="seletores_configuracoes">Produtos</span>
+						</div>
+					</div>
+
+					<div id="menu_cadastrar" class="row seletores_menu" style="text-align:right;">
+						<div class="col-5">
+							<span >
+								<img src="img/cadastro_produto.png" width="30px">
+							</span>
+						</div>
+						<div class="col-7" style="text-align:left;">					
+							<span class="seletores_configuracoes">Cadastrar</span>
+						</div>
+					</div>
+
+					<div id="menu_estoque" class="row seletores_menu menu_ativo" style="text-align:right;">
+						<div class="col-5">
+							<span >
+								<img src="img/estoque_produto.png" width="30px">
+							</span>
+						</div>
+						<div class="col-7" style="text-align:left;">					
+							<span class="seletores_configuracoes">Estoque</span>
+						</div>
+					</div>
+
+					<div id="menu_vender" class="row seletores_menu" style="text-align:right;">
+						<div class="col-5">
+							<span >
+								<img src="img/vender_produto.png" width="30px">
+							</span>
+						</div>
+						<div class="col-7" style="text-align:left;">					
+							<span class="seletores_configuracoes">Vender</span>
+						</div>
+					</div>
+
+					<!-- Fim produtos -->
+
+					<div class="row seletores_menu" style="text-align:right;">
+						<div class="col-4">
+							<span >
+								<img src="img/pessoal.png" width="30px">
+							</span>
+						</div>
+						<div class="col-8" style="text-align:left;">					
+							<span class="seletores_configuracoes">Pessoal</span>
+						</div>
+					</div>
+
+					<div id="menu_clientes" class="row seletores_menu" style="text-align:right;">
+						<div class="col-5">
+							<span >
+								<img src="img/clientes.png" width="30px">
+							</span>
+						</div>
+						<div class="col-7" style="text-align:left;">					
+							<span class="seletores_configuracoes">Clientes</span>
+						</div>
+					</div>
+
+					<div id="menu_fornecedores" class="row seletores_menu" style="text-align:right;">
+						<div class="col-5">
+							<span >
+								<img src="img/fornecedores.png" width="30px">
+							</span>
+						</div>
+						<div class="col-7" style="text-align:left;">					
+							<span class="seletores_configuracoes">Fornecedores</span>
+						</div>
+					</div>
+
+					<!-- Fim Pessoal -->
+
+					<div id="menu_historico" class="row seletores_menu" style="text-align:right;">
+						<div class="col-3">
+							<span >
+								<img src="img/historico.png" width="30px">
+							</span>
+						</div>
+						<div class="col-9" style="text-align:left;">					
+							<span class="seletores_configuracoes">Historico</span>
+						</div>
+					</div>
+					<div class="row" id="infomacoes_estoque"></div>
+				</div>
+				<div class="col-md-8 tela_informacoes tela_produtos">
+					<div class="top_header_informacoes">
+						<h4>Estoque Loja Roupa</h4>
+					</div>
 					<div class="row">
-						<div class="col-12 menu_lateral">
-							<a href="produto_cadastrar.php" class="btn btn-large btn-outline-success">
-								<p>Cadastrar</p>
-							</a>
+						<div class="col-md-3">
+							<form class="input-group form_procurar_produtos">
+								<div class="barra_pesquisa col-6">
+									<span class="lupa_pesquisa">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+										  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+										</svg>
+									</span>
+			                    	<input type="text" id="nomeProduto" class="barra_pesquisa form-control" placeholder="Pesquisar nome do produto" maxlength="140" name="nomeProduto">
+								</div>
+								
+			                </form>						
 						</div>
-						<div class="col-12 menu_lateral">
-							<a href="clientes.php" class="btn btn-large btn-outline-success">
-								<p>Clientes</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="produto_estoque.php" class="btn btn-large btn-outline-success active">
-								<p>Estoque</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="fornecedores.php" class="btn btn-large btn-outline-success">
-								<p>Fornecedores</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="historico.php" class="btn btn-large btn-outline-success">
-								<p>Histórico</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="vender.php" class="btn btn-large btn-outline-success">
-								<p>Vender</p>
-							</a>
-						</div>
-						
 					</div>
-				</div>
-				<div class="row" id="infomacoes_estoque">
-
-						
-				</div>
-			</div>
-			<div class="col-md-9 border_custom">
-				
 				<br>
 				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-md-3">
-						<form class="input-group form_procurar_produtos">
-		                    <input type="text" id="nomeProduto" class="form-control" placeholder="Nome produto" maxlength="140" name="nomeProduto">
-		                </form>						
-					</div>
+					<div class="col-2 info_produto">foto</div>
+					<div class="col-3 info_produto">Nome</div>
+					<div class="col-1 info_produto">TAM</div>
+					<div class="col-2 info_produto">COR</div>
+					<div class="col-2 info_produto">Preço</div>
+					<div class="col-2 info_produto">QTD</div>
 				</div>
-				<br>
-				<div class="row">
-					<div class="col-2">foto</div>
-					<div class="col-3">Nome</div>
-					<div class="col-1">TAM</div>
-					<div class="col-2">COR</div>
-					<div class="col-2">Preço</div>
-					<div class="col-2">QTD</div>
+					<div id="div_resultado_paginacao"></div>
 				</div>
-
-
-		        <br />
-	            <div class="row">
-	                <div class="col-md-12">
-	                    <div id="div_resultado_paginacao"></div>
-	                </div>
-	            </div>
-				</div>
-				<div id="sair">
-					<button class="btn btn-outline-danger"><a href="sair.php">SAIR</a></button>
-				</div>
-
-				
-
-            </div>
 		</div>
+	<div>
+		
+		
 
-	</div>	
+	
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>

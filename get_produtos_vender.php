@@ -64,8 +64,8 @@
 						</div>".'
 						<div class="col-md-2 produto">
 							<div style="margin-top:20px">
-								<input type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_fornecedor"].'>
-								<input type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
+								<input title="Preço Fornecedor" type="text" name="preco_produto_fornecedor" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_fornecedor"].'>
+								<input title="Preço Cliente"  type="text" name="preco_produto_cliente" class="form-control"style="text-align: center;" readonly value=R$'.$linha["preco_produto_cliente"].'>
 							</div>
 						</div>
 						<div class="col-md-2 produto">
@@ -75,9 +75,12 @@
 						</div>
 					</div>
 					<div class="col-12">
-						<button type="button" class="btn btn-dark btn_devolver" data-bs-toggle="modal" data-bs-target="#modalDevolver_'.$i.'">Devolução</button>
-						<button type="button" class="btn btn-outline-success btn_vender" data-bs-toggle="modal" data-bs-target="#modalVender_'.$i.'">Vender</button>
-						<button type="button" class="btn btn-warning btn_adicionar_carrinho" >+ Carrinho Vender</button>
+						<!--<button type="button" class="btn btn_estoque btn_devolver" data-bs-toggle="modal" data-bs-target="#modalDevolver_'.$i.'">Devolução</button>
+						-->
+
+						<button type="button" class="btn btn_estoque btn_vender" data-bs-toggle="modal" data-bs-target="#modalVender_'.$i.'">Vender</button>
+
+						<!--<button type="button" class="btn btn_estoque btn_adicionar_carrinho" >+ Carrinho Vender</button>-->
 						
 					</div>
 					<!-- fim Exibir estoque tela -->

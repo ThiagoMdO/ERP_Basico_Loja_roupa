@@ -81,10 +81,11 @@
 						//1/5
 			$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 			for($i = 1; $i <= $total_paginas; $i++) {
-		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        //$classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        $classe_botao = $pagina_atual == $i ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 		        echo '<button class="btn '.$classe_botao.' paginar_alteracoes" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 		     };
-		     echo '<div class="row relacao_cadastro">
+		     echo '<div class="row relacao_cadastro info_dados">
 	            		<div class="col-2">Nome</div>
 	            		<div class="col-1">Operacao</div>
 						<div class="col-7">Descrição</div>
@@ -99,7 +100,7 @@
 								<input name="id_alteracao" value="'.$linha['id_alteracao'].'"/>
 							</div>
 						</form>
-						<div class="row linha_pesquisa d-flex align-items-center justify-content-center">
+						<div class="row item_exibir linha_pesquisa d-flex align-items-center justify-content-center">
 							<div class="col-md-2">
 								<p>'.$linha["$select_cadastro_consultar"].'-'.$linha["nome_alteracao"].'</p>
 							</div>
@@ -113,23 +114,26 @@
 								<p>'.$linha["data_alteracao"].'</p>
 							</div>
 						
-							<div class="col-md-12">
-								<div class="btn-group">
-							 		 <button type="button" class="btn btn-small btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							  		  Excluir
-							  		</button>
-							 		<ul class="dropdown-menu" style="text-align:center">
-							  			<li>
-						  		  			<button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_historico_alteracoes('.$i.')">Sim</button>
-							  		  	</li>
-							    		<hr>
-							    		<li>
-				    						<button type="button" class="btn btn-outline-primary">Não</button>
-							    		</li>
-							  		</ul>
+							
+						</div>
+						<div class="col-12">
+						<div class="btn-group">
+
+							
+							<button class="btn_opcao">
+								<img src="img/3_pontos.png">
+							</button>
+
+
+							<div class="btn_excluir">
+								<span>Excluir</span>
+								<div>
+									<button type="button" class="btn_excluir_sim" onclick="excluir_historico_alteracoes('.$i.')">Sim</button>
 								</div>
 							</div>
+							  
 						</div>
+					</div>
 					</div>
 					';
 			}

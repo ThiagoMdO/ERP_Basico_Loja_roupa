@@ -70,10 +70,11 @@
 					//1/5
 		$pagina_atual = ceil($offset / $registros_por_pagina); //localiza a página atual
 		for($i = 1; $i <= $total_paginas; $i++) {
-	        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+	        //$classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+	        $classe_botao = $pagina_atual == $i ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 	        echo '<button class="btn '.$classe_botao.' paginar_contas" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 	     }
-	     echo '<div class="row relacao_contas">
+	     echo '<div class="row relacao_contas info_dados">
 		            		<div class="col-2">Nome</div>
 							<div class="col-1">Valor</div>
 							<div class="col-2">Método</div>
@@ -89,7 +90,7 @@
 						<div class="d-none"><input name="id_conta" value="'.$linha["id_conta"].'"/></div>
 						<div class="d-none"><input name="nome_conta" value="'.$linha["nome_conta"].'"/></div>
 					</form>
-					<div class="row linha_pesquisa d-flex align-items-center justify-content-center">
+					<div class="row item_exibir d-flex align-items-center justify-content-center">
 						<div class="col-md-2">
 							<p>'.$linha["nome_conta"].'</p>
 						</div>
@@ -111,17 +112,24 @@
 						<div class="col-md-2">
 							<p>'.$linha["data_pagamento"].'</p>
 						</div>						
-						<div class="col-md-12">
-							<div class="btn-group">
-							  <button type="button" class="btn btn-small btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-							    Excluir
-							  </button>
-							  <ul class="dropdown-menu" style="text-align:center">
-							    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_historico_conta('.$i.')">Sim</button></li>
-							    <hr>
-							    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-							  </ul>
+						
+					</div>
+					<div class="col-12">
+						<div class="btn-group">
+
+							
+							<button class="btn_opcao">
+								<img src="img/3_pontos.png">
+							</button>
+
+
+							<div class="btn_excluir">
+								<span>Excluir</span>
+								<div>
+									<button type="button" class="btn_excluir_sim" onclick="excluir_historico_conta('.$i.')">Sim</button>
+								</div>
 							</div>
+							  
 						</div>
 					</div>
 				';
@@ -130,7 +138,8 @@
 			
 		}
 		for($i = 1; $i <= $total_paginas; $i++) {
-	        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+	        //$classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+	        $classe_botao = $pagina_atual == $i ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 	        echo '<button class="btn '.$classe_botao.' paginar_contas" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 	     }
 

@@ -33,57 +33,58 @@
 						<input id="dateInput" name="data_hoje" value="'.$data_hoje.'"/>
 					</form>
 
-					<div id="conta_despesa_'.$i.'" class="row linha_pesquisa d-flex align-items-center">
-					<hr>
-					<br/>
-					<div class="col-md-2">
-							<p>'.$linha["nome_conta"].'</p>
-					</div>
-					<div class="col-md-1">
-							<p>'.$linha["natureza_conta"].'</p>
-					</div>
-					<div class="col-md-2">
-							<p>'.$linha["valor_conta"].'</p>
-					</div>
-					<div class="col-md-2">
-							<p>'.$linha["forma_pagamento_conta"].'</p>
-					</div>
-					<div class="col-md-1">
-							<p>'.$linha["parcelas"].'</p>
-					</div>
-					<div class="col-md-2">
-							<p>'.$linha["data_inclusao"].'</p>
-					</div>
-					<div class="col-md-2">
-							<p>'.$linha['data_registro'].'</p>
-					</div>
-					<div class="col-12">
-						<div class="btn-group">
-
-						<button type="button" class="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						    Pagar
-						  </button>
-						  <ul class="dropdown-menu" style="text-align:center">
-						  	
-						    <li><button type="button" class="btn btn-outline-success btn_pagar_conta" onclick="pagar_conta('.$i.')">Sim</button></li>						    
-						  </ul>
-
-							
-						  <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						    Excluir
-						  </button>
-						  <ul class="dropdown-menu" style="text-align:center">
-						    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_conta('.$i.')">Sim</button></li>
-						    <hr>
-						    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-						  </ul>
-						</div>
-					</div>
-					<br/>
-					<br/>
-					<hr>
+					<div id="conta_despesa_'.$i.'" class="row  d-flex align-items-center item_exibir_inteiro">
 					
-				</div>';
+						<br/>
+						<div class="row item_exibir d-flex align-items-center justify-content-center">
+							<div class="col-md-2">
+								<p>'.$linha["nome_conta"].'</p>
+							</div>
+							<div class="col-md-1">
+								<p>'.$linha["natureza_conta"].'</p>
+							</div>
+							<div class="col-md-2 valor_conta '.$linha["natureza_conta"].'">
+								<p>'.$linha["valor_conta"].'</p>
+							</div>
+							<div class="col-md-2 metodos '.$linha["forma_pagamento_conta"].'">
+								<p>'.$linha["forma_pagamento_conta"].'</p>
+							</div>
+							<div class="col-md-1">
+								<p>'.$linha["parcelas"].'</p>
+							</div>
+							<div class="col-md-2">
+								<p>'.$linha["data_inclusao"].'</p>
+							</div>
+							<div class="col-md-2">
+								<p>'.$linha['data_registro'].'</p>
+							</div>
+						</div> 
+						<div class="col-12">
+							<div class="btn-group">
+
+								<div class="btn_pagar">
+									<span>Pagar</span>
+									<div>
+								    	<button type="button" class="btn_pagar_sim" onclick="pagar_conta('.$i.')">
+								    		<span>Sim</span>
+									</div>
+								</div>
+
+								<button class="btn_opcao">
+									<img src="img/3_pontos.png">
+								</button>
+
+
+								<div class="btn_excluir">
+									<span>Excluir</span>
+									<div>
+										<button type="button" class="btn_excluir_sim" onclick="excluir_conta('.$i.')">Sim</button>
+									</div>
+								</div>
+								  
+							</div>
+						</div>
+					</div>';
 		}
 		
 

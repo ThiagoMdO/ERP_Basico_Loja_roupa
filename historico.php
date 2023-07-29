@@ -97,7 +97,7 @@
 			//Comando padrao para todos .btn_historico
 			class_btn_historico.click(function(){
 
-				class_btn_historico.removeClass('active');
+				class_btn_historico.removeClass('btn_historico_ativo');
 
 				class_inputs_historico.addClass('d-none');
 				class_inputs_historico.val(false);
@@ -107,13 +107,38 @@
 				relacao_contas.addClass('d-none');
 				relacao_cadastro.addClass('d-none');
 
+			$('#menu_caixa').click(function(){
+			window.location.href = "home.php";
+			});
+			$('#menu_contas').click(function(){
+				window.location.href = "contas_despesas_investimentos.php";				
+			});
+			$('#menu_cadastrar').click(function(){
+				window.location.href = "produto_cadastrar.php";
+			});
+			$('#menu_estoque').click(function(){
+				window.location.href = "produto_estoque.php";
+			});
+			$('#menu_vender').click(function(){
+				window.location.href = "vender.php";
+			});
+			$('#menu_clientes').click(function(){
+				window.location.href = "clientes.php";
+			});
+			$('#menu_fornecedores').click(function(){
+				window.location.href = "fornecedores.php";
+			});
+			$('#menu_historico').click(function(){
+				window.location.href = "historico.php";
+			});
+
 			});
 
 
 			//btn VENDAS - CLIENTES
 			btn_historico_vendas.click(function(){
 
-				btn_historico_vendas.addClass('active');
+				btn_historico_vendas.addClass('btn_historico_ativo');
 
 				historico_vendas_cliente.removeClass('d-none');
 				historico_nome_produto.removeClass('d-none');
@@ -136,7 +161,7 @@
 			//btn COMPRAS - FORNECEDORES
 			btn_historico_compras.click(function(){
 
-				btn_historico_compras.addClass('active');
+				btn_historico_compras.addClass('btn_historico_ativo');
 
 				historico_compras_fornecedores.removeClass('d-none');
 				historico_nome_produto.removeClass('d-none');
@@ -157,7 +182,7 @@
 
 			//btn CONTAS - DESPESAS E INVESTIMENTOS
 			btn_historico_contas.click(function(){
-				btn_historico_contas.addClass('active');
+				btn_historico_contas.addClass('btn_historico_ativo');
 				relacao_contas.removeClass('d-none');
 				historico_contas_despesas_investimentos.removeClass('d-none');
 
@@ -178,7 +203,7 @@
 
 			//btn CADASTRO - Produtos, Clientes, Fornecedores 
 			btn_historico_alteracoes.click(function(){
-				btn_historico_alteracoes.addClass('active');
+				btn_historico_alteracoes.addClass('btn_historico_ativo');
 				relacao_cadastro.removeClass('d-none');
 				atualiza_historico_alteracoes();
 
@@ -346,117 +371,214 @@
 	</head>
 
 <body id="main_home">
-	<div class="container-fluid conteudo_home">
-		<div class="row row-up d-flex justify-content-center align-items-center">
-			<?php
-				include_once 'menu_principal.php';
-			?>
-		</div><!-- Fim row 1 -->
-		<div class="row row-down">
-			<div class="col-md-3 border_custom">
-				<div class="container border_custom">
-					<div class="row">
-						<div class="col-12 menu_lateral">
-							<a href="produto_cadastrar.php" class="btn btn-large btn-outline-success">
-								<p>Cadastrar</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="clientes.php" class="btn btn-large btn-outline-success">
-								<p>Clientes</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="produto_estoque.php" class="btn btn-large btn-outline-success">
-								<p>Estoque</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="fornecedores.php" class="btn btn-large btn-outline-success">
-								<p>Fornecedores</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="historico.php" class="btn btn-large btn-outline-success active">
-								<p>Histórico</p>
-							</a>
-						</div>
-						<div class="col-12 menu_lateral">
-							<a href="vender.php" class="btn btn-large btn-outline-success">
-								<p>Vender</p>
-							</a>
-						</div>
-						
+	<?php
+		include_once 'menu_principal.php';
+	?>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="configuracoes col-md-3">
+				<div class="top_configuracoes">
+					<span id="navbar_config">
+						<img src="img/navbar_icon.png" width="40px">
+					</span>
+					<span class="titulo_configuracoes">Configurações</span>
+				</div>			
+
+				<div id="menu_caixa" class="row seletores_menu" style="text-align:right;">
+					<div class="col-3">
+						<span >
+							<img src="img/caixa.png" width="30px">
+						</span>
+					</div>
+					<div class="col-9" style="text-align:left;">					
+						<span class="seletores_configuracoes ">Caixa</span>
+					</div>
+				</div>
+
+				<div id="menu_contas" class="row seletores_menu" style="text-align:right;">
+					<div class="col-3">
+						<span >
+							<img src="img/contas_pagar.png" width="30px">
+						</span>
+					</div>
+					<div class="col-9" style="text-align:left;">					
+						<span class="seletores_configuracoes">Contas A pagar</span>
+					</div>
+				</div>
+
+				<div id="menu_controles" class="row seletores_menu" style="text-align:right;">
+					<div class="col-3">
+						<span >
+							<img src="img/controles.png" width="30px">
+						</span>
+					</div>
+					<div class="col-9" style="text-align:left;">					
+						<span class="seletores_configuracoes">Controles</span>
+					</div>
+				</div>
+
+				<div class="row seletores_menu" style="text-align:right;">
+					<div class="col-4">
+						<span >
+							<img src="img/produtos.png" width="30px">
+						</span>
+					</div>
+					<div class="col-8" style="text-align:left;">					
+						<span class="seletores_configuracoes">Produtos</span>
+					</div>
+				</div>
+
+				<div id="menu_cadastrar" class="row seletores_menu" style="text-align:right;">
+					<div class="col-5">
+						<span >
+							<img src="img/cadastro_produto.png" width="30px">
+						</span>
+					</div>
+					<div class="col-7" style="text-align:left;">					
+						<span class="seletores_configuracoes">Cadastrar</span>
+					</div>
+				</div>
+
+				<div id="menu_estoque" class="row seletores_menu" style="text-align:right;">
+					<div class="col-5">
+						<span >
+							<img src="img/estoque_produto.png" width="30px">
+						</span>
+					</div>
+					<div class="col-7" style="text-align:left;">					
+						<span class="seletores_configuracoes">Estoque</span>
+					</div>
+				</div>
+
+				<div id="menu_vender" class="row seletores_menu" style="text-align:right;">
+					<div class="col-5">
+						<span >
+							<img src="img/vender_produto.png" width="30px">
+						</span>
+					</div>
+					<div class="col-7" style="text-align:left;">					
+						<span class="seletores_configuracoes">Vender</span>
+					</div>
+				</div>
+
+				<!-- Fim produtos -->
+
+				<div class="row seletores_menu" style="text-align:right;">
+					<div class="col-4">
+						<span >
+							<img src="img/pessoal.png" width="30px">
+						</span>
+					</div>
+					<div class="col-8" style="text-align:left;">					
+						<span class="seletores_configuracoes">Pessoal</span>
+					</div>
+				</div>
+
+				<div id="menu_clientes" class="row seletores_menu" style="text-align:right;">
+					<div class="col-5">
+						<span >
+							<img src="img/clientes.png" width="30px">
+						</span>
+					</div>
+					<div class="col-7" style="text-align:left;">					
+						<span class="seletores_configuracoes">Clientes</span>
+					</div>
+				</div>
+
+				<div id="menu_fornecedores" class="row seletores_menu" style="text-align:right;">
+					<div class="col-5">
+						<span >
+							<img src="img/fornecedores.png" width="30px">
+						</span>
+					</div>
+					<div class="col-7" style="text-align:left;">					
+						<span class="seletores_configuracoes">Fornecedores</span>
+					</div>
+				</div>
+
+				<!-- Fim Pessoal -->
+
+				<div id="menu_historico" class="row seletores_menu menu_ativo" style="text-align:right;">
+					<div class="col-3">
+						<span >
+							<img src="img/historico.png" width="30px">
+						</span>
+					</div>
+					<div class="col-9" style="text-align:left;">					
+						<span class="seletores_configuracoes">Historico</span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-9 border_custom">
-	           	<br>
-	           	<div class="row">
-	           		
-
-					<div class="col-md-4">
-						<button id="btn_historico_vendas" class="btn btn-large btn-outline-primary btn_historico active">Histórico de Vendas</button>
-						<button id="btn_historico_compras" class="btn btn-large btn-outline-primary btn_historico">Histórico de Compras</button>					
+			
+			<div class="col-md-8 tela_informacoes">
+				<div class="row">	           		
+					<div class="row d-flex justify-content-center">
+						<button id="btn_historico_vendas" class="btn_historico btn_historico_ativo">Histórico de Vendas</button>
+						<button id="btn_historico_compras" class="btn_historico">Histórico de Compras</button>
+						<button id="btn_historico_contas" class="btn_historico">Histórico de Contas</button>
+						<button id="btn_historico_alteracoes" class="btn_historico">Histórico de Alterações</button>
+						<!-- <button id="" class="btn btn-large btn-outline-primary btn_historico">Histórico de Devoluções</button>	 -->
 					</div>
-					<div class="col-md-4">
-						<!-- <button id="" class="btn btn-large btn-outline-primary btn_historico">Histórico de Devoluções</button>	 -->				
-						<button id="btn_historico_contas" class="btn btn-large btn-outline-primary btn_historico">Histórico de Contas</button>					
-					</div>
-					<div class="col-md-4">					
-						<button id="btn_historico_alteracoes" class="btn btn-large btn-outline-primary btn_historico">Histórico de Alterações</button>					
-					</div>
-	           	</div>
-	           	<br>
-				<div class="row">
+					<div class="row">
 					<!-- HISTORICO DE VENDAS E COMPRAS -->
 					<div class="col-md-12">	
-						<form id="form_historico_vendas_compras" class="input-group form_procurar_historico">					
+						<form id="form_historico_vendas_compras" class="input-group d-flex justify-content-center form_procurar_historico">
 		                    <div class="form-group d-none">
 		                        <input type="text" class="form-control" name="offset" id="offset" value="0"/>
 							</div>
-							<div class="col-4">
-		                    	<input type="text" id="nome_cliente" class="form-control inputs_historico" placeholder="Procurar Cliente" maxlength="140" name="nome_cliente">
-		                    	<input type="text" id="nome_fornecedor" class="form-control inputs_historico d-none" placeholder="Procurar Fornecedor" maxlength="140" name="nome_fornecedor">
+							<div class="row">
+								<div class="barra_pesquisa_historico col-md-3">
+									<span class="lupa_pesquisa_historico">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+										  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+										</svg>
+									</span>
+									<input type="text" id="nome_cliente" class="form-control inputs_historico" placeholder="Procurar Cliente" maxlength="140" name="nome_cliente">
+		                    		<input type="text" id="nome_fornecedor" class="form-control inputs_historico d-none" placeholder="Procurar Fornecedor" maxlength="140" name="nome_fornecedor">
+								</div>
+								<div class="col-4 barra_pesquisa_historico">
+			                    	<input type="text" id="nome_produto" class="form-control inputs_historico" placeholder="Procurar Produto" maxlength="140" name="nome_produto">								
+								</div>
+					           	<div id="paginacao" class="form-group col-3 barra_pesquisa_historico barra_pesquisa_historico_select">
+				                    <select class="form-select" id="registros_por_pagina" name="registros_por_pagina">
+				                    	<option value="5">5</option>
+				                    	<option value="10">10</option>
+				                    	<option value="20">20</option>
+				                    	<option value="40">40</option>
+				                    	<option value="80">80</option>
+				                    </select>
+				                </div>
+			                    <button type="button" class="btn btn-primary d-none" id="btn_pesquisar">Filtro</button>
 								
 							</div>
-							<div class="col-4">
-		                    	<input type="text" id="nome_produto" class="form-control inputs_historico" placeholder="Procurar Produto" maxlength="140" name="nome_produto">								
-							</div>
-				           	<div id="paginacao" class="form-group col-3">
-			                    <select class="form-select" id="registros_por_pagina" name="registros_por_pagina">
-			                    	<option value="5">5</option>
-			                    	<option value="10">10</option>
-			                    	<option value="20">20</option>
-			                    	<option value="40">40</option>
-			                    	<option value="80">80</option>
-			                    </select>
-			                </div>
-			                    <button type="button" class="btn btn-primary d-none" id="btn_pesquisar">Filtro</button>
 		            	</form>
 		            	<!-- FIM HISTORICO DE VENDAS E COMPRAS -->
 
 
 		            	<!-- HISTORICO DE CONTAS -->
-		            	<div class="relacao_contas" class="col-12 d-flex align-items-center d-none">
-		            		<form id="form_contas">
+		            	<div class="relacao_contas" class="col-12">
+		            		<form id="form_contas" class="d-flex justify-content-center">
 		            			<div class="form-group d-none">
 			                        <input type="text" class="form-control" name="offset_contas" id="offset_contas" value="0"/>
 								</div>
-			            		<div class="col-12">
 			            			<div class="row">
-			            				<div class="col-4">
+			            				<div class="col-4 barra_pesquisa_historico">
+			            					<span class="lupa_pesquisa_historico">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+												  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+												</svg>
+											</span>
 					            			<input type="text" id="historico_contas_despesas_investimentos" class="form-control inputs_historico_contas" placeholder="Procurar Conta" maxlength="140" name="historico_contas_despesas_investimentos">
 			            				</div>
-			            				<div class="col-4">
-			            					<select class="form-select" id="historico_contas_select" name="historico_contas_select">
+			            				<div class="col-4 barra_pesquisa_historico">
+			            					<select class="form-select selects_historico" id="historico_contas_select" name="historico_contas_select">
 			            						<option value="">Todos</option>
 			            						<option value="Despesa">Despesas</option>
 			            						<option value="Investimento">Investimentos</option>
 			            					</select>
 			            					<input type="text" id="historico_contas_investimento" class="form-control inputs_historico_contas d-none" placeholder="Procurar Investimento" maxlength="140" name="historico_contas_investimento">
 			            				</div>
-		            					<div id="paginacao_contas" class="form-group col-4">
+		            					<div id="paginacao_contas" class="form-group col-4 barra_pesquisa_historico barra_pesquisa_historico_select">
 						                    <select class="form-select" id="registros_por_pagina_contas" name="registros_por_pagina_contas">
 						                    	<option value="5">5</option>
 						                    	<option value="10">10</option>
@@ -466,41 +588,44 @@
 						                    </select>
 						                </div>
 			            			</div>
-			            			
-			            		</div>
 		            		</form><!-- Fim form contas -->
 						</div><!-- fim relacao contas -->
 						
             			<!-- FIM HISTORICO DE CONTAS -->
 
-            			<!-- HISTORICO DE CADASTROS -->
+            			<!-- HISTORICO DE ALTERAÇÕES -->
             			<div class="col-12 d-none relacao_cadastro" >
             				<form id="historico_alteracoes">
             					<div class="form-group d-none">
 			                        <input type="text" class="form-control" name="offset_alteracoes" id="offset_alteracoes" value="0"/>
 								</div>
 			            		<div class="col-12">
-			            			<div class="row ">
-			            				<div class="col-3">
+			            			<div class="row d-flex justify-content-center">
+			            				<div class="col-3 barra_pesquisa_historico alterecoes">
+			            					<span class="lupa_pesquisa_historico">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+												  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+												</svg>
+											</span>
 					            			<input type="text" id="nome_produto_alteracao" class="form-control inputs_historico_cadastro" placeholder="Procurar id ou Nome" maxlength="140" name="nome_produto_alteracao">
 			            				</div>
-			            				<div class="col-3">
-			            					<select class="form-select" id="historico_cadastro_select" name="historico_cadastro_select">
+			            				<div class="col-3 barra_pesquisa_historico alterecoes">
+			            					<select class="form-select selects_historico" id="historico_cadastro_select" name="historico_cadastro_select">
 			            						<option value="produtos">Produtos</option>
 			            						<option value="clientes">Clientes</option>
 			            						<option value="fornecedores">Fornecedores</option>
 			            					</select>
 			            				</div>
-			            				<div class="col-3">
-			            					<select class="form-select" id="historico_cadastro_select_tipo" name="historico_cadastro_select_tipo">
+			            				<div class="col-3 barra_pesquisa_historico alterecoes">
+			            					<select class="form-select selects_historico" id="historico_cadastro_select_tipo" name="historico_cadastro_select_tipo">
 			            						<option value="">Todos</option>
 			            						<option value="Cadastro">Cadastro</option>
 			            						<option value="Edicao">Edição</option>
 			            						<option value="Excluidos">Excluidos</option>
 			            					</select>
 			            				</div>
-		            					<div id="paginacao_cadastro" class="form-group col-3">
-						                    <select class="form-select" id="registros_por_pagina_alteracoes" name="registros_por_pagina_alteracoes">
+		            					<div id="paginacao_cadastro" class="form-control col-3 barra_pesquisa_historico alterecoes">
+						                    <select class="form-select selects_historico" id="registros_por_pagina_alteracoes" name="registros_por_pagina_alteracoes">
 						                    	<option value="5">5</option>
 						                    	<option value="10">10</option>
 						                    	<option value="20">20</option>
@@ -517,7 +642,7 @@
 					</div>
 				</div><!-- Fim barras de pesquisas -->
 				<br>
-	            <div class="row">
+	            <div class="row resultado_pesquisa_historico">
 				<br>
 	                <div class="col-md-12">
 	                    
@@ -525,17 +650,15 @@
 	                    </div>
 	                </div>
 	            </div>
-				</div>
-				<div id="sair">
-					<button class="btn btn-outline-danger"><a href="sair.php">SAIR</a></button>
-				</div>
-
-				
-
-            </div>
+					
+					
+	           	</div>
+			</div>
 		</div>
+	</div>
 
-	</div>	
+
+	
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>

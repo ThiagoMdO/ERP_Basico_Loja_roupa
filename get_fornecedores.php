@@ -34,41 +34,53 @@
 				</div>	
 
 				<br/>
-				<div id="fornecedor_'.$i.'" class="row linha_pesquisa d-flex align-items-center justify-content-center">
-					<hr>
-					<br/>
-					<div class="col-md-2">
-							<p>'.$linha["nome_fornecedor"].'</p>
-					</div>
-					<div class="col-md-2">
-							<p>'.$linha["cpf_cnpj"].'</p>
-					</div>
-					<div class="col-md-2">
-							<p>'.$linha["contato_telefone"].'</p>
-					</div>
-					<div class="col-md-6">
-							<p>'.$linha["rua"].', '.$linha["numero"].', '.$linha["bairro"].', '.$linha["cidade"].', '.$linha["uf"].', '.$linha["ceep"].'</p>
+				<div id="fornecedor_'.$i.'" class="row d-flex align-items-center justify-content-center">
+					
+					<div class="row item_exibir d-flex align-items-center justify-content-center">
+						<div class="col-md-2">
+								<p>'.$linha["nome_fornecedor"].'</p>
+						</div>
+						<div class="col-md-2">
+								<p>'.$linha["cpf_cnpj"].'</p>
+						</div>
+						<div class="col-md-2">
+								<p>'.$linha["contato_telefone"].'</p>
+						</div>
+						<div class="col-md-6">
+								<p>'.$linha["rua"].', '.$linha["numero"].', '.$linha["bairro"].', '.$linha["cidade"].', '.$linha["uf"].', '.$linha["ceep"].'</p>
+						</div>
 					</div>
 					<div class="col-12">
-						<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modal_fornecedor'.$i.'" id="'.$i.'">Editar</button>
-						
 						<div class="btn-group">
-						  <button type="button" class="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						    Excluir
-						  </button>
-						  <ul class="dropdown-menu" style="text-align:center">
-						    <li><button type="button" class="btn btn-outline-danger btn_excluir_item" onclick="excluir_fornecedor('.$i.')">Sim</button></li>
-						    <hr>
-						    <li><button type="button" class="btn btn-outline-primary">Não</button></li>
-						  </ul>
-						</div>
 
+							<div class="btn_editar_pessoa_f">
+								<button type="button" class="btn btn_editar_pessoa" data-bs-toggle="modal" data-bs-target="#modal_fornecedor'.$i.'" id="'.$i.'">Editar</button>
+							</div>
+
+							<button class="btn_opcao">
+								<img src="img/3_pontos.png">
+							</button>
+
+
+							<div class="btn_excluir">
+								<span>Excluir</span>
+								<div>
+
+									<button type="button" class="btn_excluir_sim" onclick="excluir_fornecedor('.$i.')">Sim</button>
+								</div>
+							</div>
+							  
+						</div>
+					</div>
+
+					<div class="col-12">
+						
 						  <!-- Modal Exibir itens -->
 						<div class="modal fade" id="modal_fornecedor'.$i.'" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="false">
 							<div class="modal-dialog">
 							    <div class="modal-content">
 							    	<div class="modal-header">
-								        <h5 class="modal-title" id="modalLabel">Editar Cliente</h5>
+								        <h5 class="modal-title" id="modalLabel">Editar Fornecedor</h5>
 							        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
 						     	</div>
 								<div class="modal-body">

@@ -80,6 +80,7 @@
 			if($saldo_dinheiro>=$subtotal){
 				$novo_saldo_dinheiro = $saldo_dinheiro-$subtotal;
 				$sql_atualiza_saldos = "UPDATE empresa set saldo_dinheiro = $novo_saldo_dinheiro WHERE dono_empresa = 1";
+				
 
 			}else{
 				return false;
@@ -110,7 +111,7 @@
 
 	$resposta_id_saldo = mysqli_query($con, $sql_atualiza_saldos);
 	if($resposta_id_saldo){
-		echo 'Saldo atualizado';
+
 	}else{
 		echo 'Erro ao atualizar saldo';
 	}

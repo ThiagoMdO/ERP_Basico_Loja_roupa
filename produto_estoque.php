@@ -183,18 +183,12 @@
 					qtd_disponivel = qtd_disponivel * 1;
 					qtd_comprar = qtd_comprar * 1;		
 					
-					switch(data){
-						case '1':
-							alert('Saldo em dinheiro insuficiente');
-							return false;
-							break;
-						case '2':
-							alert('Saldo no banco insuficiente');
-							return false;
-							break;
+					if(!data){
+						alert('Saldo insuficiente');
+						return false;
 					}
 
-					alert(' Comprado com sucesso')
+					alert('Comprado com sucesso');
 					var sub = qtd_disponivel + qtd_comprar;
 					$('#comprar_qtd_produto_'+id_produto).val(sub);				
 						

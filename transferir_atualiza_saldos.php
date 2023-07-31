@@ -45,23 +45,43 @@
 	switch($tipo_saldo_de){
 		case 'de_dinheiro':
 			$tipo_saldo_de_string = 'Saldo dinheiro';
+
 			$pega_saldo_dinheiro -= $valor_transferir;
-			$sql_transferir_saldo = "UPDATE empresa SET saldo_dinheiro = $pega_saldo_dinheiro WHERE dono_empresa = 1";
+			if($pega_saldo_dinheiro<=0){
+				echo 'Saldo em dinheiro insuficiente para trocar';
+			}else{
+				$sql_transferir_saldo = "UPDATE empresa SET saldo_dinheiro = $pega_saldo_dinheiro WHERE dono_empresa = 1";
+			}
 		break;
 		case 'de_banco':
 			$tipo_saldo_de_string = 'Saldo do banco';
 			$pega_saldo_banco -= $valor_transferir;
-			$sql_transferir_saldo = "UPDATE empresa SET saldo_banco = $pega_saldo_banco WHERE dono_empresa = 1";
+			if($pega_saldo_banco<=0){
+				echo 'Saldo em banco insuficiente para trocar';
+			}else{
+				$sql_transferir_saldo = "UPDATE empresa SET saldo_banco = $pega_saldo_banco WHERE dono_empresa = 1";
+			}
 		break;
 		case 'de_receber':
 			$tipo_saldo_de_string = 'Saldo a receber';
 			$pega_saldo_receber -= $valor_transferir;
-			$sql_transferir_saldo = "UPDATE empresa SET saldo_receber = $pega_saldo_receber WHERE dono_empresa = 1";
+			if($pega_saldo_receber<=0){
+				echo 'Saldo a receber insuficiente para trocar';
+			}else{
+				$sql_transferir_saldo = "UPDATE empresa SET saldo_receber = $pega_saldo_receber WHERE dono_empresa = 1";
+			}
 		break;
 	}
 
 	//tirar do saldo selecionado usando a mesma variável com set -
-	$transferir = mysqli_query($con, $sql_transferir_saldo);
+
+	
+
+	if($sql_transferir_saldo != ''){
+		$transferir = mysqli_query($con, $sql_transferir_saldo);
+	}else{
+		return false;
+	}
 	
 
 	switch($tipo_saldo_para){
@@ -69,6 +89,7 @@
 			$tipo_saldo_para_string = 'Saldo dinheiro';
 			$pega_saldo_dinheiro += $valor_transferir;
 			$sql_transferir_saldo = "UPDATE empresa SET saldo_dinheiro = $pega_saldo_dinheiro WHERE dono_empresa = 1";
+			
 		break;
 		case 'para_banco':
 			$tipo_saldo_para_string = 'Saldo banco';
@@ -82,10 +103,11 @@
 		break;
 	}
 
+	
 	//passar o valor tirado usando a mesma variável com set +
 	$transferir = mysqli_query($con, $sql_transferir_saldo);
-	
 	echo 'Foi transferido R$:'.$valor_transferir.' de '.$tipo_saldo_de_string.' para '.$tipo_saldo_para_string;
+	
 
 	
 

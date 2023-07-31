@@ -54,7 +54,7 @@
 						</div>
 
 						<div class="row editar_saldos alinhar_meio">
-							<div class"col-12>
+							<div class = "col-12">
 								<h5>Editar Dados de Saldos</h5>
 							</div>
 							<div class="col-12 d-flex">

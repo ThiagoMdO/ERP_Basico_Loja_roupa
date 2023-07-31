@@ -87,6 +87,41 @@
 			$('#menu_historico').click(function(){
 				window.location.href = "historico.php";
 			});
+			$('#menu_controles').click(function(){
+				window.location.href = "controles.php";
+			});
+			$('#menu_controles_produtos').click(function(){
+				window.location.href = "controles_produtos.php";
+			});
+			
+
+
+			//btns_navegar_paginas_controles
+
+			
+			$('#btn_pg_produtos').click(function(){
+				window.location.href = "controles_produtos.php";
+			});
+			$('#btn_pg_cadastrar_produto').click(function(){
+				window.location.href = "produto_cadastrar.php";
+			});
+			$('#btn_pg_estoque_loja').click(function(){
+				window.location.href = "produto_estoque.php";
+			});
+			$('#btn_pg_vender_estoque').click(function(){
+				window.location.href = "vender.php";
+			});
+
+			
+			$('.btn_pg_pessoal').click(function(){
+				window.location.href = "controles_pessoal.php";
+			});
+			$('.btn_pg_clientes').click(function(){
+				window.location.href = "clientes.php";
+			});
+			$('.btn_pg_fornecedores').click(function(){
+				window.location.href = "fornecedores.php";
+			});
 
 		});
 		
@@ -179,7 +214,7 @@
 					</div>
 				</div>
 
-				<div id="menu_controles" class="row seletores_menu" style="text-align:right;">
+				<div id="menu_controles" class="row seletores_menu menu_ativo" style="text-align:right;">
 					<div class="col-3">
 						<span >
 							<img src="img/controles.png" width="30px">
@@ -190,7 +225,7 @@
 					</div>
 				</div>
 
-				<div class="row seletores_menu" style="text-align:right;">
+				<div id="menu_controles_produtos" class="row seletores_menu" style="text-align:right;">
 					<div class="col-4">
 						<span >
 							<img src="img/produtos.png" width="30px">
@@ -236,7 +271,7 @@
 
 				<!-- Fim produtos -->
 
-				<div class="row seletores_menu menu_ativo" style="text-align:right;">
+				<div class="row seletores_menu menu_ativo btn_pg_pessoal" style="text-align:right;">
 					<div class="col-4">
 						<span >
 							<img src="img/pessoal.png" width="30px">

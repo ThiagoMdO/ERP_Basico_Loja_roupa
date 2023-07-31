@@ -106,7 +106,7 @@
 	opacity: 0;	
 	padding: 8.5px;
 	top: 0;
-	left: -30px;
+	left: -0px;
 	border-radius: 1px;
 	transition: all ease .3s;
 	border: none;
@@ -131,7 +131,7 @@
 
 
 .btn-group:hover .btn_excluir{
-	left: 56px;
+	left: 51px;
 	opacity: 1;
 	width: 60px;
 }
@@ -145,6 +145,7 @@
 	opacity: 1;
 	width: 60px;
 }
+
 .btn_excluir, .btn_excluir_pessoa, .btn_editar_pessoa{
 	background: #E8E8E8;
 	cursor: pointer;
@@ -169,13 +170,13 @@
 .btn_excluir:hover{
 	background: #E04A35;
 }
-.btn_excluir_sim{
+.btn_excluir_sim{	
 	position: absolute;
 	opacity: 0;	
 	padding: 8.5px;
 	height: 42px;
 	top: 0;
-	left: 30px;
+	left: 0px;
 	border-radius: 1px;
 	transition: all ease .3s;
 	border: none;
@@ -493,6 +494,25 @@
 
 .row-space-controle{
 	margin: 10% 0;
+}
+
+/* --------------- controles.php --------------- */
+.opcao_controle, .opcao_controle_sub{
+	width: 250px;
+	height: 210px;
+	border-radius: 10px;
+	border: .7px solid rgba(200,205,205,0.9);
+	padding: 5px;
+	margin-bottom: 10px;
+	transition: all ease .3s;
+
+}
+.opcao_controle_sub{
+	height: 60px;
+}
+.opcao_controle:hover, .opcao_controle_sub:hover{
+	background: rgba(200,205,205,0.9);
+	cursor: pointer;
 }
 
 /* --------------- produto_cadastrar.php --------------- */

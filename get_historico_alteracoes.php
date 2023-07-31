@@ -138,7 +138,8 @@
 					';
 			}
 			for($i = 1; $i <= $total_paginas; $i++) {
-		        $classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        //$classe_botao = $pagina_atual == $i ? 'btn-primary' : 'btn-outline-primary'; //aplica a classe para o botão da página atual
+		        $classe_botao = $pagina_atual == $i ? 'btn_selecionar_pagina' : 'btn_sem_selecionar_pagina';
 		        echo '<button class="btn '.$classe_botao.' paginar_alteracoes" data-pagina_clicada="'.$i.'">'.$i.'</button>';
 		     };
 		

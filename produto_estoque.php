@@ -492,6 +492,7 @@
 					<div class="col-2 info_produto">Preço</div>
 					<div class="col-2 info_produto">QTD</div>
 				</div>
+					<br>
 					<div id="div_resultado_paginacao"></div>
 				</div>
 		</div>

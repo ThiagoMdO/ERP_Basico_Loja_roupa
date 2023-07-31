@@ -718,23 +718,13 @@
 }
 u{
 	text-decoration: underline;
-	color: white;
+	color: gray;
 }
 input{
 	width: 100%;
 }
 
-h1,h2,h3{
-	text-shadow: .5px .5px white;
-}
-#sair{
-	margin-top: 10px;
-}
-#sair a{
-	
-	text-decoration: none;
-	color: white;
-}
+
 
 .border_custom a{
 	color: black;

@@ -59,6 +59,23 @@
 	$valor_operacao_novo = '';
 	switch(true){
 		case $nomeProduto_Editado == true:
+			//sqls verificar se tem nome, cpf ou telefone igual
+			//nome
+			$sql_verifica_nome_existe = "SELECT nome_produto FROM produto_estoque WHERE nome_produto = '$nomeProduto_Editado'";
+			$resultado_nome_existe = mysqli_query($con, $sql_verifica_nome_existe);
+
+			if($resultado_nome_existe){
+				$nome_existe = false;
+				while($linha = mysqli_fetch_array($resultado_nome_existe, MYSQLI_ASSOC)){
+					$nome_existe = ['produto_estoque'];
+				}
+				if($nome_existe){
+					echo 'Nome já em uso';
+					return false;
+				}else{
+					echo 'Nome atualizado';
+				}
+			}
 			$sql_alterar_produto = "UPDATE produto_estoque SET nome_produto =  '$nomeProduto_Editado' WHERE id_produto = '$id_produto'";
 			$tipo_operacao = 'Nome do produto';
 			$valor_operacao_antigo = $nome_produto_antigo;
@@ -117,7 +134,7 @@
 				while($linha = mysqli_fetch_array($resultado_id_edicao)){
 					$nome_produto_alteracao_edicao = $linha['nome_produto'];
 					$descricao_edicao = 'TAM: '.$linha['tamanho'].', Cor: '.$linha['cor'].', $Fornecedor: '.$linha['preco_produto_fornecedor'].', $Cliente: '.$linha['preco_produto_cliente'].', QTD: '.$linha['quantidade'].'<br>
-					Alteração: '.$tipo_operacao.' de '.$valor_operacao_antigo.' para '.$valor_operacao_novo;
+					Alteração: '.$tipo_operacao.' de <u>'.$valor_operacao_antigo.'</u> para <u>'.$valor_operacao_novo.'</u>';
 
 				}
 			}

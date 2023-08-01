@@ -295,48 +295,55 @@
 				method: 'post',
 				data: $('#form_produto_'+id_input).serialize(),
 				success: function(data){
-					var valor_nome_produto = $('#exibir_nome_produto_'+id_input);
-					var valor_nome_produto_editado = $('#editar_nome_produto_'+id_input).val();
+					if(data == 'Nome já em uso'){
+						alert(data);
+						return false;
+					}else{
+						
+						var valor_nome_produto = $('#exibir_nome_produto_'+id_input);
+						var valor_nome_produto_editado = $('#editar_nome_produto_'+id_input).val();
 
-					var valor_tamanho_produto = $('#exibir_tamanho_produto_'+id_input);
-					var valor_tamanho_produto_editado = $('#editar_tamanho_produto_'+id_input).val();
+						var valor_tamanho_produto = $('#exibir_tamanho_produto_'+id_input);
+						var valor_tamanho_produto_editado = $('#editar_tamanho_produto_'+id_input).val();
 
-					var valor_cor_produto = $('#exibir_cor_produto_'+id_input);
-					var valor_cor_produto_editado = $('#editar_cor_produto_'+id_input).val();
-					
-					var valor_preco_produto = $('#exibir_preco_produto_'+id_input);
-					var valor_preco_produto_editado = $('#editar_preco_produto_'+id_input).val();
-					
-					var valor_quantidade_produto = $('#exibir_qtd_produto_'+id_input);
-					var valor_quantidade_produto_editado = $('#editar_quantidade_produto_'+id_input).val();
+						var valor_cor_produto = $('#exibir_cor_produto_'+id_input);
+						var valor_cor_produto_editado = $('#editar_cor_produto_'+id_input).val();
+						
+						var valor_preco_produto = $('#exibir_preco_produto_'+id_input);
+						var valor_preco_produto_editado = $('#editar_preco_produto_'+id_input).val();
+						
+						var valor_quantidade_produto = $('#exibir_qtd_produto_'+id_input);
+						var valor_quantidade_produto_editado = $('#editar_quantidade_produto_'+id_input).val();
 
-					//get nome
-					if(valor_nome_produto_editado){
-						valor_nome_produto.val(valor_nome_produto_editado);
+						//get nome
+						if(valor_nome_produto_editado){
+							valor_nome_produto.val(valor_nome_produto_editado);
+						}
+						//get tamanho
+						if(valor_tamanho_produto_editado){
+							valor_tamanho_produto.val(valor_tamanho_produto_editado);
+						}
+						//get cor
+						if(valor_cor_produto_editado){
+							valor_cor_produto.val(valor_cor_produto_editado);
+						}
+						//get preço
+						if(valor_preco_produto_editado){
+							valor_preco_produto.val(valor_preco_produto_editado);
+						}
+						//get quantidade
+						if(valor_quantidade_produto_editado){
+							valor_quantidade_produto.val(valor_quantidade_produto_editado);
+						}
+						
+						//Zerar inputs editar
+						$('#editar_nome_produto_'+id_input).val('');
+						$('#editar_tamanho_produto_'+id_input).val('');
+						$('#editar_cor_produto_'+id_input).val('');
+						$('#editar_preco_produto_'+id_input).val('');
+						$('#editar_quantidade_produto_'+id_input).val('');
 					}
-					//get tamanho
-					if(valor_tamanho_produto_editado){
-						valor_tamanho_produto.val(valor_tamanho_produto_editado);
-					}
-					//get cor
-					if(valor_cor_produto_editado){
-						valor_cor_produto.val(valor_cor_produto_editado);
-					}
-					//get preço
-					if(valor_preco_produto_editado){
-						valor_preco_produto.val(valor_preco_produto_editado);
-					}
-					//get quantidade
-					if(valor_quantidade_produto_editado){
-						valor_quantidade_produto.val(valor_quantidade_produto_editado);
-					}
-					
-					//Zerar inputs editar
-					$('#editar_nome_produto_'+id_input).val('');
-					$('#editar_tamanho_produto_'+id_input).val('');
-					$('#editar_cor_produto_'+id_input).val('');
-					$('#editar_preco_produto_'+id_input).val('');
-					$('#editar_quantidade_produto_'+id_input).val('');
+
 
 
 					//alert(data)

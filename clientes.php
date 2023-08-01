@@ -155,7 +155,7 @@
 				method: 'post',
 				data:$('#form_alterar_dados_clientes_'+id_cliente).serialize(),
 				success: function(data){
-					alert('Dados editados com sucesso, atualize a página');
+					alert(data);
 					$('#editar_nome_cliente'+id_cliente).val('');
 					$('#editar_cpf_cliente'+id_cliente).val('');
 					$('#editar_telefone_cliente'+id_cliente).val('');

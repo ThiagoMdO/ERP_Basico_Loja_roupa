@@ -69,6 +69,23 @@
 	$alteracao = 'Alterações:<br/>';
 
 	if($editar_nome_cliente){
+		//sqls verificar se tem nome, cpf ou telefone igual
+		//nome
+		$sql_verifica_nome_existe = "SELECT nome_cliente FROM clientes WHERE nome_cliente = '$editar_nome_cliente'";
+		$resultado_nome_existe = mysqli_query($con, $sql_verifica_nome_existe);
+
+		if($resultado_nome_existe){
+			$nome_existe = false;
+			while($linha = mysqli_fetch_array($resultado_nome_existe, MYSQLI_ASSOC)){
+				$nome_existe = ['nome_cliente'];
+			}
+			if($nome_existe){
+				echo 'Nome já em uso';
+				return false;
+			}else{
+				echo 'Nome atualizado';
+			}
+		}
 		$sql_alterar_cliente_nome = "UPDATE clientes SET nome_cliente =  '$editar_nome_cliente' WHERE id_cliente = '$id_cliente'";
 		$resultado_id_nome = mysqli_query($con,$sql_alterar_cliente_nome);
 
@@ -78,6 +95,22 @@
 	}
 
 	if($editar_cpf_cliente){
+		//sqls verificar se tem nome, cpf ou telefone igual
+		//cpf
+		$sql_verifica_cpf_existe = "SELECT cpf FROM clientes WHERE cpf = '$editar_cpf_cliente'";
+		$resultado_cpf_existe = mysqli_query($con, $sql_verifica_cpf_existe);
+		if($resultado_cpf_existe){
+			$cpf_existe = false;
+			while($linha = mysqli_fetch_array($resultado_cpf_existe, MYSQLI_ASSOC)){
+				$cpf_existe = ['cpf'];
+			}
+			if($cpf_existe){
+				echo 'Número de CPF já em uso';
+				return false;
+			}else{
+				echo '/Número CPF atualizado';
+			}
+		}
 		$sql_alterar_cliente_cpf = "UPDATE clientes SET cpf =  '$editar_cpf_cliente' WHERE id_cliente = '$id_cliente'";
 		$resultado_id_cpf = mysqli_query($con,$sql_alterar_cliente_cpf);
 		$valor_operacao_novo = $editar_cpf_cliente;
@@ -86,6 +119,22 @@
 	}
 
 	if($editar_telefone_cliente){
+		//sqls verificar se tem nome, cpf ou telefone igual
+		//telefone
+		$sql_verifica_telefone_existe = "SELECT contato_telefone FROM clientes WHERE contato_telefone = '$editar_telefone_cliente'";
+		$resultado_telefone_existe = mysqli_query($con, $sql_verifica_telefone_existe);
+		if($resultado_telefone_existe){
+			$telefone_existe = false;
+			while($linha = mysqli_fetch_array($resultado_telefone_existe, MYSQLI_ASSOC)){
+				$telefone_existe = ['contato_telefone'];
+			}
+			if($telefone_existe ){
+				echo 'Número de Telefone já em uso';
+				return false;
+			}else{
+				echo '/Número de Telefone Atualizado';
+			}
+		}
 		$sql_alterar_cliente_telefone = "UPDATE clientes SET contato_telefone =  '$editar_telefone_cliente' WHERE id_cliente = '$id_cliente'";
 		$resultado_id_telefone = mysqli_query($con,$sql_alterar_cliente_telefone);
 		$alteracao = $alteracao.'<p>Telefone Cliente de <u>"'.$telefone_cliente_antigo.'"</u> para <u>"'.$editar_telefone_cliente.'"</u><p/>';
@@ -145,6 +194,8 @@
 			VALUES 
 			($id_cliente,'$nome_cliente_alteracao_edicao','$alteracao','Edicao')";
 			$acrescentar_historico = mysqli_query($con, $sql_incluir_cliente_historico);
+	}else{
+		echo 'Preencha ao menos um campo';
 	}
 
 

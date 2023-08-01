@@ -69,7 +69,7 @@
 			SELECT *, DATE_FORMAT(data_alteracao, '%d %b %Y %T') as data_alteracao 
 			FROM historico_alteracoes
 		    WHERE $alternador_pesquisa LIKE '%$nome_produto%' AND tipo_operacao LIKE '%$historico_cadastro_select_tipo%' AND $select_cadastro_consultar > 0
-		    ORDER BY data_alteracao DESC
+		    ORDER BY id_alteracao DESC
 		    LIMIT $registros_por_pagina
 		    OFFSET $offset";
 

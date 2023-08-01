@@ -69,12 +69,45 @@
 	$alteracao = 'Alterações:<br/>';
 
 	if($editar_nome_fornecedor){
+		//sqls verificar se tem nome, cpf ou telefone igual
+		//nome
+		$sql_verifica_nome_existe = "SELECT nome_fornecedor FROM fornecedores WHERE nome_fornecedor = '$editar_nome_fornecedor'";
+		$resultado_nome_existe = mysqli_query($con, $sql_verifica_nome_existe);
+
+		if($resultado_nome_existe){
+			$nome_existe = false;
+			while($linha = mysqli_fetch_array($resultado_nome_existe, MYSQLI_ASSOC)){
+				$nome_existe = ['nome_fornecedor'];
+			}
+			if($nome_existe){
+				echo 'Nome já em uso';
+				return false;
+			}else{
+				echo 'Nome atualizado';
+			}
+		}
 		$sql_alterar_fornecedor_nome = "UPDATE fornecedores SET nome_fornecedor =  '$editar_nome_fornecedor' WHERE id_fornecedor = '$id_fornecedor'";
 		$resultado_id_nome = mysqli_query($con,$sql_alterar_fornecedor_nome);
 		$alteracao = $alteracao.'<p>Nome Fornecedor de <u>"'.$nome_fornecedor_antigo.'"</u> para <u>"'.$editar_nome_fornecedor.'"</u><p/>';
 	}
 
 	if($editar_cpf_cnpj_fornecedor){
+		//sqls verificar se tem nome, cpf ou telefone igual
+		//cpf
+		$sql_verifica_cpf_existe = "SELECT cpf_cnpj FROM fornecedores WHERE cpf_cnpj = '$editar_cpf_cnpj_fornecedor'";
+		$resultado_cpf_existe = mysqli_query($con, $sql_verifica_cpf_existe);
+		if($resultado_cpf_existe){
+			$cpf_existe = false;
+			while($linha = mysqli_fetch_array($resultado_cpf_existe, MYSQLI_ASSOC)){
+				$cpf_existe = ['cpf_cnpj'];
+			}
+			if($cpf_existe){
+				echo ' - Número de CPF/CNPJ já em uso';
+				return false;
+			}else{
+				echo ' - Número CPF/CNPJ atualizado';
+			}
+		}
 		$sql_alterar_fornecedor_cpf = "UPDATE fornecedores SET cpf_cnpj =  '$editar_cpf_cnpj_fornecedor' WHERE id_fornecedor = '$id_fornecedor'";
 		$resultado_id_cpf = mysqli_query($con,$sql_alterar_fornecedor_cpf);
 		$alteracao = $alteracao.'<p>CPF Fornecedor de <u>"'.$cpf_cnpj_fornecedor_antigo.'"</u> para <u>"'.$editar_cpf_cnpj_fornecedor.'"</u><p/>';
@@ -82,6 +115,22 @@
 	}
 
 	if($editar_telefone_fornecedor){
+		//sqls verificar se tem nome, cpf ou telefone igual
+		//telefone
+		$sql_verifica_telefone_existe = "SELECT contato_telefone FROM fornecedores WHERE contato_telefone = '$editar_telefone_fornecedor'";
+		$resultado_telefone_existe = mysqli_query($con, $sql_verifica_telefone_existe);
+		if($resultado_telefone_existe){
+			$telefone_existe = false;
+			while($linha = mysqli_fetch_array($resultado_telefone_existe, MYSQLI_ASSOC)){
+				$telefone_existe = ['contato_telefone'];
+			}
+			if($telefone_existe ){
+				echo ' - Número de Telefone já em uso';
+				return false;
+			}else{
+				echo ' - Número de Telefone Atualizado';
+			}
+		}
 		$sql_alterar_fornecedor_telefone = "UPDATE fornecedores SET contato_telefone =  '$editar_telefone_fornecedor' WHERE id_fornecedor = '$id_fornecedor'";
 		$resultado_id_telefone = mysqli_query($con,$sql_alterar_fornecedor_telefone);
 		$alteracao = $alteracao.'<p>Telefone Fornecedor de <u>"'.$telefone_fornecedor_antigo.'"</u> para <u>"'.$editar_telefone_fornecedor.'"</u><p/>';
@@ -142,7 +191,8 @@
 			VALUES 
 			($id_fornecedor,'$nome_fornecedor_alteracao_edicao','$alteracao','Edicao')";
 			$acrescentar_historico = mysqli_query($con, $sql_incluir_fornecedor_historico);
+	}else{
+		echo 'Preencha ao menos um campo';
 	}
-
 
 ?>

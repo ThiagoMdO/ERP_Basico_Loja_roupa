@@ -105,10 +105,10 @@
 				$cpf_existe = ['cpf'];
 			}
 			if($cpf_existe){
-				echo 'Número de CPF já em uso';
+				echo ' - Número de CPF já em uso';
 				return false;
 			}else{
-				echo '/Número CPF atualizado';
+				echo ' - Número CPF atualizado';
 			}
 		}
 		$sql_alterar_cliente_cpf = "UPDATE clientes SET cpf =  '$editar_cpf_cliente' WHERE id_cliente = '$id_cliente'";
@@ -129,10 +129,10 @@
 				$telefone_existe = ['contato_telefone'];
 			}
 			if($telefone_existe ){
-				echo 'Número de Telefone já em uso';
+				echo ' - Número de Telefone já em uso';
 				return false;
 			}else{
-				echo '/Número de Telefone Atualizado';
+				echo ' - Número de Telefone Atualizado';
 			}
 		}
 		$sql_alterar_cliente_telefone = "UPDATE clientes SET contato_telefone =  '$editar_telefone_cliente' WHERE id_cliente = '$id_cliente'";

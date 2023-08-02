@@ -299,7 +299,7 @@
 	border-radius: 2px;
 	box-shadow: 0px 0px 1px .1px gray;
 	padding-top: 15px;
-	font-family: 'Semi-bold';
+
 }
 
 .configuracoes img{
@@ -342,7 +342,6 @@
 }
 .caixa h4, .contas h4{
 	text-align: left;
-	font-family: 'H6-Bold';
 	font-weight: 600;
 }
 .dados_nome_saldo{	
@@ -525,7 +524,6 @@
 }
 .top_header_informacoes h4{
 	text-align: left;
-	font-family: 'H6-Bold';
 	font-weight: 600;
 }
 .btn_cadastro{
@@ -735,6 +733,7 @@
 /*===================== Tipografia =====================*/
 *{
 	list-style: none;
+	font-family: sans-serif;
 }
 u{
 	text-decoration: underline;

@@ -350,7 +350,7 @@
 	                    <div class="info_dados">
 	                    	<div class="row">
 								<div class="col-2">Nome</div>
-								<div class="col-2">CPF</div>
+								<div class="col-2">CPF/CNPJ</div>
 								<div class="col-2">Telefone</div>
 								<div class="col-6">Endereço</div>
 							</div>

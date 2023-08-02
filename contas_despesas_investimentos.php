@@ -189,12 +189,8 @@
 				success: function(){
 					if($('#nome_conta').val()!='' && $('#natureza_conta').val()!='' && $('#valor_conta').val()!='' && $('#pago_conta').val()!='' && $('#forma_pagamento_conta').val()!='' && $('#parcelas').val()!='' && $('#vencimento').val()!=''){
 						$('#nome_conta').val('');
-						$('#natureza_conta').val('');
 						$('#valor_conta').val('');
-						$('#pago_conta').val('');
-						$('#forma_pagamento_conta').val('');
-						$('#parcelas').val('');
-						$('#vencimento').val('');
+						$('#parcelas').val(1);
 					}
 
 					

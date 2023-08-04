@@ -9,14 +9,92 @@
 
 	$objDb = new db();
 	$con = $objDb->conecta_mysql();
-
-
+	$offset =isset($_POST['offset_pagina'])?$_POST['offset_pagina']:0;
 	$nome_cliente = isset($_POST['nome_cliente'])?$_POST['nome_cliente']:'';
+
+	$limite_exibicao = 2;
 	//SQL para pegar informações de caixa da empresa
-	$sql_dados_caixa = "SELECT * FROM clientes WHERE nome_cliente LIKE '%$nome_cliente%' ORDER BY nome_cliente";
+	$sql_dados_caixa = "SELECT * FROM clientes 
+						WHERE nome_cliente LIKE '%$nome_cliente%'
+						ORDER BY nome_cliente
+						LIMIT $limite_exibicao
+						OFFSET $offset";
+
+	// consultar registro
+	$sql_historico_qtd = "SELECT COUNT(*) AS total_registros
+		FROM (
+		    SELECT id_cliente
+			    FROM clientes
+			    WHERE nome_cliente LIKE '%$nome_cliente%'
+		) AS subconsulta";
+	
+	$quantidade_historico;
+	$resultado_id_historico_qtd = mysqli_query($con,$sql_historico_qtd);
+	if($resultado_id_historico_qtd){
+		while($linha = mysqli_fetch_array($resultado_id_historico_qtd)){
+			$quantidade_historico = $linha['total_registros'];
+		}
+	}
+
+	$offset++;
 
 	$resultado_id = mysqli_query($con,$sql_dados_caixa);
 
+	$total_paginas = ceil($quantidade_historico / $limite_exibicao);
+
+	$pagina_atual = ceil($offset / $limite_exibicao); //localiza a página atual
+
+	$avancar = $offset + 1;
+	$recuar = $offset - 1;
+	$esconder_posterior = '';
+	$esconder_anterior = '';
+
+	if($pagina_atual >= $total_paginas){
+		$esconder_posterior = 'd-none';
+	}
+	if($recuar < $limite_exibicao){
+		$esconder_anterior = 'd-none';
+	}
+
+	echo '
+
+		<form id="form_passar_pagina_posterior">
+			<div class="d-none">
+				<input type="text" name="nome_cliente" value="'.$nome_cliente.'" ">
+				<input type="text" name="offset_pagina" value="'.$avancar.'" ">
+			</div>
+			<div class="row">
+				<div class="col-10 d-flex justify-content-end align-items-center">
+					Página '.$pagina_atual.' de '.$total_paginas.', total clientes '.$quantidade_historico.'
+				</div>
+				<div class="col-2 div_btn_pula_pagina">	
+					<button class="btn btn_selecionar_pagina '.$esconder_anterior.'" type="button" id="btn_passar_pagina_voltar" onclick="passar_pagina_anterior()"> < </button>
+ 					<button class="btn btn_selecionar_pagina '.$esconder_posterior.'" type="button" id="btn_passar_pagina_ir" onclick="passar_pagina_posterior()"> > </button>
+				</div>
+			
+			</div>
+ 		</form>
+
+ 		<form id="form_passar_pagina_anterior">
+			<div class="d-none">
+				<input type="text" name="nome_cliente" value="'.$nome_cliente.'" ">
+				<input type="text" name="offset_pagina" value="'.$recuar - 2 .'" ">
+			</div>
+ 		</form>
+
+ 		
+ 	';
+
+	echo '<div class="col-md-12">
+	                    <div class="info_dados">
+	                    	<div class="row">
+								<div class="col-2">Nome</div>
+								<div class="col-2">CPF</div>
+								<div class="col-2">Telefone</div>
+								<div class="col-6">Endereço</div>
+							</div>
+	                    </div>
+	                </div>';
 	if($resultado_id){
 		$i = 0;
 		while($linha = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
@@ -31,6 +109,7 @@
 				</div>	
 
 				<br/>
+
 				<div id="cliente_'.$i.'" class="row d-flex align-items-center justify-content-center">
 					
 					<div class="row item_exibir d-flex align-items-center justify-content-center">

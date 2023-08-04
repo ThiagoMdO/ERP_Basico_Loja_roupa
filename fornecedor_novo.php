@@ -297,7 +297,7 @@
 							<input id="novo_fornecedor_cidade" name="novo_fornecedor_cidade" type="text" class="form-control" placeholder="Cidade fornecedor">
 						</div>
 						<div class="input-group mb-3">
-							<input id="novo_fornecedor_uf" name="novo_fornecedor_uf" type="text" class="form-control" placeholder="Estado fornecedor">
+							<input id="novo_fornecedor_uf" name="novo_fornecedor_uf" type="text" class="form-control" placeholder="UF fornecedor, Ex: BA">
 						</div>
 						<div class="input-group mb-3">						
 							<input id="novo_fornecedor_ceep" name="novo_fornecedor_ceep" type="text" class="form-control" placeholder="CEEP fornecedor">

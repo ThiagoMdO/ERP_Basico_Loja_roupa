@@ -160,6 +160,29 @@
 			})
 		}
 
+		function passar_pagina_posterior(){
+			$.ajax({
+				url:'get_fornecedores.php',
+				method: 'post',
+				data:$('#form_passar_pagina_posterior').serialize(),
+				
+			}).done(function(data){
+				$('#div_resultado_paginacao_fornecedores').html(data);
+			});
+		}
+
+		function passar_pagina_anterior(){
+			$.ajax({
+				url:'get_fornecedores.php',
+				method: 'post',
+				data:$('#form_passar_pagina_anterior').serialize(),
+				success: function(){
+					
+				}
+			}).done(function(data){
+				$('#div_resultado_paginacao_fornecedores').html(data);
+			});
+		}
 	
 		
 		
@@ -337,9 +360,7 @@
 							
 		                </form>						
 					</div>
-					<div class="col-6 d-flex align-items-center justify-content-end">
-						Page 1 of 4 < - >
-					</div>
+					
 				</div>
 				
 

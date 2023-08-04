@@ -289,7 +289,7 @@
 							<input id="novo_cliente_cidade" name="novo_cliente_cidade" type="text" class="form-control" placeholder="Cidade cliente">
 						</div>
 						<div class="input-group mb-3">
-							<input id="novo_cliente_uf" name="novo_cliente_uf" type="text" class="form-control" placeholder="Estado cliente">
+							<input id="novo_cliente_uf" name="novo_cliente_uf" type="text" class="form-control" placeholder="UF cliente, Ex: BA">
 						</div>
 						<div class="input-group mb-3">						
 							<input id="novo_cliente_ceep" name="novo_cliente_ceep" type="text" class="form-control" placeholder="CEEP cliente">

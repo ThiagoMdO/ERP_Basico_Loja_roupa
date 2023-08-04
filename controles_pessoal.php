@@ -416,7 +416,7 @@
 									<img style="width:180px; height:180px" src="img/fornecedores.png">
 								</div>
 								<div>
-									<h3>Estoque</h3>
+									<h3>Fornecedores</h3>
 								</div>
 							</div>
 							

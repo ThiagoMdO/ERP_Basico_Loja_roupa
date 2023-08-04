@@ -61,19 +61,15 @@
 					success: function(data){
 						$('#div_resultado_paginacao_clientes').html(data);
 					}
-				}).done(function(){
-					atualizarValorEstoque();
-				});
-			}
-
-			function atualizarValorEstoque(){
-				$.ajax({
-					url:'informacoes_estoque.php',
-					success: function(data){
-						$('#infomacoes_clientes').html(data);
-					}
 				})
 			}
+
+			
+
+			function atualizarValorEstoque(){
+				
+			}
+
 			
 			$('#menu_caixa').click(function(){
 				window.location.href = "home.php";
@@ -134,8 +130,16 @@
 			$('.btn_pg_fornecedores').click(function(){
 				window.location.href = "fornecedores.php";
 			});
+			$('.btn_pula_pagina').click(function(){
+			alert('sdf');
+
+
+
+		});
+
 		});
 		
+
 
 		function excluir_cliente(get_id) {
 			$.ajax({
@@ -168,6 +172,32 @@
 				}
 			});
 		}
+
+		function passar_pagina_posterior(){
+			$.ajax({
+				url:'get_clientes.php',
+				method: 'post',
+				data:$('#form_passar_pagina_posterior').serialize(),
+				
+			}).done(function(data){
+				$('#div_resultado_paginacao_clientes').html(data);
+			});
+		}
+
+		function passar_pagina_anterior(){
+			$.ajax({
+				url:'get_clientes.php',
+				method: 'post',
+				data:$('#form_passar_pagina_anterior').serialize(),
+				success: function(){
+					
+				}
+			}).done(function(data){
+				$('#div_resultado_paginacao_clientes').html(data);
+			});
+		}
+
+		
 	
 		
 		
@@ -191,6 +221,7 @@
 	<?php
 		include_once 'menu_principal.php';
 	?>
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="configuracoes col-md-3">
@@ -333,7 +364,7 @@
                 </div>
 	           	<br>
 	           	<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-10">
 						<form class="input-group form_procurar_clientes">
 							<div class="barra_pesquisa col-6">
 								<span class="lupa_pesquisa">
@@ -343,12 +374,11 @@
 								</span>
 		                    	<input type="text" id="nomeCliente" class="barra_pesquisa form-control" placeholder="Pesquisar nome do Cliente" maxlength="140" name="nome_cliente">
 							</div>
+
 							
 		                </form>						
 					</div>
-					<div class="col-6 d-flex align-items-center justify-content-end">
-						Page 1 of 4 < - >
-					</div>
+					
 				</div>
 				
 
@@ -356,14 +386,7 @@
 	            <div class="row">
 				<br>
 	                <div class="col-md-12">
-	                    <div class="info_dados">
-	                    	<div class="row">
-								<div class="col-2">Nome</div>
-								<div class="col-2">CPF</div>
-								<div class="col-2">Telefone</div>
-								<div class="col-6">Endereço</div>
-							</div>
-	                    </div>
+	                    
 	                    <div id="div_resultado_paginacao_clientes">
 	                    </div>
 	                </div>

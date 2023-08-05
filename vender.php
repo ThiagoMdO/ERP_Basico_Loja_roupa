@@ -198,7 +198,29 @@
 				}
 			});
 		}
+		function passar_pagina_posterior(){
+			$.ajax({
+				url:'get_produtos_vender.php',
+				method: 'post',
+				data:$('#form_passar_pagina_posterior').serialize(),
+				
+			}).done(function(data){
+				$('#div_resultado_paginacao').html(data);
+			});
+		}
 
+		function passar_pagina_anterior(){
+			$.ajax({
+				url:'get_produtos_vender.php',
+				method: 'post',
+				data:$('#form_passar_pagina_anterior').serialize(),
+				success: function(){
+					
+				}
+			}).done(function(data){
+				$('#div_resultado_paginacao').html(data);
+			});
+		}
 
 	</script>
 	<style type="text/css">
@@ -371,18 +393,6 @@
 					</div>
 					
 				</div>
-				<br>
-				<div class="row">
-					<div class="col-2 info_produto">foto</div>
-					<div class="col-3 info_produto">Nome</div>
-					<div class="col-1 info_produto">TAM</div>
-					<div class="col-2 info_produto">COR</div>
-					<div class="col-2 info_produto">Preço</div>
-					<div class="col-2 info_produto">QTD</div>
-				</div>
-
-
-		        <br />
 	            <div class="row">
 	                <div class="col-md-12">
 	                    <div id="div_resultado_paginacao"></div>

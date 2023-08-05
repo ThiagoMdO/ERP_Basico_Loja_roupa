@@ -380,11 +380,7 @@
 					</div>
 					
 				</div>
-				
-
-				<br>
 	            <div class="row">
-				<br>
 	                <div class="col-md-12">
 	                    
 	                    <div id="div_resultado_paginacao_clientes">

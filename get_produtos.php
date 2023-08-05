@@ -75,6 +75,7 @@
 	if($recuar < $limite_exibicao){
 		$esconder_anterior = 'd-none';
 	}
+	
 
 	echo '
 
@@ -101,9 +102,21 @@
 				<input type="text" name="offset_pagina" value="'.$recuar - 2 .'" ">
 			</div>
  		</form>
-
+ 		<br/>
  		
  	';
+ 	echo '
+		<div class="row">
+			<div class="col-2 info_produto">foto</div>
+			<div class="col-3 info_produto">Nome</div>
+			<div class="col-1 info_produto">TAM</div>
+			<div class="col-2 info_produto">COR</div>
+			<div class="col-2 info_produto">Preço</div>
+			<div class="col-2 info_produto">QTD</div>
+		</div>
+		<br/>
+
+		';
 	if($resultado_pesquisa_id){
 		$i = 1;
 		

@@ -12,7 +12,9 @@
 
 
 	//SQL para pegar informações contas despesas
-	$sql_dados_conta_despesa = "SELECT * FROM contas WHERE pago_conta = 'NAO' AND natureza_conta = 'Despesa'";
+	$sql_dados_conta_despesa = "SELECT * 
+								FROM contas 
+								WHERE pago_conta = 'NAO' AND natureza_conta = 'Despesa'";
 
 	//SQL para pegar informações contas investimento
 	$sql_dados_conta_investimento = "SELECT * FROM contas WHERE pago_conta = 'NAO' AND natureza_conta = 'Investimento'";

@@ -14,10 +14,17 @@
 	$nome_conta = isset($_POST['nome_conta_despesa_investimento'])?$_POST['nome_conta_despesa_investimento']:'';
 	$natureza_conta = isset($_POST['natureza_conta'])?$_POST['natureza_conta']:'';
 	//SQL para pegar informações de ccontas sda empresa
-	$sql_dados_atividades = "SELECT DATE_FORMAT(vencimento, '%d %b %Y') AS data_inclusao, DATE_FORMAT(data_registro, '%d %b %Y') AS data_registro, nome_conta, natureza_conta, valor_conta, forma_pagamento_conta, parcelas, vencimento, id_conta 
+	$sql_dados_atividades = "SELECT DATE_FORMAT(vencimento, '%d %b %Y') AS data_inclusao, 
+							DATE_FORMAT(data_registro, '%d %b %Y') AS data_registro,
+							nome_conta, 
+							natureza_conta, 
+							valor_conta, 
+							forma_pagamento_conta, 
+							parcelas, vencimento, 
+							id_conta 
 							FROM contas 
 							WHERE pago_conta = 'NAO' AND nome_conta LIKE '%$nome_conta%' AND natureza_conta LIKE '%$natureza_conta%'
-							ORDER BY vencimento";
+							ORDER BY id_conta DESC";
 
 	$resultado_id = mysqli_query($con,$sql_dados_atividades);
 

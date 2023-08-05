@@ -53,7 +53,7 @@
 		$sql_historico_vendas = "SELECT DATE_FORMAT(data_inclusao, '%d %b %Y %T') AS data_inclusao, id_nota_compras, id_cliente, nome_cliente, contato_telefone_cliente, id_produto, nome_produto, descricao_venda
 			FROM notas_compras 
 			WHERE nome_cliente LIKE '%$nome_cliente%' AND nome_produto LIKE '%$nome_produto%'
-			ORDER BY data_inclusao DESC
+			ORDER BY id_nota_compras DESC
 			LIMIT $registros_por_pagina
 			OFFSET $offset";
 				
@@ -181,7 +181,7 @@
 		$sql_historico_compras = "SELECT DATE_FORMAT(data_inclusao, '%d %b %Y %T') AS data_inclusao, id_nota_compras, id_fornecedor, nome_fornecedor, contato_telefone_fornecedor, id_produto, nome_produto, descricao_venda
 			FROM notas_compras 
 			WHERE nome_fornecedor LIKE '%$nome_fornecedor%' AND nome_produto LIKE '%$nome_produto%'
-			ORDER BY data_inclusao DESC
+			ORDER BY id_nota_compras DESC
 			LIMIT $registros_por_pagina
 			OFFSET $offset";
 

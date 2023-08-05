@@ -11,14 +11,20 @@
 	$con = $objDB->conecta_mysql();
 
 
-	
+	$offset =isset($_POST['offset_pagina'])?$_POST['offset_pagina']:0;
+	$limite_exibicao = 2;
 	$nomeProduto = isset($_POST['nomeProduto'])?$_POST['nomeProduto']:'';
 	$saldo_dinheiro = '';
 	$saldo_banco = '';
 	
 
 	//SQL para pegar valores da pesquisa, teste com nome
-	$sql_resultado_pesquisa = "SELECT * FROM produto_estoque WHERE nome_produto like'%$nomeProduto%' ORDER BY nome_produto";
+	$sql_resultado_pesquisa = "SELECT * 
+								FROM produto_estoque 
+								WHERE nome_produto like'%$nomeProduto%' 
+								ORDER BY nome_produto
+								LIMIT $limite_exibicao
+								OFFSET $offset";
 
 	$resultado_pesquisa_id = mysqli_query($con,$sql_resultado_pesquisa);
 
@@ -35,7 +41,69 @@
 		}
 	}
 
-		//die();
+
+	// consultar registro
+	$sql_historico_qtd = "SELECT COUNT(*) AS total_registros
+		FROM (
+		    SELECT id_produto
+			    FROM produto_estoque
+			    WHERE nome_produto LIKE '%$nomeProduto%'
+		) AS subconsulta";
+
+	$quantidade_historico;
+	$resultado_id_historico_qtd = mysqli_query($con,$sql_historico_qtd);
+	if($resultado_id_historico_qtd){
+		while($linha = mysqli_fetch_array($resultado_id_historico_qtd)){
+			$quantidade_historico = $linha['total_registros'];
+		}
+	}
+
+	$offset++;
+
+	$total_paginas = ceil($quantidade_historico / $limite_exibicao);
+
+	$pagina_atual = ceil($offset / $limite_exibicao); //localiza a página atual
+
+	$avancar = $offset + 1;
+	$recuar = $offset - 1;
+	$esconder_posterior = '';
+	$esconder_anterior = '';
+
+	if($pagina_atual >= $total_paginas){
+		$esconder_posterior = 'd-none';
+	}
+	if($recuar < $limite_exibicao){
+		$esconder_anterior = 'd-none';
+	}
+
+	echo '
+
+		<form id="form_passar_pagina_posterior">
+			<div class="d-none">
+				<input type="text" name="nomeProduto" value="'.$nomeProduto.'" ">
+				<input type="text" name="offset_pagina" value="'.$avancar.'" ">
+			</div>
+			<div class="row">
+				<div class="col-10 d-flex justify-content-end align-items-center">
+					Página '.$pagina_atual.' de '.$total_paginas.', total produtos '.$quantidade_historico.'
+				</div>
+				<div class="col-2 div_btn_pula_pagina">	
+					<button class="btn btn_selecionar_pagina '.$esconder_anterior.'" type="button" id="btn_passar_pagina_voltar" onclick="passar_pagina_anterior()"> < </button>
+ 					<button class="btn btn_selecionar_pagina '.$esconder_posterior.'" type="button" id="btn_passar_pagina_ir" onclick="passar_pagina_posterior()"> > </button>
+				</div>
+			
+			</div>
+ 		</form>
+
+ 		<form id="form_passar_pagina_anterior">
+			<div class="d-none">
+				<input type="text" name="nomeProduto" value="'.$nomeProduto.'" ">
+				<input type="text" name="offset_pagina" value="'.$recuar - 2 .'" ">
+			</div>
+ 		</form>
+
+ 		
+ 	';
 	if($resultado_pesquisa_id){
 		$i = 1;
 		
@@ -100,6 +168,8 @@
 						  </ul>
 						</div>
 					</div>
+
+
 					<!-- fim Exibir estoque tela -->
 					<hr/>
 
@@ -397,6 +467,7 @@
 			}
 	
 	}
+
 		
 
 

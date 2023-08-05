@@ -141,8 +141,41 @@
 				window.location.href = "fornecedores.php";
 			});
 
+
 		});
 		
+		function passar_pagina_posterior(){
+			$.ajax({
+				url:'get_produtos.php',
+				method: 'post',
+				data:$('#form_passar_pagina_posterior').serialize(),
+				
+			}).done(function(data){
+				$('#div_resultado_paginacao').html(data);
+			});
+			$.ajax({
+					url:'get_produtos.php',
+					success: function(data){
+
+					}
+				}).done(function(){
+					$('#div_resultado_paginacao').html(data);
+				});
+		}
+
+		function passar_pagina_anterior(){
+			$.ajax({
+				url:'get_produtos.php',
+				method: 'post',
+				data:$('#form_passar_pagina_anterior').serialize(),
+				success: function(){
+					
+				}
+			}).done(function(data){
+				$('#div_resultado_paginacao').html(data);
+			});
+		}
+
 		var subtotal;
 		function visualizarSubTotal(id_subTotal) {
 
@@ -356,6 +389,8 @@
 
 			})
 		}
+
+
 		
 
 

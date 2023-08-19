@@ -49,22 +49,23 @@
 	}
 	$lucro = $total - $preco_total_fornecedor;
 	echo 
-			'<div style="color:white" class="container-fluid border_custom d-block bg-dark">
-				<div class="row"><h3>VALOR EM ESTOQUE</h3></div>
-				<div class="row"><h2>R$ <span id="valor_estoque">'.$total.'</span></h2></div>
-				<div class="row">
-					<div class="col-7">
-						<p>Custo do estoque: R$'.$preco_total_fornecedor.'</p>
-						<p>Lucro previsto: R$'.$lucro.'</p>
-					</div>
-					<div class="col-5">
-						<p><span id="qtd_estoque_geral">'.$qtd_estoque_geral.'</span> Itens em estoque</p>
-						<p style="color:#FFD700">Estoque baixo '.$total_baixo_estoque.'</p>
-						<p style="color:#FF6347">Sem estoque '.$total_sem_estoque.'</p>
-					</div>
+		'<div style="color:white" class="container-fluid border_custom bg-dark">
+			<div class="row"><h3>VALOR EM ESTOQUE</h3></div>
+			<div class="row"><h2>R$ <span id="valor_estoque">'.$total.'</span></h2></div>
+			<div class="row">
+				<div class="col-7">
+					<p>Custo do estoque: R$'.$preco_total_fornecedor.'</p>
+					<p>Lucro previsto: R$'.$lucro.'</p>
+				</div>
+				<div class="col-5">
+					<p><span id="qtd_estoque_geral">'.$qtd_estoque_geral.'</span> Itens em estoque</p>
+					<p style="color:#FFD700">Estoque baixo '.$total_baixo_estoque.'</p>
+					<p style="color:#FF6347">Sem estoque '.$total_sem_estoque.'</p>
 				</div>
 			</div>
-			'
+		</div>
+		'
+		
 
 
 ?>

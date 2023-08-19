@@ -60,13 +60,13 @@
 								<p>'.$linha["parcelas"].'</p>
 							</div>
 							<div class="col-md-2">
-								<p>'.$linha["data_inclusao"].'</p>
+								<span class="only-xs">Inclusão: </span><p>'.$linha["data_inclusao"].'</p>
 							</div>
 							<div class="col-md-2">
-								<p>'.$linha['data_registro'].'</p>
+								<span class="only-xs">Registrado: </span><p>'.$linha['data_registro'].'</p>
 							</div>
 						</div> 
-						<div class="col-12">
+						<div class="container col-12">
 							<div class="btn-group">
 
 								<div class="btn_pagar">

@@ -349,10 +349,10 @@
 						<div class="top_header_informacoes">
 							<h4>Controles</h4>
 						</div>
-						<div class="dados_saldos d-flex justify-content-between">
+						<div class="dados_saldos d-flex justify-content-between ">
 							<div class="d-block">
 								<div id="btn_pg_produtos" class="opcao_controle ">							
-									<img style="width:180px; height:180px" src="img/produtos.png">
+									<img src="img/produtos.png">
 								</div>
 								<div>
 									<h3>Produtos</h3>
@@ -360,7 +360,7 @@
 							</div>
 							<div class="d-block">
 								<div class="opcao_controle btn_pg_pessoal">							
-									<img style="width:180px; height:180px" src="img/pessoal.png">
+									<img src="img/pessoal.png">
 								</div>
 								<div>
 									<h3>Pessoal</h3>
@@ -371,7 +371,7 @@
 							<div class="d-block">
 								<div id="btn_pg_cadastrar_produto" class="opcao_controle_sub row">
 									<div class="col-5">
-										<img style="width:50px; height:50px" src="img/cadastro_produto.png">
+										<img src="img/cadastro_produto.png">
 									</div>
 									<div class="col-6 d-flex align-items-center">
 										<h5>Cadastrar</h5>										
@@ -379,7 +379,7 @@
 								</div>
 								<div id="btn_pg_estoque_loja" class="opcao_controle_sub row">
 									<div class="col-5">
-										<img style="width:50px; height:50px" src="img/estoque_produto.png">
+										<img src="img/estoque_produto.png">
 									</div>
 									<div class="col-6 d-flex align-items-center">
 										<h5>Estoque</h5>										
@@ -387,7 +387,7 @@
 								</div>
 								<div id="btn_pg_vender_estoque" class="opcao_controle_sub row">
 									<div class="col-5">
-										<img style="width:50px; height:50px" src="img/vender_produto.png">
+										<img src="img/vender_produto.png">
 									</div>
 									<div class="col-6 d-flex align-items-center">
 										<h5>Vender</h5>									
@@ -397,7 +397,7 @@
 							<div class="d-block">
 								<div class="opcao_controle_sub row btn_pg_clientes">
 									<div class="col-5">
-										<img style="width:50px; height:50px" src="img/clientes.png">
+										<img src="img/clientes.png">
 									</div>
 									<div class="col-6 d-flex align-items-center">
 										<h5>Clientes</h5>										
@@ -405,7 +405,7 @@
 								</div>
 								<div class="opcao_controle_sub row btn_pg_fornecedores">
 									<div class="col-5">
-										<img style="width:50px; height:50px" src="img/fornecedores.png">
+										<img src="img/fornecedores.png">
 									</div>
 									<div class="col-6 d-flex align-items-center">
 										<h5>Fornecedores</h5>										

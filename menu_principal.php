@@ -9,14 +9,13 @@
 		<div class="login float-end d-flex align-items-center">
 			<span>User: <span style="color:#0516B6" id="nome_usuario_logado">Admin </span></span>
 			<span id="separador"></span>
-			<span>
+			<div class="div_btn_sair">
 				<button class="btn btn-outline-danger btn-sair">
 					<a href="sair.php">
-						<span style="color:#dc3545; text-decoration: none;">Sair</span>
 						<img width="35px" src="img/sair.png">
 					</a>
 				</button>
-			</span>
+			</div>
 		</div>
 	</div>
 <!-- <div class="nav_pag col-md-4">

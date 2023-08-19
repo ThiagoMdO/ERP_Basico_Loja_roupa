@@ -106,8 +106,8 @@
  		
  	';
  	echo '
-		<div class="row">
-			<div class="col-2 info_produto">foto</div>
+		<div class="row d-none d-sm-flex">
+			<div class="col-2 info_produto">Foto</div>
 			<div class="col-3 info_produto">Nome</div>
 			<div class="col-1 info_produto">TAM</div>
 			<div class="col-2 info_produto">COR</div>

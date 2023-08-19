@@ -92,7 +92,7 @@
  		
  	';
  	echo '
-		<div class="row">
+		<div class="row d-none d-sm-flex">
 			<div class="col-2 info_produto">foto</div>
 			<div class="col-3 info_produto">Nome</div>
 			<div class="col-1 info_produto">TAM</div>

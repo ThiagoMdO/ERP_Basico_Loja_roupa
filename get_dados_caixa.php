@@ -27,11 +27,11 @@
 			$total_soma = $saldo_dinheiro+$saldo_banco+$saldo_receber;
 			echo '
 				<div class="caixa">
-					<div id="tela_informacoes" class="container">
+					<div id="tela_informacoes" class="row">
 						<div class="top_header_informacoes">
 							<h4>Informações de Caixa</h4>
 						</div>
-						<div class="dados_saldos d-flex justify-content-between">
+						<div class="dados_saldos">
 							<div class="d-block">
 								<div class="dados_nome_saldo dinheiro alinhar_meio">Dinheiro</div>
 								<div class="dados_valor_saldo dinheiro alinhar_meio"><span>R$'.$linha['saldo_dinheiro'].'</span></div>
@@ -65,7 +65,8 @@
 							</div>
 						</div>
 					</div>
-				</div>';
+				</div>
+				<br/><br/>';
 		}
 
 	}

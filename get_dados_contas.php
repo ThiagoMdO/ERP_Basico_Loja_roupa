@@ -42,7 +42,7 @@
 						<div class="top_header_informacoes">
 							<h4>Informações de Conta</h4>
 						</div>
-						<div class="dados_saldos d-flex justify-content-between">
+						<div class="dados_saldos">
 							<div class="d-block">
 								<div class="dados_nome_saldo despesa alinhar_meio">Despesas</div>
 								<div class="dados_valor_saldo despesa alinhar_meio"><span>R$'.$valor_conta_despesas.'</span></div>

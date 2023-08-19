@@ -198,6 +198,11 @@
 .btn_excluir_sim:hover{
 	background: #E04A35;
 }
+
+/* -- elementos ocultos -- */
+.only-xs{
+	display: none;
+}
 /* -- Página contas_despesas_investimentos.php -- */
 .valor_conta p{
 	padding: 5px 0;
@@ -276,6 +281,7 @@
 }
 
 .menu_principal{
+	width: 100%;
 	height: 110px;
 	background: #FFFFFF;
 	box-shadow: .5px .1px 10px gray;
@@ -283,9 +289,17 @@
 	margin-bottom: 20px;
 
 }
+.div_btn_sair{
+	width: 100px;
+	height: 50px;
+}
 .btn-sair{
 	border: none;
+	transition: all ease .1s;
+	width: 100%;
+	height: 100%;
 }
+
 .menu_principal a{
 	text-decoration: none;
 	font-weight: 500;
@@ -298,6 +312,8 @@
 	background: gray;
 	margin: 10px;
 }
+
+
 
 /* -- Configurações -- */
 .configuracoes{
@@ -342,6 +358,7 @@
 	background: #FFF;
 	border-radius: 2px;
 	padding-top: 100px;
+	clear: right;
 
 }
 .caixa, .contas{
@@ -352,6 +369,13 @@
 	text-align: left;
 	font-weight: 600;
 }
+.dados_saldos{
+		display: flex;		
+	}
+.dados_saldos img{
+		width: 180px;
+		height: 180px;
+	}
 .dados_nome_saldo{	
 	width: 185px;
 	height: 132px;
@@ -361,6 +385,7 @@
 }
 
 .dados_valor_saldo{
+	width: 185px;
 	color: #FFF;
 	height: 35px;
 	border-radius: 10px;
@@ -517,6 +542,10 @@
 .opcao_controle_sub{
 	height: 60px;
 }
+.opcao_controle_sub img{
+		width: 50px;
+		height: 50px;
+	}
 .opcao_controle:hover, .opcao_controle_sub:hover{
 	background: rgba(200,205,205,0.9);
 	cursor: pointer;
@@ -557,7 +586,9 @@
 	color: #FFF;
 }
 
+.info_cadastrar{
 
+}
 /* --------------- vender.php --------------- */
 .modal-content{
 	color: black;
@@ -607,14 +638,14 @@
 	height: 30px;
 	color: #FFF;
 	font-weight: 700;
-	background: #88848E;
+	background: #BFB6B6;
 	border: .7px #E8E8E8 solid;
 	border-radius: 5px;
 
 }
 .produto{
 	height: 100px;
-	background: #88848E;
+	background: #BFB6B6;
 	margin: auto 0;
 	border: .7px #E8E8E8 solid;
 	border-radius: 5px;
@@ -623,9 +654,9 @@
 	margin: 40px 0;
 }
 .produto input{
-	background: #D5CDE5;
+	background: #F6F4FA;
 	border-radius: 5px;
-	border: .7px #88848E solid;
+	border: .7px #BFB6B6 solid;
 }
 
 .btn_group_estoque{
@@ -760,7 +791,120 @@ input{
 
 
 /*========================= Media queries =========================*/
+@media (max-width: 767px){
+	/* -- elementos ocultos -- */
+	.only-xs{
+		display: block;
+	}
 
+	/* -- contas_despesas_investimentos.php -- */
+	.info_dados{
+		background: red;
+		opacity: 0;
+	}
+
+	.metodos{
+		width: 60%;
+	}
+
+	.barra_pesquisa{
+		width: 200px;
+		border-radius: 5px;
+		background: #F7F9FB;
+		padding: 5px;
+		margin-left: 3px;
+	}
+	.barra_pesquisa input{
+		margin-top: 6px;
+		color: #969696;
+		width: 150px;
+	}
+
+	/* -- controles.php -- */
+	.opcao_controle{
+		
+	}
+
+	.opcao_controle img{
+		width: 100px;
+		height: 100px;
+	}
+	.dados_saldos .opcao_controle {
+		width: 80px;
+		height: 80px;
+	}
+	.dados_saldos img{
+		width: 50px;
+		height: 50px;
+	}
+
+	.opcao_controle_sub{
+		width: 120px;
+	}
+	.opcao_controle_sub img{
+		width: 20px;
+		height: 20px;
+	}
+	.opcao_controle_sub h5{
+		margin-left: -15px;
+		font-size: 11px;
+	}
+	/* --------------- produto_cadastrar.php --------------- */
+	.info_cadastrar{
+		float: left;
+	}
+	.info_cadastrar div{
+	}
+
+	/* --------------- produto_estoque.php --------------- */
+	
+
+
+}/* -- fim @media width < 767px */
+
+@media (max-width: 1200px){
+	
+	.menu_principal{
+		height: 200px;
+		font-size: 15px;
+	}
+	.configuracoes{
+		margin: 0;
+		height: 100%;
+	}
+	.dados_saldos{
+		display: block;
+
+	}
+	
+	.logo, .login{
+		width: 100%;
+	}
+	.login span, .login div{
+		margin: 0 auto;
+	}
+
+	/* -- contas_despesas_investimentos.php -- */
+	.info_dados{
+		font-size: 15px;
+	}
+
+	.configuracoes, .tela_informacoes{
+		border: .7px solid gray;
+		width: 100%;
+	}
+	.tela_informacoes{
+		clear: both;
+		margin-top: 50px;
+	}
+	.dados_nome_saldo, .dados_valor_saldo{
+		margin: 10px auto;
+		width: 200px;
+	}
+	#infomacoes_estoque{
+		position: relative;
+	}
+}/* -- fim @media width < 1200px */
 
 /*===================== Key frames =====================*/
 

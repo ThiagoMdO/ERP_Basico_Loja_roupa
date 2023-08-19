@@ -561,7 +561,7 @@
 		                    <div class="form-group d-none">
 		                        <input type="text" class="form-control" name="offset" id="offset" value="0"/>
 							</div>
-							<div class="row">
+							<div class="row d-flex justify-content-center">
 								<div class="barra_pesquisa_historico col-md-3">
 									<span class="lupa_pesquisa_historico">
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -596,7 +596,7 @@
 		            			<div class="form-group d-none">
 			                        <input type="text" class="form-control" name="offset_contas" id="offset_contas" value="0"/>
 								</div>
-			            			<div class="row">
+			            			<div class="row d-flex justify-content-center">
 			            				<div class="col-4 barra_pesquisa_historico">
 			            					<span class="lupa_pesquisa_historico">
 												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

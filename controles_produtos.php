@@ -353,7 +353,7 @@
 						<div class="dados_saldos d-flex justify-content-between">
 							<div class="d-block">
 								<div id="btn_pg_cadastrar_produto" class="opcao_controle ">							
-									<img style="width:180px; height:180px" src="img/cadastro_produto.png">
+									<img src="img/cadastro_produto.png">
 								</div>
 								<div>
 									<h3>Cadastrar</h3>
@@ -361,7 +361,7 @@
 							</div>
 							<div class="d-block">
 								<div id="btn_pg_estoque_loja" class="opcao_controle ">							
-									<img style="width:180px; height:180px" src="img/estoque_produto.png">
+									<img src="img/estoque_produto.png">
 								</div>
 								<div>
 									<h3>Estoque</h3>
@@ -369,7 +369,7 @@
 							</div>
 							<div class="d-block">
 								<div id="btn_pg_vender_estoque" class="opcao_controle ">							
-									<img style="width:180px; height:180px" src="img/vender_produto.png">
+									<img src="img/vender_produto.png">
 								</div>
 								<div>
 									<h3>Vender</h3>

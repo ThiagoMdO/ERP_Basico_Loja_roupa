@@ -376,7 +376,7 @@
 			                </form>
 						</div>						
 					</div>
-                	<div class="row d-flex align-items-center info_dados">
+                	<div class="row d-flex align-items-center info_dados ">
 						<div class="col-2">Nome</div>
 						<div class="col-1">Natureza</div>
 						<div class="col-2">Valor</div>

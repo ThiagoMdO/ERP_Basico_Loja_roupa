@@ -427,7 +427,7 @@
 						</div>
 					</div>
 
-					<div id="menu_contas" class="row seletores_menu" style="text-align:right;">
+					<div id="menu_contas" class="row seletores_menu" style="text-align:right; ">
 						<div class="col-3">
 							<span >
 								<img src="img/contas_pagar.png" width="30px">

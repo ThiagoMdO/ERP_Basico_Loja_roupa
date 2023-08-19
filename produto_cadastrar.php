@@ -300,66 +300,71 @@
 							<h4>Cadastrar Novo Produto</h4>
 						</div>
 						<div class="col-md-12 ">				
-						<br>				
-						<div class="container d-flex align-items-center justify-content-center">
-							<div class="col-2 info_produto">Nome</div>
-							<div class="col-1 info_produto">TAM</div>
-							<div class="col-2 info_produto">COR</div>
-							<div class="col-2 info_produto">$ fornecedor</div>
-							<div class="col-2 info_produto">$ cliente</div>
-							<!-- <div class="col-2">QTD</div> -->
-							<!-- <div class="col-1">Data</div> -->
-						</div>
-						<br />
-
-
-						<div class="row d-flex align-items-center justify-content-center">
-							<form id="formCadastrar">
-								<div class="container-fluid" id="cadastar_produto_todos">
-									<div class="row  d-flex align-items-center justify-content-center">
-										<div class='col-2 produto'>
-											<div>
-												<input type="text" name="nomeProduto_cadastrar" maxlength="20">
-											</div>
-										</div>
-										<div class='col-1 produto'>
-											<div>
-												<input type="text" name="tamanho_cadastrar" maxlength="2">
-											</div>
-										</div>
-										<div class='col-2 produto'>
-											<div>
-												<input type="text" name="cor_cadastrar" maxlength="20">
-											</div>
-										</div>
-										<div class='col-2 produto'>
-											<div>
-												<input type="text" name="preco_cadastrar_fornecedor" maxlength="4">
-											</div>
-										</div>
-										<div class='col-2 produto'>
-											<div>
-												<input type="text" name="preco_cadastrar_cliente" maxlength="4">
-											</div>
-										</div>
-										<!-- <div class='col-2 produto'>
-											<div>
-												<input type="text" name="qtd_cadastrar" maxlength="3">
-											</div>
-										</div> -->
-										<!-- <div class='col-1 produto'>
-											<div>
-												<input  type="date" name="data_cadastrar" maxlength="3">
-											</div>
-										</div> -->
-									</div>
+							<br>
+											
+							<div class="container">
+								<div class="container info_cadastrar d-none d-sm-flex align-items-center justify-content-center">
+									
+									<div class="col-2 info_produto">Nome</div>
+									<div class="col-1 info_produto">TAM</div>
+									<div class="col-2 info_produto">COR</div>
+									<div class="col-2 info_produto">$ fornecedor</div>
+									<div class="col-2 info_produto">$ cliente</div>
+									<!-- <div class="col-2">QTD</div> -->
+									<!-- <div class="col-1">Data</div> -->
 								</div>
-								<br>
-								<button type="reset" class="btn btn_cadastro btn_resetar_cadastro_produto">Resetar tudo</button>
-								<div class="row">
-									<!-- <div class="col-3">
-										<button type="button" id="novo_campo_cadastro" class="btn btn-lg btn-primary">+</button>
-										<p>Novo campo registro</p>
+							</div>
+							<br />
+
+
+							<div class="container info_cadastrar d-flex align-items-center justify-content-center">
+
+								<form id="formCadastrar">
+									<div class="container-fluid" id="cadastar_produto_todos">
+										<div class="d-block d-sm-flex align-items-center justify-content-center">	
+											<div class='col-sm-12 col-md-2 produto'>
+												<div>
+													<input type="text" name="nomeProduto_cadastrar" placeholder="Nome" maxlength="20">
+												</div>
+											</div>
+											<div class='col-sm-12 col-md-1 produto'>
+												<div>
+													<input type="text" name="tamanho_cadastrar" placeholder="Tamanho" maxlength="2">
+												</div>
+											</div>
+											<div class='col-sm-12 col-md-2 produto'>
+												<div>
+													<input type="text" name="cor_cadastrar" placeholder="Cor" maxlength="20">
+												</div>
+											</div>
+											<div class='col-sm-12 col-md-2 produto'>
+												<div>
+													<input type="text" name="preco_cadastrar_fornecedor" placeholder="$Fornecedor" maxlength="4">
+												</div>
+											</div>
+											<div class='col-sm-12 col-md-2 produto'>
+												<div>
+													<input type="text" name="preco_cadastrar_cliente" placeholder="$Cliente" maxlength="4">
+												</div>
+											</div>
+											<!-- <div class='col-2 produto'>
+												<div>
+													<input type="text" name="qtd_cadastrar" maxlength="3">
+												</div>
+											</div> -->
+											<!-- <div class='col-1 produto'>
+												<div>
+													<input  type="date" name="data_cadastrar" maxlength="3">
+												</div>
+											</div> -->
+										</div>
+									</div>
+									<br>
+									<button type="reset" class="btn btn_cadastro btn_resetar_cadastro_produto">Resetar tudo</button>
+									
+										<!-- <div class="col-3">
+											<button type="button" id="novo_campo_cadastro" class="btn btn-lg btn-primary">+</button>
+											<p>Novo campo registro</p>
 									</div> -->
 									<div class="col-12">
 										<button type="button" class="btn btn_cadastro btn_adicionar_cadastro_produto" id="btn_cadastar_produto_todos">Cadastrar</button>

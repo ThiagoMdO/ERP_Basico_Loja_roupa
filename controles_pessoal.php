@@ -405,7 +405,7 @@
 						<div class="dados_saldos d-flex justify-content-between">
 							<div class="d-block">
 								<div id="btn_pg_clientes" class="opcao_controle ">							
-									<img style="width:180px; height:180px" src="img/clientes.png">
+									<img src="img/clientes.png">
 								</div>
 								<div>
 									<h3>Clientes</h3>
@@ -413,7 +413,7 @@
 							</div>
 							<div class="d-block">
 								<div id="btn_pg_fornecedores" class="opcao_controle ">							
-									<img style="width:180px; height:180px" src="img/fornecedores.png">
+									<img src="img/fornecedores.png">
 								</div>
 								<div>
 									<h3>Fornecedores</h3>

@@ -300,23 +300,7 @@
 							<h4>Cadastrar Novo Produto</h4>
 						</div>
 						<div class="col-md-12 ">				
-							<br>
-											
-							<div class="container">
-								<div class="container info_cadastrar d-none d-sm-flex align-items-center justify-content-center">
-									
-									<div class="col-2 info_produto">Nome</div>
-									<div class="col-1 info_produto">TAM</div>
-									<div class="col-2 info_produto">COR</div>
-									<div class="col-2 info_produto">$ fornecedor</div>
-									<div class="col-2 info_produto">$ cliente</div>
-									<!-- <div class="col-2">QTD</div> -->
-									<!-- <div class="col-1">Data</div> -->
-								</div>
-							</div>
-							<br />
-
-
+							<br/><br/>
 							<div class="container info_cadastrar d-flex align-items-center justify-content-center">
 
 								<form id="formCadastrar">

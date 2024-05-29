@@ -4,10 +4,6 @@
 		header('Location: index.php?');
 	}
 
-	
-
-
-
 ?>
 
 
